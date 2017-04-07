@@ -13,7 +13,7 @@ const queryNationalLandmark = () => {
   // count for the number of monuments as a check
   // let counter = 0;
 
-  // goes through each state sheet and creates a monument list for that state.
+  // goes through each state sheet and creates a monument list for that state
   listOfStates.forEach((state) => {
     let i = 2;
     while (workbook.Sheets[state]['B' + i]) {
