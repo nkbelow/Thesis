@@ -17,7 +17,11 @@ const queryNationalLandmark = () => {
     let monumentsListForState = [state]
     let i = 2;
     while (workbook.Sheets[state]['B' + i]) {
+<<<<<<< HEAD
       numberOfMonuments.push(workbook.Sheets[state]['B' + i].v)
+=======
+      // numberOfMonuments.push(workbook.Sheets[state]['B' + i].v)
+>>>>>>> Refine features
       let monument = workbook.Sheets[state]['B' + i].v
       monumentsListForState.push(monument)
       i++;
