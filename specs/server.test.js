@@ -15,8 +15,10 @@ describe('', function() {
 
   }
 
-  beforeEach(function(done) {
-    var tables = [];
+
+  beforeEach((done) => {
+    server = require('../src/server/index.js');
+    let tables = [];
 
     //create connection here
 
