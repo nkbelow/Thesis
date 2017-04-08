@@ -8,5 +8,6 @@ app.get('/', function (req, res) {
 })
 
 app.listen(port, function() {
-  console.log('App is listening to port' + 3000)
+  console.log('App is listening to port ' + port)
 })
+
