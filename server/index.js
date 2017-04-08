@@ -1,17 +1,16 @@
-var express = require('express');
-var dotenv = require('dotenv').config()
-var app = express()
+const express = require('express');
+const dotenv = require('dotenv').config();
 
-
+const app = express();
 const port = 3000;
 
-app.get('/', function (req, res) {
-  res.status(200).send('hello world!!!')
-})
+app.get('/', (req, res) => {
+  res.status(200).send('hello world!!!');
+});
 
 
-let server = app.listen(process.env.PORT || port, function() {
-  console.log('App is listening to port ' + port)
+const server = app.listen(process.env.PORT || port, () => {
+  console.log('App is listening to port ' + port);
 });
 
 module.exports = server;
