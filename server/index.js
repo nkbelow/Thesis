@@ -1,13 +1,16 @@
-var express = require('express');
-var app = express()
+const express = require('express');
+const app = express()
 
-var port = 3000;
+const port = 3000;
 
 app.get('/', function (req, res) {
-  res.send('hello world!!!')
+  res.status(200).send('hello world!!!')
 })
 
-app.listen(process.env.PORT || port, function() {
+
+let server = app.listen(process.env.PORT || port, function() {
   console.log('App is listening to port ' + port)
-})
+});
+
+module.exports = server;
 
