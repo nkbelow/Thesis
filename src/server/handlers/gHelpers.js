@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const geocode = (location) => {
-  // uncomment the next line to receive an example
+  // uncomment the next line to receive an example request
   // let location = 'Beaverdam Creek Swamp'
   const config = {
     method: 'get',
@@ -23,5 +23,3 @@ const geocode = (location) => {
 
 
 module.exports.geocode = geocode;
-
-// export default geocode

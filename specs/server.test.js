@@ -1,20 +1,13 @@
-var chai = require('chai');
-var expect = chai.expect();
-var chaiHttp = require('chai-http');
+const request = require('supertest');
 
-chai.use(chaiHttp);
-//check if we need to only specify this for requests and not others non http requests
-//ask about es6 on the backend
+describe('server tests', () => {
+  let db;
+  let tables;
+  let server;
 
-
-describe('', function() {
-  var db;
-  var tables;
-
-  var clearTables = function(connection, tables, done) {
+  let clearTables = (connection, tables, done) => {
 
   }
-
 
   beforeEach((done) => {
     server = require('../src/server/index.js');
@@ -24,24 +17,40 @@ describe('', function() {
 
     //connect
       //call clearTables function
-  } 
+      done()
+  }) 
 
-  describe('table schema should follow required data types', function() {
-    //test that the tables are of correct functionality
-    it('should ...', function() {
+  afterEach(() => {
+    server.close();
+  });
 
+  describe('basic server test', () => {
+    it('responds to /', (done) => {
+    request(server)
+    .get('/')
+    .expect(200, done)
     })
+  })
 
-    it('should ...', function() {
-      
-    })
-
-    it('should ...', function() {
-      
-    })
-
-    it('should ...', function() {
-      
-    })
-  }
 })
+
+
+
+  // describe('table schema should follow required data types', () => {
+  //   //test that the tables are of correct functionality
+  //   test('should ...', () => {
+
+  //   })
+
+  //   test('should ...', () => {
+      
+  //   })
+
+  //   test('should ...', () => {
+      
+  //   })
+
+  //   test('should ...', () => {
+      
+  //   })
+  // })
