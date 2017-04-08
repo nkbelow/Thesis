@@ -13,7 +13,6 @@ const geocode = (location) => {
       address: location
     }
   };
-
   return axios(config).then((response) => {
     return response.data.results[0].geometry.location;
   }
@@ -23,8 +22,6 @@ const geocode = (location) => {
 };
 
 
-module.exports = {
-  geocode: geocode
-};
+module.exports.geocode = geocode;
 
 // export default geocode

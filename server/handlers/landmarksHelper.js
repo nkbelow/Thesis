@@ -1,28 +1,30 @@
-const XLSX = require('xlsx')
+const XLSX = require('xlsx');
+
+const path = require('path');
 
 // converts an xlsx file and saves it in an array.
-let nationalMonuments = []
+const nationalMonuments = [];
 
 // uncomment to check total gnumber of national monuments.
-let workbook = XLSX.readFile(__dirname + '/National_Natural_Landmark.xlsx');
+const workbook = XLSX.readFile(path.join(__dirname, '/National_Natural_Landmark.xlsx'));
 
 const queryNationalLandmark = () => {
-  let listOfStates = workbook.Props.SheetNames.splice(1)
+  const listOfStates = workbook.Props.SheetNames.splice(1);
   // count for the number of monuments as a check
   // let counter = 0;
 
   // goes through each state sheet and creates a monument list for that state.
-  listOfStates.forEach(state => {
+  listOfStates.forEach((state) => {
     let i = 2;
     while (workbook.Sheets[state]['B' + i]) {
-      let monument = workbook.Sheets[state]['B' + i].v
-      nationalMonuments.push(monument)
-      i++;
-      // counter++;
+      const monument = workbook.Sheets[state]['B' + i].v;
+      nationalMonuments.push(monument);
+      i += 1;
+      // counter += 1;
     }
-  })
-}
+  });
 
-module.exports = {
-  queryNationalLandmark: queryNationalLandmark
-}
+  return nationalMonuments;
+};
+
+module.exports.landmarkQuery = queryNationalLandmark;
