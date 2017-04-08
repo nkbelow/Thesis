@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const Test = () => (
+const Try = () => (
   <p> Hello World </p>
   )
 
-export default Test;
+export default Try;
