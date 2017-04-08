@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node server/index.js",
     "start-dev": "nodemon Server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "test-react": "jest",
+    "test": "jest",
     "lint": "eslint client server",
     "lint-fix": "eslint client server",
     "react-dev": "webpack -d --watch",
@@ -23,8 +22,6 @@
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
     "babel-register": "^6.24.0",
-    "chai": "^3.5.0",
-    "chai-http": "^3.0.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
