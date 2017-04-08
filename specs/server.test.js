@@ -12,7 +12,7 @@ describe('server tests', () => {
   }
 
   beforeEach((done) => {
-    server = require('../server/index.js');
+    server = require('../src/server/index.js');
     let tables = [];
 
     //create connection here
