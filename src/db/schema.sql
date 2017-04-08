@@ -1,0 +1,48 @@
+DROP DATABASE IF EXISTS thesis;
+CREATE DATABASE thesis;
+
+-- \c 'genial-giraffes';
+
+CREATE TABLE IF NOT EXISTS parks (
+	id INTEGER PRIMARY KEY,
+	name VARCHAR(25),
+	description VARCHAR(255),
+	popularity INTEGER(25),
+	size INTEGER(25)
+);
+
+CREATE TABLE IF NOT EXISTS activities (
+	id INTEGER PRIMARY KEY,
+	name VARCHAR(25),
+	park_id INTEGER FOREIGN KEY
+);
+
+CREATE TABLE IF NOT EXISTS campgrounds (
+	id INTEGER PRIMARY KEY,
+	name VARCHAR(25),
+	lat DECIMAL(25),
+	lng DECIMAL(25), 
+	park_id INTEGER FOREIGN KEY
+);
+
+CREATE TABLE IF NOT EXISTS images (
+	id INTEGER PRIMARY KEY,
+	url VARCHAR(50)
+);
+
+CREATE TABLE IF NOT EXISTS trails (
+	id INTEGER PRIMARY KEY,
+	name VARCHAR(25),
+	lat (25),
+	lng DECIMAL(25),
+	park_id INTEGER FOREIGN KEY,
+	campground_id INTEGER FOREIGN KEY
+);
+
+CREATE TABLE IF NOT EXISTS lodging (
+	id INTEGER PRIMARY KEY,
+	name VARCHAR(25),
+	park_id INTEGER FOREIGN KEY
+);
+
+CREATE TABLE IF NOT EXISTS weather ();
