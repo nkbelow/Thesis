@@ -1,36 +1,27 @@
-var XLSX = require('xlsx')
+const axios = require('axios');
 
-var queryNationalLandmark = function () {
-  var workbook = XLSX.readFile(__dirname + '/National_Natural_Landmark.xlsx');
-  var listOfStates = workbook.Props.SheetNames.splice(1)
-  var nationalMonuments = []
-  var numberOfMonuments = [];
-  var counter = 0;
-
-  listOfStates.forEach(function(state) {
-    var monumentsListForState = [state]
-    var i = 2;
-    while (workbook.Sheets[state]['B' + i]) {
-      numberOfMonuments.push(workbook.Sheets[state]['B' + i].v)
-      var monument = workbook.Sheets[state]['B' + i].v
-      monumentsListForState.push(monument)
-      i++;
+const geocode = (location) => {
+  // uncomment the next line to receive an example request
+  // let location = 'Beaverdam Creek Swamp'
+  const config = {
+    method: 'get',
+    url: 'http://maps.googleapis.com/maps/api/geocode/json',
+    headers: {
+      key: process.env.G_MAPS_GEOCODING_API_KEY
+    },
+    params: {
+      address: location
     }
+  };
+  return axios(config).then((response) => {
+    return response.data.results[0].geometry.location;
+  }
+  ).catch((error) => {
+    throw error;
+  });
+};
 
-    nationalMonuments.push(monumentsListForState)
-  })
 
-  nationalMonuments.forEach(function(stateObject) {
-    console.log(stateObject[0], (stateObject.length - 1))
-  })
+module.exports.geocode = geocode;
 
-  numberOfMonuments.forEach(function(a){counter++});
-
-  console.log(counter, 'totalMonuments')
-  console.log('nationalMonuments: ' + nationalMonuments)
-  console.log('done!')
-}
-
-module.exports = {
-  queryNationalLandmark: queryNationalLandmark
-}
+// export default geocode
