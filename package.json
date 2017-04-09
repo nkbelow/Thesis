@@ -7,6 +7,8 @@
     "start": "node server/index.js",
     "start-dev": "nodemon Server/index.js",
     "test": "jest",
+    "test-react": "jest",
+    "pg-start": "node db/index.js",
     "lint": "eslint client server",
     "lint-fix": "eslint client server",
     "react-dev": "webpack -d --watch",
@@ -46,6 +48,14 @@
     "path": "^0.12.7",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "xlsx": "^0.9.9"
+    "xlsx": "^0.9.9",
+    "bluebird": "^3.5.0",
+    "eslint-plugin-react": "^6.10.3",
+    "express": "^4.15.2",
+    "jquery": "^3.2.1",
+    "mocha": "^3.2.0",
+    "pg-promise": "^5.6.4",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   }
 }
