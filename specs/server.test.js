@@ -1,11 +1,9 @@
 const request = require('supertest');
-const express = require('express');
 
 describe('server tests', () => {
   let db;
   let tables;
   let server;
-  var app = express()
 
   let clearTables = (connection, tables, done) => {
 
