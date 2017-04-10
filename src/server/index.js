@@ -2,6 +2,8 @@ const express = require('express');
 
 const dotenv = require('dotenv').config();
 
+const gHelpers = require('./handlers/gHelpers.js')
+
 const app = express();
 const port = 3000;
 

@@ -4,15 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node /src/server/index.js",
-    "start-dev": "nodemon Server/index.js",
+    "start": "node src/server/index.js",
+    "start-dev": "nodemon src/server/index.js",
     "test": "jest",
     "test-react": "jest",
     "pg-start": "node db/index.js",
     "lint": "eslint client server",
     "lint-fix": "eslint client server",
     "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon /src/server/index.js"
+    "server-dev": "nodemon src/server/index.js"
   },
   "keywords": [],
   "author": "",
