@@ -39,9 +39,9 @@ const places = (location, radius, type) => {
     }
   };
   return axios(config).then((response) => {
-    console.log(response.data.results);
-  })
-}
+    return response.data.results;
+  });
+};
 
 module.exports = {
   geocode: geocode,
