@@ -21,7 +21,7 @@ componentDidMount() {
     return (
     	<div>
     		<h1>Nimble Newts Project </h1>
-    		<ParkList />
+    		{this.state.parks !== null && <ParkList parks={this.state.parks}/>}
     	</div>
     );
   }

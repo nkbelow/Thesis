@@ -1,23 +1,18 @@
 import React from 'react';
+import ParkItem from './parkItem.jsx';
 
-
-class ParkList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-
-  componentWillMount(){
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>Test</h1>
-      </div>
-    );
-  }
+function ParkList(props) {
+  const parks = props.parks;
+  const parkItems = parks.map((park) =>
+    <ParkItem key={park.name.toString()}
+              park={park} />
+  );
+  
+  return (
+    <ul>
+      {parkItems}
+    </ul>
+  );
 }
 
 export default ParkList;
