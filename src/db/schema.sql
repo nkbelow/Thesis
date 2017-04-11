@@ -4,11 +4,15 @@ CREATE DATABASE thesis;
 -- \c 'genial-giraffes';
 
 CREATE TABLE IF NOT EXISTS parks (
-	id INTEGER PRIMARY KEY,
-	name VARCHAR(25),
-	description VARCHAR(255),
-	popularity INTEGER(25),
-	size INTEGER(25)
+	id SERIAL NOT NULL,
+	parkcode 	VARCHAR(255),
+	name VARCHAR(50),
+	description VARCHAR(500),
+	popularity VARCHAR(255), 
+	size INTEGER,
+	latitude DOUBLE PRECISION, 
+	longitude DOUBLE PRECISION
+	
 );
 
 CREATE TABLE IF NOT EXISTS activities (
@@ -42,7 +46,7 @@ CREATE TABLE IF NOT EXISTS trails (
 CREATE TABLE IF NOT EXISTS lodging (
 	id INTEGER PRIMARY KEY,
 	name VARCHAR(25),
-	park_id INTEGER FOREIGN KEY
+	park_id INTEGER FOREIGN KEY 
 );
 
 CREATE TABLE IF NOT EXISTS weather ();
