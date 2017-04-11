@@ -24,7 +24,6 @@ const geocode = (location) => {
   });
 };
 
-
 // example input
 // places({latitude: 44.5853962, longitude: -111.0759105}, 5000, 'lodging')
   // radius and type are optional

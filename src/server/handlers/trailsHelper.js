@@ -12,7 +12,7 @@ const trails = (location) => {
       lat: location.lat,
       lon: location.lng,
       limit: '100',
-      'q[activities_activity_type_name_eq]': 'hiking',
+      // 'q[activities_activity_type_name_eq]': 'hiking',
       'q[country_cont]': 'United States',
       radius: '35'
     }
