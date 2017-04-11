@@ -24,7 +24,7 @@ database.query('DROP DATABASE IF EXISTS thesis').then(function () {
 
 
 var connection = {
-	host: 'localhost',
+	  host: 'localhost',
     port: 5432,
     database: databaseName,
     user: '',

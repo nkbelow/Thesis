@@ -7828,3 +7828,15 @@ let sortedParks = [
   { parkCode: 'zion',
     fullName: 'Zion National Park',
     designation: 'National Park' } ]
+    let totalParks = [];
+    for (var i = 0; i < sortedParks.length; i++) {
+      for (var j = 0; j < parks.length; j++) {
+        if (sortedParks[i]['parkCode'] === parks[j]['parkCode']) {
+          totalParks.push(parks[j]);
+        }
+      }
+    }
+    for (var a = 0; a < totalParks.length; a++) {
+      console.log()
+    }
+    console.log(totalParks, 'these are totalParks');
