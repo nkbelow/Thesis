@@ -14,7 +14,7 @@ const trails = (location) => {
       limit: '100',
       'q[activities_activity_type_name_eq]': 'hiking',
       'q[country_cont]': 'United States',
-      radius: '1000'
+      radius: '35'
     }
   };
 

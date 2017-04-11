@@ -9,17 +9,22 @@ var pgp = require('pg-promise')(options);
 
 var database = pgp({})
 
-database.query('DROP DATABASE IF EXISTS thesis').then(function () {
-	return database.query('CREATE DATABASE thesis')
+database.query('SELECT count(*) FROM pg_catalog.pg_database WHERE DATNAME = \'thesis\'').then(function (response) {
+  const databaseExists = parseInt(response[0].count)
+  if(!databaseExists) {
+    console.log('create database')
+	 return database.query('CREATE DATABASE thesis'); 
+  } else {
+    return databaseExists;
+  }
 }).then(function () {
 	pgp.end();
 	db = pgp({database: databaseName})
 	return db;
-	
 }).then(function(db) {
-	createTables(db);
-	pgp.end();
-	return db
+  createTables(db); 
+  pgp.end();
+  return db;
 })
 
 
