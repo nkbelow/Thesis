@@ -3,7 +3,7 @@ const express = require('express');
 const dotenv = require('dotenv').config();
 
 const app = express();
-const port = 8080;
+const port = 3000;
 
 app.get('/', (req, res) => {
   res.status(200).send('hello world!!!');
