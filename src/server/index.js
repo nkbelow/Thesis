@@ -10,9 +10,20 @@ const individualParkData = require('../db/models/getIndividualParksInfo.js');
 
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
+
+const dotenv = require('dotenv').config();
+
+const trail = require('../db/scripts/storeTrails.js')
+const cg = require('../db/scripts/storeCampgrounds')
+
+const app = express();
+const port = 3000;
+
+
 app.get('/', (req, res) => {
   res.status(200).send('hello world!!!');
 });
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -48,3 +59,4 @@ app.listen(port, () => {
 });
 
 module.exports = app;
+

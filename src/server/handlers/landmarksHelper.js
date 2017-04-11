@@ -48,6 +48,23 @@ const geocodeLandmarks = (landmarks, callback) => {
   }
 }
 
+const geocodeLandmarks = (landmarks, callback) => {
+  geocodedLandmarks = {};
+  for (landmark of landmarks) {
+    setTimeout(function(landmark, landmarks, geocodedLandmarks, callback) {
+      gHelpers.geocode(landmark, function(coords) {
+      geocodedLandmarks[landmark] = coords;
+      console.log(landmarks.length, Object.keys(geocodedLandmarks).length)
+      if (Object.keys(geocodedLandmarks).length === landmarks.length) {
+        cb(geocodedLandmarks);
+      }
+    });
+    }.bind(null, landmark, landmarks, geocodedLandmarks, callback), timer)
+    timer = timer + 500
+    
+  }
+}
+
 module.exports = {
   landmarkQuery: queryNationalLandmark,
   geocodeLandmarks: geocodeLandmarks
