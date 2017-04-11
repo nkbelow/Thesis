@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 
-// location is a {lat: lat, lng: lng} object
+// location is a query string
 const geocode = (location) => {
   // uncomment the next line to receive an example request
   // let location = 'Beaverdam Creek Swamp'
@@ -16,6 +16,7 @@ const geocode = (location) => {
     }
   };
   return axios(config).then((response) => {
+    // what is returned is a lat/lng object
     return response.data.results[0].geometry.location;
   }
   ).catch((error) => {
@@ -33,7 +34,7 @@ const places = (location, radius, type) => {
     url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
     params: {
       key: process.env.G_PLACES_API_KEY,
-      location: '' + location.latitude + ',' + location.longitude,
+      location: '' + location.lat + ',' + location.lng,
       radius: radius || '50000',
       type: type || 'lodging'
     }
@@ -47,5 +48,3 @@ module.exports = {
   geocode: geocode,
   places: places
 };
-
-// export default geocode
