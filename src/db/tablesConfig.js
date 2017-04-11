@@ -3,10 +3,13 @@ module.exports = function (db) {
 	return db.query('\
 		CREATE TABLE IF NOT EXISTS parks ( \
 		id SERIAL PRIMARY KEY, \
+		parkcode VARCHAR(255),\
 		name VARCHAR(50), \
-		description VARCHAR(255), \
+		description VARCHAR(500), \
 		popularity VARCHAR(255), \
-		size INTEGER \
+		size INTEGER, \
+		latitude DOUBLE PRECISION, \
+		longitude DOUBLE PRECISION \
 		); \
 	').then(function () {
 		console.log('start activities table')
