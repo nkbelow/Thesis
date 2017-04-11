@@ -29,6 +29,29 @@ const queryNationalLandmark = () => {
   // numberOfMonuments.forEach(a => counter++);
 };
 
+const geocodeLandmarks = (landmarks, callback) => {
+  geocodedLandmarks = {};
+  timer = 0;
+  console.log('in gL, timer: ', 0)
+  for (landmark of landmarks) {
+    setTimeout(function(landmark, landmarks, geocodedLandmarks, callback) {
+      gHelpers.geocode(landmark, function(coords) {
+        console.log('in callback')
+      geocodedLandmarks[landmark] = coords;
+      console.log(landmarks.length, Object.keys(geocodedLandmarks).length)
+      if (Object.keys(geocodedLandmarks).length === landmarks.length) {
+        cb(geocodedLandmarks);
+      }
+    });
+    }.bind(null, landmark, landmarks, geocodedLandmarks, callback), timer)
+    timer = timer + 500
+    
+  }
+}
+
 module.exports = {
-  queryNationalLandmark: queryNationalLandmark
-};
+
+  queryNationalLandmark: queryNationalLandmark,
+  geocodeLandmarks: geocodeLandmarks
+  
+}
