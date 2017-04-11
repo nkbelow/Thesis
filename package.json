@@ -7,7 +7,6 @@
     "start": "node src/server/index.js",
     "start-dev": "nodemon src/server/index.js",
     "test": "jest",
-    "test-react": "jest",
     "pg-start": "node db/index.js",
     "lint": "eslint src/client src/server",
     "lint-fix": "eslint src/client src/server",
