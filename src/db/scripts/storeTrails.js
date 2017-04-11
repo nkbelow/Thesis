@@ -4,7 +4,7 @@ const Promise = require('bluebird');
 const trailsHelper = require('../../server/handlers/trailsHelper.js')
 const polygon = require('../../../pointInPolygon.js')
 
-// const db = database.db;
+const db = database.db;
 
 
 exports.storeTrails = function() {
