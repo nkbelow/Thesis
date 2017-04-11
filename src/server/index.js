@@ -2,10 +2,13 @@ const express = require('express');
 
 const dotenv = require('dotenv').config();
 
+const trail = require('../db/scripts/storeTrails.js')
+
 const app = express();
 const port = 3000;
 
 app.get('/', (req, res) => {
+  console.log(trail.storeTrails());
   res.status(200).send('hello world!!!');
 });
 
