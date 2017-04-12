@@ -3,24 +3,12 @@ const parser = csvParse({delimiter: ':'})
 const fs = require('fs');	
 const csv = require('fast-csv')
 const path = require('path');
+const boundariesData = require('../../../data/parksWithCampgrounds.js');
+const util = require('../utilities')
 
-let moveFrom = path.join(__dirname, '/parks');
-// let moveTo = path.join(__dirname, '/parks/zion.geojson');
-
-fs.readdir( moveFrom, function(err, files) {
-	console.log(moveFrom)
-	if(err) {
-		console.error( "Could not list the directory.", err );
-	}
-
-	files.forEach(function(file, ind) {
-		module.exports.ind = require("./parks/" + file);
-		console.log(module.exports.ind);
-	})
-})
 
 const csvToArray = (callback) => {
-	let stream = fs.createReadStream(path.join(__dirname, '/campground.csv'))
+	let stream = fs.createReadStream(path.join(__dirname, '/SouthCamp.csv'))
 	let campgrounds = [];
 	let csvStream = csv()
     .on("data", function(data){
@@ -45,4 +33,29 @@ const csvToArray = (callback) => {
 
 }
 
+const checkBoundaries = (campgrounds, callback) => {
+	let parks = boundariesData.parks
+	for (campground of campgrounds) {
+		let lon = campground.lon;
+		let lat = campground.lat;
+		for (park of parks) {
+			if (park) {
+				if (util.pointInPolygon(lon, lat, park.boundaries)) {
+					console.log('campground in park, campground: ', campground, "park: ", park)
+					if (!park.campgrounds) {
+						park.campgrounds = [campground];
+						
+					} else {
+						park.campgrounds.push(campground);
+						// console.log(park)
+					}
+				}
+			}
+		}
+
+	}
+	callback(parks);
+}
+
 module.exports.csvToArray = csvToArray;
+module.exports.checkBoundaries = checkBoundaries;

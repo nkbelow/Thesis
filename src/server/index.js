@@ -2,7 +2,9 @@ const express = require('express');
 const landmarks = require('./handlers/landmarksHelper');
 const campgrounds = require('./handlers/campgroundsHelper');
 const geocode = require('./handlers/gHelpers');
-const util = require('./handlers/utilities');
+const util = require('./utilities');
+const fs = require('fs');
+const path = require('path');
 
 
 
@@ -27,11 +29,13 @@ module.exports = app;
 
 app.get('/campgrounds', (req, res) => {
 
-	
-		campgrounds.csvToArray(function(campgrounds) {
-			res.send(campgrounds)
-	})
+		campgrounds.csvToArray(function(campgroundsData) {
+			campgrounds.checkBoundaries(campgroundsData, function (boundaries) {
+				res.send(boundaries);
+			})
 })
+	});
+	
 
 
 
@@ -39,9 +43,11 @@ app.get('/campgrounds', (req, res) => {
 
 app.get('/landmarks', (req, res) => {
 	let landmarksData = landmarks.landmarkQuery();
+	console.log(landmarksData.length)
 	landmarks.geocodeLandmarks(landmarksData, function(data) {
-		res.send(data);
+		res.send(data)
 	});
+});
 
 
 	// geocode.geocode(landmarksData, function(data) {
@@ -49,6 +55,5 @@ app.get('/landmarks', (req, res) => {
 	// 	res.send(data);
 	// })
 
-})
 
 

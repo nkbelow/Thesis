@@ -1,5 +1,4 @@
-const pointInPolygon = (x, y, geoJSON) => {
-	let features = geoJSON.geometry.coordinates;
+const pointInPolygon = (x, y, features) => {
 	for (let k = 0; k<features.length; k++) {
 		let j = features[k].length-1;
 		let hasOddNodes = false;

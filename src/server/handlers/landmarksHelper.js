@@ -1,29 +1,30 @@
-const XLSX = require('xlsx');
+const XLSX = require('xlsx')
+const gHelpers = require('./gHelpers')
 
 // converts an xlsx file and saves it in an array
 const nationalMonuments = [];
 
 // uncomment to check total number of national monuments
 // const numberOfMonuments = [];
-const workbook = XLSX.readFile(path.join(__dirname, '/National_Natural_Landmark.xlsx'));
 
 const queryNationalLandmark = () => {
-  const listOfStates = workbook.Props.SheetNames.splice(1);
-  // const counter = 0;
+  let workbook = XLSX.readFile(__dirname + '/National_Natural_Landmark.xlsx');
+  let listOfStates = workbook.Props.SheetNames.splice(1)
+  let counter = 0;
 
   // goes through each state sheet and creates a monument list for that state
   // example: {alabama: [array of monuments]}
-  listOfStates.forEach((state) => {
-    const monumentsListForState = [state];
+  listOfStates.forEach(state => {
     let i = 2;
     while (workbook.Sheets[state]['B' + i]) {
-      // numberOfMonuments.push(workbook.Sheets[state]['B' + i].v);
-      const monument = workbook.Sheets[state]['B' + i].v;
-      monumentsListForState.push(monument);
-      i += 1;
+      // numberOfMonuments.push(workbook.Sheets[state]['B' + i].v)
+      let monument = workbook.Sheets[state]['B' + i].v
+      nationalMonuments.push(monument)
+      i++;
     }
-    nationalMonuments.push(monumentsListForState);
-  });
+  })
+
+  return nationalMonuments;
 
   // uncomment to check total number of national monuments
   // numberOfMonuments.forEach(a => counter++);
@@ -32,14 +33,12 @@ const queryNationalLandmark = () => {
 const geocodeLandmarks = (landmarks, callback) => {
   geocodedLandmarks = {};
   timer = 0;
-  console.log('in gL, timer: ', 0)
   for (landmark of landmarks) {
-    setTimeout(function(landmark, landmarks, geocodedLandmarks, callback) {
+    setTimeout(function(landmark, landmarks, geocodedLandmarks, cb) {
       gHelpers.geocode(landmark, function(coords) {
-        console.log('in callback')
       geocodedLandmarks[landmark] = coords;
       console.log(landmarks.length, Object.keys(geocodedLandmarks).length)
-      if (Object.keys(geocodedLandmarks).length === landmarks.length) {
+      if (Object.keys(geocodedLandmarks).length === 500) {
         cb(geocodedLandmarks);
       }
     });
@@ -50,8 +49,7 @@ const geocodeLandmarks = (landmarks, callback) => {
 }
 
 module.exports = {
-
-  queryNationalLandmark: queryNationalLandmark,
+  landmarkQuery: queryNationalLandmark,
   geocodeLandmarks: geocodeLandmarks
   
 }

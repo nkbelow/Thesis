@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/server/index.js",
-    "start-dev": "nodemon src/server/index.js",
+    "start": "node ./src/server/index.js",
+    "start-dev": "nodemon ./src/server/index.js",
     "test": "jest",
     "pg-start": "node db/index.js",
     "lint": "eslint src/client src/server",
