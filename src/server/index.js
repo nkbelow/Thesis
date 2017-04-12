@@ -13,7 +13,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
-
 app.get('/api/parks', (req, res) => {
 	// db.db.query('SELECT * from parks')
 	// .then((result) => {
