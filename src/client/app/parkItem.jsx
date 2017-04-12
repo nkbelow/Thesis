@@ -6,7 +6,7 @@ class ParkItem extends React.Component {
   }
 
   goToDestination(e) {
-    this.context.router.transitionTo(`/park/${this.props.park.parkcode}`)
+    this.context.router.transitionTo(`/park/${this.props.park.parkCode}`)
   }
 
   render() {

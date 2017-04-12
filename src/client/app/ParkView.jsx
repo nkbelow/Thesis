@@ -14,7 +14,7 @@ class ParkView extends React.Component {
 		      parkcode: this.props.params.name
 		    }
 		  })
-	    .then(res => this.setState({ park: res.data[0] }))
+	    .then(res => this.setState({ park: res.data }))
 	    .catch(err => console.log(err))
   }
   render() {
