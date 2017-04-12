@@ -7,11 +7,14 @@ const app = express();
 const port = 3000;
 const db = require('../db/index.js');
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '../client/public')));
 app.get('/', (req, res) => {
   trail.storeTrails();
   res.status(200);
 });
+
 
 app.get('/api/parks', (req, res) => {
 	db.db.query('SELECT * from parks')
@@ -19,9 +22,24 @@ app.get('/api/parks', (req, res) => {
 		res.status(201).send(result)
 	})
 	.catch((err) => {
+		res.status(404).send('There was an error retrieving all the parks data');
+	})
+});
+
+app.get('/api/park', (req, res) => {
+	db.db.query('SELECT * from parks WHERE parkcode = $1', [req.query.parkcode])
+	.then((result) => {
+		res.status(201).send(result)
+	})
+	.catch((err) => {
 		res.status(404).send('There was an error retrieving park data');
 	})
 });
+
+app.get('*', (req, res) => {
+	res.redirect('/');
+})
+
 
 app.listen(process.env.PORT || port, () => {
   console.log('App is listening to port ' + port);

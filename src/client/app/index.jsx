@@ -1,30 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-// import Try from './try.jsx';
-import ParkList from './parkList.jsx';
-import axios from 'axios';
+import { render } from 'react-dom'
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {parks: null};
-  }
+import App from './App.jsx';
+import ParkView from './ParkView.jsx';
 
-componentDidMount() {
-  axios
-    .get('http://localhost:3000/api/parks')
-    .then(res => this.setState({ parks: res.data }))
-    .catch(err => console.log(err))
+import { BrowserRouter, Match, Miss } from 'react-router'
+
+const Root = () => {
+  return (
+    <BrowserRouter>
+      <div>
+        <Match exactly pattern="/" component={App} />
+        <Match exactly pattern="/park/:name" component={ParkView} />
+      </div>
+    </BrowserRouter>
+  )
 }
 
-  render () {
-    return (
-    	<div>
-    		<h1>Nimble Newts Project </h1>
-    		{this.state.parks !== null && <ParkList parks={this.state.parks}/>}
-    	</div>
-    );
-  }
-}
+render(<Root />, document.getElementById('app'))
 
-ReactDOM.render(<App/>, document.getElementById('app'));

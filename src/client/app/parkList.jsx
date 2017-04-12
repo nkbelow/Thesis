@@ -1,5 +1,5 @@
 import React from 'react';
-import ParkItem from './parkItem.jsx';
+import ParkItem from './ParkItem.jsx';
 
 function ParkList(props) {
   const parks = props.parks;
