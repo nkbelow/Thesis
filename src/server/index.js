@@ -11,6 +11,8 @@ const data = require('../../data/ourNationalParks.js')
 
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
+app.use(express.static(__dirname + '/../client/public'))
+
 app.get('/', (req, res) => {
   res.status(200).send('hello world!!!');
 });
