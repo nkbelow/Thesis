@@ -12,7 +12,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '../client/public')));
 app.get('/', (req, res) => {
-  trail.storeTrails();
   res.status(200);
 });
 
@@ -45,9 +44,9 @@ app.get('/api/park', (req, res) => {
 	}
 });
 
-app.get('*', (req, res) => {
-	res.redirect('/');
-})
+// app.get('*', (req, res) => {
+// 	res.redirect('/');
+// })
 
 
 app.listen(process.env.PORT || port, () => {
