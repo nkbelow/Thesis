@@ -117,10 +117,13 @@ describe('http request tests', () => {
     .get('/')
     .end((err, res) => {
       if (err) {
+        console.log(res);
         throw err
       }
+      //need to switch route to res.json to get the test to pass for this test
       console.log(res, 'this is res');
-      expect(res.status).toEqual(200)})
+      expect(res.status).toEqual(200)
+      expect(res.body).toEqual('hello world!!!')})
       done();
     })
   })
