@@ -10,10 +10,8 @@ const data = require('../../data/ourNationalParks.js')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(path.join(__dirname, '../client/public')));
-app.get('/', (req, res) => {
-  res.status(200);
-});
+
+app.use('/', express.static(path.join(__dirname, '../client/public')));
 
 
 app.get('/api/parks', (req, res) => {
