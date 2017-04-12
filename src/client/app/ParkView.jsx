@@ -9,7 +9,7 @@ class ParkView extends React.Component {
   }
 
   componentDidMount(){
-		axios.get('http://localhost:3000/api/park', {
+		axios.get('/api/park', {
 		    params: {
 		      parkcode: this.props.params.name
 		    }
