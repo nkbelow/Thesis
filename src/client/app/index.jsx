@@ -6,15 +6,22 @@ import ParkView from './ParkView.jsx';
 
 import { BrowserRouter, Match, Miss } from 'react-router'
 
-const Root = () => {
-  return (
-    <BrowserRouter>
-      <div>
-        <Match exactly pattern="/" component={App} />
-        <Match exactly pattern="/park/:name" component={ParkView} />
-      </div>
-    </BrowserRouter>
-  )
+
+class Root extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+  render () {
+    return (
+	    <BrowserRouter>
+	      <div>
+	        <Match exactly pattern="/" component={App} />
+	        <Match exactly pattern="/park/:name" component={ParkView} />
+	      </div>
+	    </BrowserRouter>    	
+    )
+  }
 }
 
 render(<Root />, document.getElementById('app'))
