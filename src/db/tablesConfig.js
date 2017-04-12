@@ -55,9 +55,14 @@ module.exports = function (db) {
 				CREATE TABLE IF NOT EXISTS trails ( \
 				id SERIAL PRIMARY KEY, \
 				name VARCHAR(50), \
-				latitude DECIMAL(25), \
-				longitude DECIMAL (25), \
-				length DECIMAL (25), \
+				city VARCHAR (25), \
+				state VARCHAR (25), \
+				latitude DOUBLE PRECISION, \
+				longitude DOUBLE PRECISION, \
+				length DOUBLE PRECISION, \
+				description VARCHAR (5000), \
+				directions VARCHAR (5000), \
+				activities VARCHAR (100) [], \
 				park_id INTEGER references parks(id), \
 				campground_id INTEGER references campgrounds(id) \
 				); \
