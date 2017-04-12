@@ -13,8 +13,8 @@ app.get('/', (req, res) => {
 });
 
 
-const server = app.listen(process.env.PORT || port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log('App is listening to port ' + port);
 });
 
-module.exports = server;
+module.exports = app;

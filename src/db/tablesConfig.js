@@ -1,5 +1,5 @@
 module.exports = function (db) {
-	console.log('start table')
+	console.log('start parks table')
 	return db.query('\
 		CREATE TABLE IF NOT EXISTS parks ( \
 		id SERIAL PRIMARY KEY, \
@@ -36,17 +36,6 @@ module.exports = function (db) {
 			CREATE TABLE IF NOT EXISTS images ( \
 			id SERIAL PRIMARY KEY, \
 			url VARCHAR(50) \
-			); \
-		')
-	}).then(function () {
-		console.log('start campgrounds table')
-		return db.query(' \
-			CREATE TABLE IF NOT EXISTS campgrounds ( \
-			id SERIAL PRIMARY KEY, \
-			name VARCHAR(25), \
-			park_id INTEGER references parks(id),  \
-			campground_id INTEGER references campgrounds(id),  \
-			location DECIMAL [] \
 			); \
 		')
 	}).then(function() {
