@@ -843,19 +843,20 @@ let ourNationalParks = [ { states: 'ME',
     // console.log(ourNationalParks);
 
     // this function inserts lat and long objects into our database
-    ourNationalParks.forEach((park) => {
-      db.db.query('INSERT INTO parks(parkcode, name, description, latitude, longitude) VALUES($1, $2, $3, $4, $5)', [ park['parkCode'], park['fullName'], park['description'], park['latitude'], park['longitude']])   
-    }); 
+    // ourNationalParks.forEach((park) => {
+    //   db.db.query('INSERT INTO parks(parkcode, name, description, latitude, longitude) VALUES($1, $2, $3, $4, $5)', [ park['parkCode'], park['fullName'], park['description'], park['latitude'], park['longitude']])   
+    // }); 
 
     //this assigns latitude and longitude properties to the park
-    ourNationalParks.forEach((park) => {
-      let latLong = park['latLong'];
-      let commaIndex = latLong.indexOf(',');
-      let lat = latLong.slice(latLong.indexOf(':') + 1, commaIndex);
-      let long = latLong.slice(latLong.indexOf(':', commaIndex) + 1);
-      park['latitude'] = +lat;
-      park['longitude'] = +long;
-    });
+
+    // ourNationalParks.forEach((park) => {
+    //   let latLong = park['latLong'];
+    //   let commaIndex = latLong.indexOf(',');
+    //   let lat = latLong.slice(latLong.indexOf(':') + 1, commaIndex);
+    //   let long = latLong.slice(latLong.indexOf(':', commaIndex) + 1);
+    //   park['latitude'] = +lat;
+    //   park['longitude'] = +long;
+    // });
     // console.log(ourNationalParks);
 
     module.exports = {
