@@ -856,7 +856,7 @@ let ourNationalParks = [ { states: 'ME',
       park['latitude'] = +lat;
       park['longitude'] = +long;
     });
-    console.log(ourNationalParks);
+    // console.log(ourNationalParks);
 
     module.exports = {
         ourNationalParks: ourNationalParks
