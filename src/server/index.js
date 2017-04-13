@@ -18,17 +18,17 @@ app.get('/', (req, res) => {
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({extended: true}));
 
-// app.get('/api/parks', (req, res) => {
-// 	// db.db.query('SELECT * from parks')
-// // 	.then((result) => {
-// // 		res.status(201).send(result)
-// // 	})
-// // 	.catch((err) => {
-// // 		res.status(404).send('There was an error retrieving all the parks data');
-// // 	})
-// 	res.send(data.ourNationalParks);
+app.get('/api/parks', (req, res) => {
+	// db.db.query('SELECT * from parks')
+// 	.then((result) => {
+// 		res.status(201).send(result)
+// 	})
+// 	.catch((err) => {
+// 		res.status(404).send('There was an error retrieving all the parks data');
+// 	})
+	res.send(data.ourNationalParks);
 
-// });
+});
 
 // app.get('/api/park', (req, res) => {
 // 	// db.db.query('SELECT * from parks WHERE parkcode = $1', [req.query.parkcode])
