@@ -1,8 +1,7 @@
 const axios = require('axios');
 
 
-// location is a query string
-const geocode = (location) => {
+const geocode = (location, callback) => {
   // uncomment the next line to receive an example request
   // let location = 'Beaverdam Creek Swamp'
   const config = {
@@ -18,6 +17,11 @@ const geocode = (location) => {
   return axios(config).then((response) => {
     // what is returned is a lat/lng object
     return response.data.results[0].geometry.location;
+
+    console.log(response)
+    if (response.data.results[0]) {
+      callback(response.data.results[0].geometry.location);}
+    
   }
   ).catch((error) => {
     throw error;

@@ -25,9 +25,10 @@ module.exports = function (db) {
 		return db.query(' \
 				CREATE TABLE IF NOT EXISTS campgrounds ( \
 				id SERIAL PRIMARY KEY, \
-				name VARCHAR(25), \
+				name VARCHAR(255), \
 				park_id INT references parks(id), \
-				location DECIMAL [] \
+				latitude DOUBLE PRECISION, \
+				longitude DOUBLE PRECISION \
 				); \
 			')
 	}).then(function () {
