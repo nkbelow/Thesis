@@ -3,7 +3,7 @@ const express = require('express');
 // const campgrounds = require('./handlers/campgroundsHelper');
 // const geocode = require('./handlers/gHelpers');
 // const util = require('./utilities');
-const fs = require('fs');
+// const fs = require('fs');
 const path = require('path');
 const dotenv = require('dotenv').config();
 // const trail = require('../db/scripts/storeTrails.js')
@@ -15,10 +15,12 @@ const port = 3000;
 // const db = require('../db/index.js');
 // const data = require('../../data/ourNationalParks.js')
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+
 
 app.use('/', express.static(path.join(__dirname, '../client/public')));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 // app.get('/api/parks', (req, res) => {
 // 	// db.db.query('SELECT * from parks')
@@ -48,12 +50,12 @@ app.use('/', express.static(path.join(__dirname, '../client/public')));
 // // 	}
 // })
   
-app.get('/', (req, res) => {
-  res.status(200).send('hello world!!!');
-//   cg.storeParks();
-//   cg.storeCampgrounds();
+// app.get('/', (req, res) => {
+//   res.status(200).send('hello world!!!');
+// //   cg.storeParks();
+// //   cg.storeCampgrounds();
 
-});
+// });
 
 // app.get('*', (req, res) => {
 // 	res.redirect('/');
