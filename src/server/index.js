@@ -1,11 +1,10 @@
 const express = require('express');
-const path = require('path');
 const dotenv = require('dotenv').config();
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
-const db = require('../db/index.js');
+// const db = require('../db/index.js');
 const data = require('../../data/ourNationalParks.js')
 
 
