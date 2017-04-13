@@ -5,7 +5,7 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 const db = require('../db/index.js');
-// const data = require('../../data/ourNationalParks.js')
+const data = require('../../data/ourNationalParks.js')
 
 
 
@@ -50,8 +50,8 @@ app.get('/', (req, res) => {
 // 	res.redirect('/');
 // })
 
-// app.listen(port, () => {
-//   console.log('App is listening to port ' + port);
-// });
+app.listen(port, () => {
+  console.log('App is listening to port ' + port);
+});
 
 // module.exports = app;
