@@ -9,19 +9,21 @@ class ParkView extends React.Component {
   }
 
   componentDidMount(){
-		axios.get('/api/park', {
-		    params: {
-		      parkcode: this.props.params.name
-		    }
-		  })
-	    .then(res => this.setState({ park: res.data }))
-	    .catch(err => console.log(err))
+    axios.get('/api/park', {
+        params: {
+          parkcode: this.props.match.params.code
+        }
+      })
+      .then(res => this.setState({ park: res.data }))
+      .catch(err => console.log(err))
   }
+
+
   render() {
 
     return(
     	<div>
-    		{ this.state.park !== null && <ParkDetail park={this.state.park} /> }
+    		{ this.state.park !== null && <ParkDetail park={this.state.park}/> }
     	</div>
     );
   }
