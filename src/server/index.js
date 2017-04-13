@@ -5,9 +5,7 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 const db = require('../db/index.js');
-const data = require('../../data/ourNationalParks.js')
-
-
+const data = require('../../data/ourNationalParks.js');
 
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
