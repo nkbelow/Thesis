@@ -11,13 +11,15 @@ const path = require('path');
 const dotenv = require('dotenv').config();
 
 const trail = require('../db/scripts/storeTrails.js')
+const cg = require('../db/scripts/storeCampgrounds')
 
 const app = express();
 const port = 3000;
 
 app.get('/', (req, res) => {
-  trail.storeTrails();
   res.status(200).send('hello world!!!');
+  cg.storeCampgrounds()
+
 });
 
 

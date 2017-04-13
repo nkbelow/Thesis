@@ -1,0 +1,20 @@
+const database = require('../index.js');
+const parks = require('../../../data/parksWithCampgrounds.js').parks
+
+const db = database.db;
+
+exports.storeCampgrounds = function() {
+	for (park of parks) {
+		console.log('park:', park)
+		if (park.campgrounds) {
+		for (campground of park.campgrounds) {
+		let name = campground.name
+		let lat = parseInt(campground.lat)
+		let lon = parseInt(campground.lon)
+		
+		let queryParameters = [name, park.parkCode, lat, lon]
+        db.query('INSERT INTO campgrounds (name, park_id, latitude, longitude) VALUES ($1, (SELECT id from parks WHERE parkcode=$2), $3, $4)', queryParameters)
+    }
+}
+	}
+}
