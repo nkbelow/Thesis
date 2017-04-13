@@ -28,7 +28,7 @@ app.get('/api/parks', (req, res) => {
 	// .catch((err) => {
 	// 	res.status(404).send('There was an error retrieving all the parks data');
 	// })
-	res.send(data.ourNationalParks);
+// 	res.send(data.ourNationalParks);
 
 });
 
@@ -40,12 +40,13 @@ app.get('/api/park', (req, res) => {
 	// .catch((err) => {
 	// 	res.status(404).send('There was an error retrieving park data');
 	// })
-	var parks = data.ourNationalParks;
-	for(var i = 0; i < parks.length; i++){
-		if(parks[i].parkCode === req.query.parkcode){
-			res.status(200).send(parks[i]);
-		}
-}
+// 	var parks = data.ourNationalParks;
+// 	for(var i = 0; i < parks.length; i++){
+// 		if(parks[i].parkCode === req.query.parkcode){
+// 			res.status(200).send(parks[i]);
+// 		}
+// 	}
+})
   
 app.get('/', (req, res) => {
   res.status(200).send('hello world!!!');
