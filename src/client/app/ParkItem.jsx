@@ -23,9 +23,9 @@ class ParkItem extends React.Component {
 
 export default ParkItem;
 
-ParkItem.contextTypes = {
-  router: React.PropTypes.object
-}
+// ParkItem.contextTypes = {
+//   router: React.PropTypes.object
+// }
 
 /*
 
