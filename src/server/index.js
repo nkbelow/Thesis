@@ -4,23 +4,34 @@ const express = require('express');
 // const geocode = require('./handlers/gHelpers');
 // const util = require('./utilities');
 // const fs = require('fs');
-const path = require('path');
-const dotenv = require('dotenv').config();
+// const path = require('path');
+// const dotenv = require('dotenv').config();
 // const trail = require('../db/scripts/storeTrails.js')
-const bodyParser = require('body-parser');
-const path = require('path');
+// const bodyParser = require('body-parser');
+// const path = require('path');
 // const cg = require('../db/scripts/storeCampgrounds')
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 // const db = require('../db/index.js');
 // const data = require('../../data/ourNationalParks.js')
 
 
 
-app.use('/', express.static(path.join(__dirname, '../client/public')));
+// app.use('/', express.static(path.join(__dirname, '../client/public')));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.get('/', (req, res) => {
+  res.status(200).send('hello world!!!');
+// //   cg.storeParks();
+// //   cg.storeCampgrounds();
+
+});
+
+app.listen(port, () => {
+  console.log('App is listening to port ' + port);
+});
+
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended: true}));
 
 // app.get('/api/parks', (req, res) => {
 // 	// db.db.query('SELECT * from parks')
@@ -50,23 +61,16 @@ app.use(bodyParser.urlencoded({extended: true}));
 // // 	}
 // })
   
-// app.get('/', (req, res) => {
-//   res.status(200).send('hello world!!!');
-// //   cg.storeParks();
-// //   cg.storeCampgrounds();
 
-// });
 
 // app.get('*', (req, res) => {
 // 	res.redirect('/');
 // })
 
 
-app.listen(process.env.PORT || port, () => {
-  console.log('App is listening to port ' + port);
-});
 
-module.exports = app;
+
+// module.exports = app;
 
 // app.get('/campgrounds', (req, res) => {
 
