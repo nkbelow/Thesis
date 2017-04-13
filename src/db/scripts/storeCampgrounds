@@ -1,7 +1,12 @@
 const database = require('../index.js');
 const parks = require('../../../data/parksWithCampgrounds.js').parks
+const ourParks =require('../../../data/ourNationalParks.js')
 
 const db = database.db;
+
+exports.storeParks = function() {
+	ourParks.storeParks();
+}
 
 exports.storeCampgrounds = function() {
 	for (let i = 0; i<parks.length; i++) {

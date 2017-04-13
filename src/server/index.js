@@ -18,7 +18,8 @@ const port = 3000;
 
 app.get('/', (req, res) => {
   res.status(200).send('hello world!!!');
-  cg.storeCampgrounds()
+  cg.storeParks();
+  cg.storeCampgrounds();
 
 });
 
