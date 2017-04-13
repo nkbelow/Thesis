@@ -25,7 +25,7 @@ class Filter extends React.Component {
 			    <form>
 				  <fieldset>
 				  	<label for="popularity">Filter by: </label>
-				  	<select name="popularity" value={this.state.popularityFilter} >
+				  	<select name="popularity" value={this.state.popularityFilter} />
 				      <option value=true>Popularity</option>
 				  </fieldset>
 				  <fieldset>
@@ -42,7 +42,7 @@ class Filter extends React.Component {
 				  </fieldset>
 				  <fieldset>
 				  	<label for="lodging">Has Lodging: </label>
-				  	<input type="checkbox" name="lodging" checked={this.state.hasLodging}>
+				  	<input type="checkbox" name="lodging" checked={this.state.hasLodging} />
 				  </fieldset>
 				  <button value = "Send" onClick="this.sendFilters()"/>
 				</form>
@@ -50,4 +50,4 @@ class Filter extends React.Component {
 	}
 }
 
-export default
+export default Filter;

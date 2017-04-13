@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Filter extends React.Component {
+class Search extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
@@ -22,3 +22,6 @@ class Filter extends React.Component {
 			   </form>
 			   )
 	}
+}
+
+export default Search;
