@@ -41,9 +41,9 @@ app.get('/api/park', (req, res) => {
 	}
 });
 
-// app.get('*', (req, res) => {
-// 	res.redirect('/');
-// })
+app.get('*', (req, res) => {
+	res.redirect('/');
+})
 
 
 app.listen(process.env.PORT || port, () => {
