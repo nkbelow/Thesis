@@ -4,8 +4,7 @@ import { render } from 'react-dom'
 import App from './App.jsx';
 import ParkView from './ParkView.jsx';
 
-import { BrowserRouter, Match, Miss } from 'react-router'
-
+import { BrowserRouter, Match, Miss } from 'react-router-dom'
 
 class Root extends React.Component {
   constructor(props){
