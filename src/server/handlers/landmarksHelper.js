@@ -38,23 +38,6 @@ const geocodeLandmarks = (landmarks, callback) => {
       gHelpers.geocode(landmark, function(coords) {
       geocodedLandmarks[landmark] = coords;
       console.log(landmarks.length, Object.keys(geocodedLandmarks).length)
-      if (Object.keys(geocodedLandmarks).length === 500) {
-        cb(geocodedLandmarks);
-      }
-    });
-    }.bind(null, landmark, landmarks, geocodedLandmarks, callback), timer)
-    timer = timer + 500
-    
-  }
-}
-
-const geocodeLandmarks = (landmarks, callback) => {
-  geocodedLandmarks = {};
-  for (landmark of landmarks) {
-    setTimeout(function(landmark, landmarks, geocodedLandmarks, callback) {
-      gHelpers.geocode(landmark, function(coords) {
-      geocodedLandmarks[landmark] = coords;
-      console.log(landmarks.length, Object.keys(geocodedLandmarks).length)
       if (Object.keys(geocodedLandmarks).length === landmarks.length) {
         cb(geocodedLandmarks);
       }
@@ -64,6 +47,7 @@ const geocodeLandmarks = (landmarks, callback) => {
     
   }
 }
+
 
 module.exports = {
   landmarkQuery: queryNationalLandmark,
