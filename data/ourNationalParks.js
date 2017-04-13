@@ -843,9 +843,12 @@ let ourNationalParks = [ { states: 'ME',
     // console.log(ourNationalParks);
 
     // this function inserts lat and long objects into our database
+    
+    const storeParks = function () {
     ourNationalParks.forEach((park) => {
       db.db.query('INSERT INTO parks(id, parkcode, name, description, latitude, longitude) VALUES($1, $2, $3, $4, $5, $6)', [ park['id'], park['parkCode'], park['fullName'], park['description'], park['latitude'], park['longitude']])   
     }); 
+}
 
     //this assigns latitude and longitude properties to the park
 
@@ -860,5 +863,6 @@ let ourNationalParks = [ { states: 'ME',
     // console.log(ourNationalParks);
 
     module.exports = {
-        ourNationalParks: ourNationalParks
+        ourNationalParks: ourNationalParks,
+        storeParks: storeParks
     };
