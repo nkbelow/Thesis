@@ -1,11 +1,27 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Try from './try.jsx';
+import { render } from 'react-dom'
 
-class App extends React.Component {
+import App from './App.jsx';
+import ParkView from './ParkView.jsx';
+
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+
+class Root extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
   render () {
-    return <Try />;
+    return (
+	    <Router>
+	      <div>
+	        <Route exact path="/" component={App} />
+	        <Route path="/park/:code" component={ParkView} />
+	      </div>
+	    </Router>    	
+    )
   }
 }
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+render(<Root />, document.getElementById('app'))
+
