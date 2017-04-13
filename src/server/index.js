@@ -46,12 +46,12 @@ app.get('/', (req, res) => {
 // 	}
 // })
 
-// app.get('*', (req, res) => {
-// 	res.redirect('/');
-// })
+app.get('*', (req, res) => {
+	res.redirect('/');
+})
 
 app.listen(port, () => {
   console.log('App is listening to port ' + port);
 });
 
-// module.exports = app;
+module.exports = app;
