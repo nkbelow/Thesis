@@ -1,6 +1,7 @@
 import React from 'react';
 import ParkList from './ParkList.jsx';
 import ParkView from './ParkView.jsx';
+import SearchBar from './SearchBar.jsx';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -20,6 +21,7 @@ componentDidMount() {
     return (
     	<div>
     		<h1>Nimble Newts Project </h1>
+        {this.state.parks !== null && <SearchBar parks={this.state.parks}/>}
     		{this.state.parks !== null && <ParkList parks={this.state.parks}/>}
     	</div>
     );
