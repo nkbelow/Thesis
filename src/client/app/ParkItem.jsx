@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import Cloudinary from '../../server/handlers/cloudinary.js'
 
 class ParkItem extends React.Component {
   constructor(props) {
