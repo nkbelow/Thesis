@@ -1,18 +1,21 @@
 import React from 'react';
 import ParkItem from './ParkItem.jsx';
 import Masonry from 'react-masonry-component';
-import Cloudinary from '../../server/handlers/cloudinary.js'
 
 class ParkList extends React.Component {
   constructor(props) {
     super(props)
     this.parks = this.props.parks;
     this.style = {
-        backgroundColor: 'tomato'
+        backgroundColor:'',
+        width:'100%',
+        margin:'0', 
+        padding:'0'
     };
   }
 
   render() {
+    console.log(this.props.parks)
     return (
           <Masonry style={this.style}>
           {this.parks.map((park) => (<ParkItem key={park.name} park={park} />))}
