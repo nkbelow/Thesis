@@ -13,3 +13,9 @@
     width:100%;
     position:absolute;
 }
+.mapboxgl-map {
+  margin: auto
+}
+.parkname {
+  text-align: center
+}
