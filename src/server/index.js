@@ -12,6 +12,7 @@ app.use('/', express.static(path.join(__dirname, '../client/public')));
 
 app.get('/', (req, res) => {
   res.status(200).send('hello world!!!');
+
 });
 
 app.use(bodyParser.json());
@@ -48,3 +49,8 @@ app.listen(port, () => {
 });
 
 module.exports = app;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> d35a468... map
