@@ -23,7 +23,7 @@ app.get('/api/parks', (req, res) => {
 		res.status(201).send(result)
 	})
 	.catch((err) => {
-		res.status(404).send('There was an error retrieving all the parks data');
+		res.status(404).send(err + 'there was an error');
 	})
 
 	// res.send(data.ourNationalParks);
