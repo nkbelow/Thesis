@@ -6,6 +6,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 const db = require('../db/index.js');
 const data = require('../../data/ourNationalParks.js');
+const individualParkData = require('../db/models/getIndividualParksInfo.js');
 
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
@@ -24,24 +25,18 @@ app.get('/api/parks', (req, res) => {
 // 	.catch((err) => {
 // 		res.status(404).send('There was an error retrieving all the parks data');
 // 	})
+
 	res.send(data.ourNationalParks);
+
 
 });
 
 app.get('/api/park', (req, res) => {
-	// db.db.query('SELECT * from parks WHERE parkcode = $1', [req.query.parkcode])
-	// .then((result) => {
-	// 	res.status(201).send(result)
-	// })
-	// .catch((err) => {
-	// 	res.status(404).send('There was an error retrieving park data');
-	// })
-	var parks = data.ourNationalParks;
-	for(var i = 0; i < parks.length; i++){
-		if(parks[i].parkCode === req.query.parkcode){
-			res.status(200).send(parks[i]);
-		}
-	}
+	individualParkData(req.query.parkcode)
+	.then((data) => {
+		let park = data;
+		res.status(200).send(data);
+	});
 })
 
 app.get('*', (req, res) => {
