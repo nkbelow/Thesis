@@ -1,4 +1,5 @@
 import React from 'react';
+import Filter from './Filter.jsx';
 import ParkList from './ParkList.jsx';
 import ParkView from './ParkView.jsx';
 import SearchBar from './SearchBar.jsx';
@@ -38,8 +39,9 @@ componentDidMount() {
 
     		<h1>Nimble Newts Project </h1>
         {this.state.parks !== null && <SearchBar parks={this.state.parks}/>}
+        <Filter />
         <MapView parks={this.state.parks}/>
-    		{this.state.parks !== null && <ParkList parks={this.state.parks} />}
+    		{this.state.parks !== null && <ParkList parks={this.state.parks}/>}
     	</div>
     );
   }

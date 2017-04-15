@@ -903,12 +903,12 @@ let ourNationalParks = [ { states: 'ME',
 
     // this function inserts lat and long objects into our database
     
-    const storeParks = function () {
-    ourNationalParks.forEach((park) => {
-      db.db.query('INSERT INTO parks(id, parkcode, name, description, latitude, longitude, visitors) VALUES($1, $2, $3, $4, $5, $6, $7)', [ park['id'], park['parkCode'], park['fullName'], park['description'], park['latitude'], park['longitude'], park['visitors']])   
-    }); 
-}
-storeParks()
+
+    // // const storeParks = function () {
+    // ourNationalParks.forEach((park) => {
+    //   db.db.query('INSERT INTO parks(id, parkcode, name, description, latitude, longitude, visitors) VALUES($1, $2, $3, $4, $5, $6, $7)', [ park['id'], park['parkCode'], park['fullName'], park['description'], park['latitude'], park['longitude'], park['visitors']])   
+    // }); 
+// }
 
     //this assigns latitude and longitude properties to the park
 
@@ -923,6 +923,6 @@ storeParks()
     // console.log(ourNationalParks);
 
     module.exports = {
-        ourNationalParks: ourNationalParks,
-        storeParks: storeParks
+        ourNationalParks: ourNationalParks
+        // storeParks: storeParks
     };

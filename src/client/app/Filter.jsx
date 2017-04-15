@@ -1,52 +1,92 @@
 import React from 'react';
+import ProductCategoryRow from './ProductCategoryRow.jsx';
+import FilterRow from './FilterRow.jsx';
+import axios from 'axios';
+import Promise from 'bluebird';
 
 class Filter extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			popularityFilter: false,
-			activities : {
-				hasHiking: false,
-				hasBiking: false,
-				hasClimbing: false,
-				hasFishing: false,
-				hasBoating: false,
-				hasHorsebackRiding: false,
-				hasWildlifeViewing: false,
-				hasSwimming: false,
-				hasAutoTouring: false,
-				hasPhotography: false
-			},
-			hasLodging: false
+			activities: [
+									'Any', 
+									'Auto Touring', 
+									'Biking', 
+									'Climbing', 
+									'Fishing', 
+									'Horseback Riding', 
+									'Hiking', 
+									'Wildlife Viewing', 
+									'Photography', 
+									'Camping', 
+									'Boating', 
+									'Swimming', 
+									'Diving', 
+									'Hunting', 
+									'Paddling', 
+									'Interpretive Programs', 
+									'Picnicking', 
+									'Snorkeling', 
+									'Water Sports', 
+									'Visitor Center', 
+									'Horse Camping'
+									],
+			filteredActivities: [],
+			popularity: ['Most Visited', 
+									'Least Visited'],
+			parks: []
 		}
+		this.filteredActivitiesArray = [];
 	}
+
+	handleClick (filter, selectedState) {
+		return new Promise((resolve, reject) => {
+			if (selectedState) {
+				this.filteredActivitiesArray.push(filter);
+			} else if (!selectedState) {
+				const index = this.filteredActivitiesArray.indexOf(filter);
+				this.filteredActivitiesArray.splice(index);
+			}
+			console.log('setState!', this.state.filteredActivities)
+			resolve(this.setState({filteredActivities: this.filteredActivitiesArray}))
+		}).then(() => {
+			axios.get('/filterparks', {
+				params: {
+					filteredActivities: this.state.filteredActivities
+				}
+			}).then((response) => {
+				console.log('response received!')
+				console.log(response);
+			}).catch((error) => {
+				console.log(error);
+			})
+		})
+		console.log('clicked!')
+	}
+
+  componentDidMount(){
+	    // axios.get('/api/parks', {
+	    //     params: {
+	    //       parkcode: this.props.match.params.code
+	    //     }
+	    //   })
+	    //   .then(res => {
+	    //     this.setState({ park: res.data[1][0], activities: res.data[0]});
+	    //     console.log(res.data);
+	    //     })
+	    //   .catch(err => console.log(err))
+  }
+
 	render () {
 		return (
-			    <form>
-				  <fieldset>
-				  	<label for="popularity">Filter by: </label>
-				  	<select name="popularity" value={this.state.popularityFilter} />
-				      <option value=true>Popularity</option>
-				  </fieldset>
-				  <fieldset>
-				  	<input type="checkbox" name="hiking" checked={this.state.activities.hasHiking} />
-				  	<input type="checkbox" name="biking" checked={this.state.activities.hasBiking} />
-				  	<input type="checkbox" name="climbing" checked={this.state.activities.hasCliming} />
-				  	<input type="checkbox" name="fishing" checked={this.state.activities.hasFishing} />
-				  	<input type="checkbox" name="boating" checked={this.state.activities.hasBoating} />
-				  	<input type="checkbox" name="horseback" checked={this.state.activities.hasHorsebackRiding} />
-				  	<input type="checkbox" name="wildlife" checked={this.state.activities.hasWildlifeViewing} />
-				  	<input type="checkbox" name="biking" checked={this.state.activities.hasSwimming} />
-				  	<input type="checkbox" name="autoTouring" checked={this.state.activities.hasAutoTouring} />
-				  	<input type="checkbox" name="photography" checked={this.state.activities.hasPhotography} />    
-				  </fieldset>
-				  <fieldset>
-				  	<label for="lodging">Has Lodging: </label>
-				  	<input type="checkbox" name="lodging" checked={this.state.hasLodging} />
-				  </fieldset>
-				  <button value = "Send" onClick="this.sendFilters()"/>
-				</form>
-			   )
+			<div>
+						<ProductCategoryRow category={'Activities'}/>
+						<div>test</div>
+						{this.state.activities.map((category) => <FilterRow onClick={this.handleClick.bind(this)} category={category}/>)}
+						<ProductCategoryRow category={'Popularity'}/>
+						{this.state.popularity.map((category) => <FilterRow onClick={this.handleClick.bind(this)} category={category}/>)}
+			</div>
+		)
 	}
 }
 
