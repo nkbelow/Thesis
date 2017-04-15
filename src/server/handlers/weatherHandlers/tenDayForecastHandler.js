@@ -1,16 +1,16 @@
 const axios = require('axios');
 
 let getForecast = (req, res) => {
-  //lat and longitude will need to come from req
+console.log(req['body'], 'this is the req data');
   let config = {
     url: 'http://api.wunderground.com/api/' + process.env.WEATHER_UNDERGROUND_API_KEY + '/forecast10day/q/'
-     + 44.59824417 + ',' + -110.5471695 + '.json',
+     + req['body']['latitude'] + ',' + req['body']['longitude'] + '.json',
     method: 'get', 
     responseType: 'json'
   }
   return axios(config).then((result) => {
-    console.log(config.url);
-    console.log(result);
+    // console.log(config.url);
+    console.log(result['data']);
     res.send(result['data']['forecast']);
   })
   .catch((err) => {
