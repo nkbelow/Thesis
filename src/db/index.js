@@ -52,6 +52,7 @@ if (process.env.PORT) {
   pgp.pg.defaults.ssl = true;
   
   let db = pgp(process.env.DATABASE_URL);
+  db.connect();
 
   module.exports.db = db;
 } else {
