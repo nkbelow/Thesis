@@ -5,7 +5,7 @@ var options = {
 	promiseLib: promise
 };
 // let db;
-var pgp = require('pg-promise')(options);
+var pgp = require('pg-promise')();
 const database = 'thesis';
 
 // var database = pgp({})
