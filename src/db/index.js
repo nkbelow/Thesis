@@ -50,7 +50,7 @@ const database = 'thesis';
 
 if (process.env.HEROKU) {
   pgp.pg.defaults.ssl = true;
-  
+  console.log(process.env.DATABASE_URL);
   let db = pgp(process.env.DATABASE_URL);
 
   module.exports.db = db;
