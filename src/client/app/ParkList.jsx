@@ -15,7 +15,7 @@ class ParkList extends React.Component {
   }
 
   render() {
-    // console.log(this.props.parks) 
+    console.log(this.props.parks) 
     return (
           <Masonry style={this.style}>
           {this.parks.map((park) => (<ParkItem key={park.name} park={park} />))}

@@ -20,10 +20,7 @@ class ParkView extends React.Component {
         })
       .catch(err => console.log(err))
   }
-
-
   render() {
-    console.log(this.state.park)
     return(
     	<div>
     		{ this.state.park !== null && <ParkDetail park={this.state.park} activities={this.state.activities} /> }
