@@ -13,7 +13,7 @@ class Root extends React.Component {
 
   render () {
     return (
-	    <Router>
+	    <Router forceRefresh={false} >
 	      <div>
 	        <Route exact path="/" component={App} />
 	        <Route path="/park/:code" component={ParkView} />
