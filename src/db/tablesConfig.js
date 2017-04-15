@@ -9,7 +9,8 @@ module.exports = function (db) {
 		popularity VARCHAR(255), \
 		size INTEGER, \
 		latitude DOUBLE PRECISION, \
-		longitude DOUBLE PRECISION \
+		longitude DOUBLE PRECISION, \
+		visitors INTEGER \
 		); \
 	').then(function () {
 		console.log('start cg table')

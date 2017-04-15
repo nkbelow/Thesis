@@ -9,7 +9,8 @@ CREATE TABLE IF NOT EXISTS parks (
 	popularity VARCHAR(255), 
 	size INTEGER,
 	latitude DOUBLE PRECISION, 
-	longitude DOUBLE PRECISION
+	longitude DOUBLE PRECISION,
+	visitors INTEGER
 	
 );
 
