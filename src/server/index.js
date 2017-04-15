@@ -8,20 +8,14 @@ const db = require('../db/index.js');
 const data = require('../../data/ourNationalParks.js');
 const individualParkData = require('../db/models/getIndividualParksInfo.js');
 
+
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
-
-const dotenv = require('dotenv').config();
-
-const trail = require('../db/scripts/storeTrails.js')
-const cg = require('../db/scripts/storeCampgrounds')
-
-const app = express();
-const port = 3000;
 
 
 app.get('/', (req, res) => {
   res.status(200).send('hello world!!!');
+
 });
 
 
@@ -59,4 +53,5 @@ app.listen(port, () => {
 });
 
 module.exports = app;
+
 
