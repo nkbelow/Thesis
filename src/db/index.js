@@ -47,10 +47,11 @@ const database = 'thesis';
 
 
 // NEW CODE STARTS HERE
-
-if (process.env.HEROKU) {
+  console.log('database url ' + process.env.DATABASE_URL);
+  console.log('heroku url ' + process.env.HEROKU);
+if (process.env.DATABASE_URL) {
   pgp.pg.defaults.ssl = true;
-  console.log(process.env.DATABASE_URL);
+
   let db = pgp(process.env.DATABASE_URL);
 
   module.exports.db = db;
