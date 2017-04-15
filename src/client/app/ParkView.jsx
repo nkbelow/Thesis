@@ -15,16 +15,13 @@ class ParkView extends React.Component {
         }
       })
       .then(res => {
-        console.log(res)
         this.setState({ park: res.data[1][0], activities: res.data[0]});
-        console.log('single page view data: ', res.data);
         })
       .catch(err => console.log(err))
   }
 
 
   render() {
-    console.log(this.state.park)
     return(
     	<div>
     		{ this.state.park !== null && <ParkDetail park={this.state.park} activities={this.state.activities} /> }
