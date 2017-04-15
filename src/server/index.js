@@ -11,22 +11,22 @@ const individualParkData = require('../db/models/getIndividualParksInfo.js');
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
 app.get('/', (req, res) => {
-  res.status(200).send('hello world!!!');
+  res.status(200);
 });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/api/parks', (req, res) => {
-	// db.db.query('SELECT * from parks')
-// 	.then((result) => {
-// 		res.status(201).send(result)
-// 	})
-// 	.catch((err) => {
-// 		res.status(404).send('There was an error retrieving all the parks data');
-// 	})
+	db.db.query('SELECT * from parks')
+	.then((result) => {
+		res.status(201).send(result)
+	})
+	.catch((err) => {
+		res.status(404).send('There was an error retrieving all the parks data');
+	})
 
-	res.send(data.ourNationalParks);
+	// res.send(data.ourNationalParks);
 
 
 });

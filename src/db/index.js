@@ -4,10 +4,11 @@ var databaseName = 'thesis';
 var options = {
 	promiseLib: promise
 };
-let db;
+// let db;
 var pgp = require('pg-promise')(options);
+const database = 'thesis';
 
-var database = pgp({})
+// var database = pgp({})
 
 // comment out when you run test
 // database.query('SELECT count(*) FROM pg_catalog.pg_database WHERE DATNAME = \'thesis\'').then(function (response) {
@@ -31,15 +32,34 @@ var database = pgp({})
 
 
 
-var connection = {
-	  host: 'localhost',
-    port: 5432,
-    database: databaseName,
-    user: '',
-    password: ''
-}
+// var connection = {
+// 	  host: 'localhost',
+//     port: 5432,
+//     database: databaseName,
+//     user: '',
+//     password: ''
+// }
 // re-establish a connection to export as a module
 // will come back to re-factor to connecting pgp once
 
-module.exports.db = pgp(connection)
-pgp.end()
+// module.exports.db = pgp(connection)
+// pgp.end()
+
+
+// NEW CODE STARTS HERE
+
+if (process.env.PORT) {
+  pgp.pg.defaults.ssl = true;
+  
+  let db = pgp(process.env.DATABASE_URL);
+
+  module.exports.db = db;
+} else {
+  let db = pgp({
+    database: database
+  });
+
+  module.exports.db = db;
+}
+
+
