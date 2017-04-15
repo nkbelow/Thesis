@@ -92,6 +92,13 @@ export default class MapBox extends Component {
                 coordinates={[park.longitude, park.latitude]}
                 onClick={this.addPopup.bind(this, park)}>
 
+                <img style= {{
+                  maxHeight:'20px',
+                  maxWidth:'20px',
+                  height: 'auto',
+                  width: 'auto'
+                }} src="https://cdn1.iconfinder.com/data/icons/map-objects/154/map-object-fir-forest-park-512.png" />
+
               </Marker>
             ))           
           } 
