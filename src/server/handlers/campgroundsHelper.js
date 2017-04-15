@@ -8,7 +8,7 @@ const util = require('../utilities')
 
 
 const csvToArray = (callback) => {
-	let stream = fs.createReadStream(path.join(__dirname, '/SouthCamp.csv'))
+	let stream = fs.createReadStream(path.join(__dirname, '/campground.csv'))
 	let campgrounds = [];
 	let csvStream = csv()
     .on("data", function(data){
@@ -59,3 +59,4 @@ const checkBoundaries = (campgrounds, callback) => {
 
 module.exports.csvToArray = csvToArray;
 module.exports.checkBoundaries = checkBoundaries;
+

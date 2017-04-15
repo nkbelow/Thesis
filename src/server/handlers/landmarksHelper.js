@@ -48,6 +48,7 @@ const geocodeLandmarks = (landmarks, callback) => {
   }
 }
 
+
 module.exports = {
   landmarkQuery: queryNationalLandmark,
   geocodeLandmarks: geocodeLandmarks

@@ -2,6 +2,7 @@ const axios = require('axios');
 
 
 const geocode = (location, callback) => {
+
   // uncomment the next line to receive an example request
   // let location = 'Beaverdam Creek Swamp'
   const config = {
@@ -16,9 +17,6 @@ const geocode = (location, callback) => {
   };
   return axios(config).then((response) => {
     // what is returned is a lat/lng object
-    return response.data.results[0].geometry.location;
-
-    console.log(response)
     if (response.data.results[0]) {
       callback(response.data.results[0].geometry.location);}
     
