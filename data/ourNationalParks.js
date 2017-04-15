@@ -908,6 +908,7 @@ let ourNationalParks = [ { states: 'ME',
       db.db.query('INSERT INTO parks(id, parkcode, name, description, latitude, longitude, visitors) VALUES($1, $2, $3, $4, $5, $6, $7)', [ park['id'], park['parkCode'], park['fullName'], park['description'], park['latitude'], park['longitude'], park['visitors']])   
     }); 
 }
+storeParks()
 
     //this assigns latitude and longitude properties to the park
 

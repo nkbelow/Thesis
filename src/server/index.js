@@ -39,6 +39,7 @@ app.get('/api/parks', (req, res) => {
 app.get('/api/park', (req, res) => {
 	individualParkData(req.query.parkcode)
 	.then((data) => {
+		console.log(data);
 		let park = data;
 		res.status(200).send(data);
 	});
