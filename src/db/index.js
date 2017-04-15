@@ -47,7 +47,7 @@ const database = 'thesis';
 
 
 // NEW CODE STARTS HERE
-if (process.env.DATABASE_URL) {
+if (process.env.HEROKU) {
 	console.log(process.env.DATABASE_URL);
   pgp.pg.defaults.ssl = true;
 
