@@ -1,10 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import data from '../../../data/parksAndBoundaries.js'
 
 import ReactMapboxGl, { Layer, Feature, Marker } from "react-mapbox-gl";
-
-
 const Map = (props) => {
   return (
     <div>
