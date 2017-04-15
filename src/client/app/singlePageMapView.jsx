@@ -17,11 +17,11 @@ const Map = (props) => {
   }}
   center={[props.lon, props.lat]}
   zoom={[8.5]} >
-  {/*<Marker
+  <Marker
   coordinates={[-0.2416815, 51.5285582]}
   anchor="bottom">
   <img src="https://pixabay.com/p-1210559/?no_redirect"/>
-</Marker>*/}
+</Marker>
   </ReactMapboxGl>
   </div>
   )

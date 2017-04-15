@@ -7,6 +7,7 @@ const port = process.env.PORT || 3000;
 const db = require('../db/index.js');
 const data = require('../../data/ourNationalParks.js');
 const individualParkData = require('../db/models/getIndividualParksInfo.js');
+const tenDayForecast = require('./handlers/weatherHandlers/tenDayForecastHandler.js')
 
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
@@ -28,7 +29,10 @@ app.get('/api/parks', (req, res) => {
 
 });
 
-app.get('/api/park', (req, res) => {
+app.post('/api/park/tenDayForecast', tenDayForecast.getForecast);
+
+app.get('/api/park/', (req, res) => {
+	console.log('this is the req', req)
 	individualParkData(req.query.parkcode)
 	.then((data) => {
 		console.log(data);
@@ -36,6 +40,8 @@ app.get('/api/park', (req, res) => {
 		res.status(200).send(data);
 	});
 })
+
+
 
 app.get('*', (req, res) => {
 	res.redirect('/');
