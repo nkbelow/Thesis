@@ -48,11 +48,10 @@ const database = 'thesis';
 
 // NEW CODE STARTS HERE
 
-if (process.env.PORT) {
+if (process.env.HEROKU) {
   pgp.pg.defaults.ssl = true;
   
   let db = pgp(process.env.DATABASE_URL);
-  db.connect();
 
   module.exports.db = db;
 } else {
