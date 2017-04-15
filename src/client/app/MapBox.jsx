@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactMapboxGl, { Layer, Feature, Popup, ZoomControl, Marker, Cluster } from "react-mapbox-gl";
+import { Link } from 'react-router-dom'
 
 const styles = {
   clusterMarker: {
@@ -40,7 +41,7 @@ export default class MapBox extends Component {
     		skip: 0,
    		 	popupShowLabel: true,
    		 	parks: null,
-   		 	popups: {}
+   		 	popup: null
   		};
 	}
 
@@ -53,6 +54,20 @@ export default class MapBox extends Component {
 		console.log(this.state)
 	}
 
+  addPopup (park) {
+    this.setState({popup: park});
+  }
+
+  removePopup () {
+    this.setState({popup: null});
+  }
+
+  componentDidUpdate () {
+    this.props.parks.map((park) => {
+      park.visible = false;
+    })
+  }
+
 
 	render () {
 		return (
@@ -63,47 +78,46 @@ export default class MapBox extends Component {
           zoom={this.state.zoom}
           accessToken={'pk.eyJ1IjoidHdhbGs0ODIxIiwiYSI6ImNqMWk3ajQ3YjAxazMyd28wbmxpeG5pOW0ifQ.pD4Uic9vRI0_fh0_XV0tCg'}
           containerStyle={{
-		    height: "80vh",
-		    width: "80vw"
-		  }}>
+		        height: "80vh",
+		        width: "80vw"
+		      }}
+          onClick={this.removePopup.bind(this)}>
 		 
 		 {  this.props.parks &&
-		 	this.props.parks.map((park) => {
-		 		park.visible = false;
-		 		var toggleVisible = () => {
-		 			console.log(park.visible)
-		 			park.visible = !park.visible;
-		 		}
-		 		return (
-		 		<div>
+		 	this.props.parks.map((park) => (
+		 		
               <Marker
                 key={park.id}
                 style={styles.marker}
                 coordinates={[park.longitude, park.latitude]}
-                onClick={toggleVisible}>
+                onClick={this.addPopup.bind(this, park)}>
 
               </Marker>
+            ))           
+          } 
+
+      { this.state.popup && 
+      
               <Popup
-              	coordinates={[park.longitude, park.latitude]}
-              	offset={{
-    			'bottom-left': [12, -38],  'bottom': [0, -38], 'bottom-right': [-12, -38]
-  				}}
-  				style={{
-  					display: park.visible ? "block" : "none"
-  				}}
-  				onClick={toggleVisible}
-  				
-           	  ></Popup>
-           	  </div>
-           	)
-           	}
-            )
-            
-          } </ReactMapboxGl>
+                coordinates={[this.state.popup.longitude, this.state.popup.latitude]}
+                offset={ [0, -35] }
+                >
+                <div>
+                  <h2>{this.state.popup.fullName}</h2>
+                  <Link to={`park/${this.state.popup.parkCode}/`}>
+                    <p>{this.state.popup.url}</p>
+                  </Link>
+                  <p style={{color:"blue"}} onClick={this.removePopup.bind(this)}> Hide </p>
+                </div>
+              </Popup>
+      
+      }
+
+    </ReactMapboxGl>
        
 
        </div>
-          )
+    )
 	}
 }
  // <Cluster ClusterMarkerFactory={this.clusterMarker} clusterThreshold={100}>
