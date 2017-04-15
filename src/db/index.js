@@ -48,17 +48,19 @@ const database = 'thesis';
 
 // NEW CODE STARTS HERE
 if (process.env.DATABASE_URL) {
+	console.log(process.env.DATABASE_URL);
   pgp.pg.defaults.ssl = true;
 
   let db = pgp(process.env.DATABASE_URL);
 
   module.exports.db = db;
-} else {
-  let db = pgp({
-    database: database
-  });
+} 
+// else {
+//   let db = pgp({
+//     database: database
+//   });
 
-  module.exports.db = db;
-}
+//   module.exports.db = db;
+// }
 
 
