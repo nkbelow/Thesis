@@ -92,8 +92,6 @@ id,name,park_id,latitude,longitude
 313,Cottonwood - Theodore Roosevelt National Park,52,46,-103
 324,Norris - Yellowstone National Park,57,44,-110
 334,Tamarack Flat - Yosemite National Park,58,37,-119
-341,Canyon - Yellowstone National Park,59,44,-110
-352,Tower Falls - Yellowstone National Park,59,44,-110
 266,Juniper Lake - Lassen Volcanic National Park,39,40,-121
 273,Cougar Rock - Mount Rainier National Park,42,46,-121
 284,Fairholm - Olympic National Park,44,48,-123
@@ -101,7 +99,6 @@ id,name,park_id,latitude,longitude
 305,Dorst  Creek - Sequoia National Park,50,36,-118
 315,Bridge Bay - Yellowstone National Park,57,44,-110
 326,Slough Creek - Yellowstone National Park,57,44,-110
-342,Bridge Bay - Yellowstone National Park,59,44,-110
 267,Manzanita Lake - Lassen Volcanic National Park,39,40,-121
 274,Morefield - Mesa Verde National Park,41,37,-108
 285,Heart O The Hills - Olympic National Park,44,48,-123
@@ -110,8 +107,6 @@ id,name,park_id,latitude,longitude
 316,Canyon - Yellowstone National Park,57,44,-110
 327,Tower Falls - Yellowstone National Park,57,44,-110
 332,Porcupine Flat - Yosemite National Park,58,37,-119
-343,Grant - Yellowstone National Park,59,44,-110
-351,Slough Creek - Yellowstone National Park,59,44,-110
 268,Southwest - Lassen Volcanic National Park,39,40,-121
 276,Mowich Lake - Mount Rainier National Park,42,46,-121
 287,Mora - Olympic National Park,44,47,-124
@@ -120,7 +115,6 @@ id,name,park_id,latitude,longitude
 318,Elk Mountain  - Wind Cave National Park,55,43,-103
 328,Bridalveil Creek - Yosemite National Park,58,37,-119
 340,Yosemite Creek - Yosemite National Park,58,37,-119
-349,Norris - Yellowstone National Park,59,44,-110
 269,Warner Valley - Lassen Volcanic National Park,39,40,-121
 275,Ipsut Creek - Mount Rainier National Park,42,46,-121
 283,Graves Creek,44,47,-123
@@ -130,7 +124,6 @@ id,name,park_id,latitude,longitude
 319,Grant - Yellowstone National Park,57,44,-110
 329,Crane Flat - Yosemite National Park,58,37,-119
 335,Tuolumne Meadows - Yosemite National Park,58,37,-119
-347,Madison - Yellowstone National Park,59,44,-110
 270,Houchins Ferry  - Mammoth Cave National Park,40,37,-86
 277,Ohanapecosh - Mount Rainier National Park,42,46,-121
 286,Kalaloch - Olympic National Park,44,47,-124
@@ -139,7 +132,6 @@ id,name,park_id,latitude,longitude
 312,Mathews Arm - Shenandoah National Park,51,38,-78
 323,Madison - Yellowstone National Park,57,44,-110
 336,Upper Pines - Yosemite National Park,58,37,-119
-348,Mammoth - Yellowstone National Park,59,44,-110
 271,Summit Lake (north and south) - Lassen Volcanic National Park,39,40,-121
 278,White River - Mount Rainier National Park,42,46,-121
 290,Queets,44,47,-124
@@ -148,7 +140,6 @@ id,name,park_id,latitude,longitude
 320,Indian Creek - Yellowstone National Park,57,44,-110
 331,Hodgdon Meadow - Yosemite National Park,58,37,-119
 337,Upper River - Yosemite National Park,58,37,-119
-345,Indian Creek - Yellowstone National Park,59,44,-110
 263,Sheep Creek - Kings Canyon National Park,36,36,-118
 279,Altaire - Olympic National Park,44,48,-123
 289,Sol Duc - Olympic National Park,44,47,-123
@@ -157,7 +148,6 @@ id,name,park_id,latitude,longitude
 317,Fishing Bridge RV - Yellowstone National Park,57,44,-110
 325,Pebble Creek - Yellowstone National Park,57,44,-110
 339,White Wolf - Yosemite National Park,58,37,-119
-350,Pebble Creek - Yellowstone National Park,59,44,-110
 264,Butte Lake - Lassen Volcanic National Park,39,40,-121
 281,Dosewallips,44,47,-123
 291,Staircase - Olympic National Park,44,47,-123
@@ -165,7 +155,6 @@ id,name,park_id,latitude,longitude
 314,Juniper - Theodore Roosevelt National Park,52,47,-103
 322,Mammoth - Yellowstone National Park,57,44,-110
 333,North Pines - Yosemite National Park,58,37,-119
-346,Fishing Bridge RV - Yellowstone National Park,59,44,-110
 262,Sentinel - Sequoia and Kings Canyon National Park,36,36,-118
 280,Deer Park - Olympic National Park,44,47,-123
 288,Ozette - Olympic National Park,44,48,-124
@@ -174,4 +163,3 @@ id,name,park_id,latitude,longitude
 321,Lewis Lake - Yellowstone National Park,57,44,-110
 330,Lower Pines - Yosemite National Park,58,37,-119
 338,Wawona  - Yosemite National Park,58,37,-119
-344,Lewis Lake - Yellowstone National Park,59,44,-110
