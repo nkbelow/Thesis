@@ -8,13 +8,8 @@ const db = require('../db/index.js');
 const data = require('../../data/ourNationalParks.js');
 const individualParkData = require('../db/models/getIndividualParksInfo.js');
 
-
-
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
-app.get('/', (req, res) => {
-  res.status(200);
-});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -36,6 +31,7 @@ app.get('/api/parks', (req, res) => {
 app.get('/api/park', (req, res) => {
 	individualParkData(req.query.parkcode)
 	.then((data) => {
+		console.log(data);
 		let park = data;
 		res.status(200).send(data);
 	});
