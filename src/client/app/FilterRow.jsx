@@ -4,13 +4,14 @@ class FilterRow extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      selectedState: true
+      selectedState: false
     }
   }
 
   handleClick () {
-    this.props.onClick(this.props.category, this.state.selectedState)
-    this.setState({selectedState: !this.state.selectedState})
+    this.setState({selectedState: !this.state.selectedState}, function() {
+      this.props.onClick(this.props.category, this.state.selectedState);
+    });
   }
 
   render () {

@@ -36,32 +36,6 @@ class Filter extends React.Component {
 									'Least Visited'],
 			parks: []
 		}
-		this.filteredActivitiesArray = [];
-	}
-
-	handleClick (filter, selectedState) {
-		return new Promise((resolve, reject) => {
-			if (selectedState) {
-				this.filteredActivitiesArray.push(filter);
-			} else if (!selectedState) {
-				const index = this.filteredActivitiesArray.indexOf(filter);
-				this.filteredActivitiesArray.splice(index);
-			}
-			console.log('setState!', this.state.filteredActivities)
-			resolve(this.setState({filteredActivities: this.filteredActivitiesArray}))
-		}).then(() => {
-			axios.get('/filterparks', {
-				params: {
-					filteredActivities: this.state.filteredActivities
-				}
-			}).then((response) => {
-				console.log('response received!')
-				console.log(response);
-			}).catch((error) => {
-				console.log(error);
-			})
-		})
-		console.log('clicked!')
 	}
 
   componentDidMount(){
@@ -82,9 +56,9 @@ class Filter extends React.Component {
 			<div>
 						<ProductCategoryRow category={'Activities'}/>
 						<div>test</div>
-						{this.state.activities.map((category) => <FilterRow onClick={this.handleClick.bind(this)} category={category}/>)}
+						{this.state.activities.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
 						<ProductCategoryRow category={'Popularity'}/>
-						{this.state.popularity.map((category) => <FilterRow onClick={this.handleClick.bind(this)} category={category}/>)}
+						{this.state.popularity.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
 			</div>
 		)
 	}
