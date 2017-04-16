@@ -30,7 +30,6 @@ class ParkDetail extends React.Component {
     }
     return Axios(config)
     .then(data => {
-      console.log(data['data'], 'this is the data')
       this.setState({tenDayForecast: data['data']['simpleforecast']['forecastday']})
     })
     .catch(err => {
@@ -38,8 +37,6 @@ class ParkDetail extends React.Component {
     })
   }
   getMonthlyClimate(latitude, longitude) {
-    const climate = this.refs.climate.value;
-    console.log(climate)
     let config = {
       url: '/api/park/climate',
       method: 'post',
@@ -51,38 +48,22 @@ class ParkDetail extends React.Component {
     }
     return Axios(config)
     .then(data => {
-      console.log(data, 'this is the data')
       this.setState({climate: data['data']})
     })
     .catch(err => {
       console.log(err);
     })
-
-//     // Let's use moment static reference in the Datetime component.
-// var yesterday = Datetime.moment().subtract(1, 'day');
-// var thirtyDaysAhead = Datetime.moment().add(30, 'day');
-// var valid = function( current ){
-//     return current.isAfter( yesterday ) && current.isBefore(thirtyDaysAhead) ;
-// };
-
-// React.render(
-//   <div>
-//     <Datetime input={ false } isValidDate={ valid } />
-//   </div>,
-//   document.body
-// );
   }
   render() {
     return(
       <div>
       <ParkMapView lat={this.props.park.latitude} lon={this.props.park.longitude} />
-        <Link to='/'>HOME</Link> <h1 className='parkname'>{this.props.park.name}</h1>
+      <div>
+        <Link to='/'><h1>HOME</h1></Link> <h1 className='parkname'>{this.props.park.name}</h1>
+        </div>
         <h3>{this.props.park.description}</h3>
         <ActivitiesList activities={this.props.activities}/> 
-      <input type='month' ref='climate'/> 
-      <input type='submit' onClick={() => this.getMonthlyClimate(this.props.park.latitude, this.props.park.longitude)}/>
         { this.state.tenDayForecast && <WeatherForecast tenDayForecast={this.state.tenDayForecast} />}
-        {/*{this.state.climate && <Climate climate={this.state.climate} />}*/}
       </div>
     );
   }
