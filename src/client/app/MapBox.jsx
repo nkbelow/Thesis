@@ -70,6 +70,7 @@ export default class MapBox extends Component {
 
 
 	render () {
+    console.log(this)
 		return (
 		<div>
 		<ReactMapboxGl
@@ -127,9 +128,3 @@ export default class MapBox extends Component {
     )
 	}
 }
- // <Cluster ClusterMarkerFactory={this.clusterMarker} clusterThreshold={100}>
-     //   <Layer
-     //  type="symbol"
-     //  id="marker">
-     //  <Feature coordinates={this.state.center}/>
-    	// </Layer>

@@ -74,4 +74,13 @@ module.exports = function (db) {
 				activity_id INTEGER NOT NULL \
 				); \
 			')
-})} 
+		}).then(function () {
+			console.log('start campgrounds_parks table')
+			return db.query('\
+				CREATE TABLE IF NOT EXISTS campgrounds_parks ( \
+				park_id INTEGER NTO NULL, \
+				campground_id INTEGER NOT NULL \
+				); \
+				')
+		})
+	} 
