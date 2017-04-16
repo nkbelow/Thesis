@@ -3,7 +3,6 @@ const dotenv = require('dotenv').config();
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
-console.log(process.env.DATABASE_URL);
 const port = process.env.PORT || 3000;
 const db = require('../db/index.js');
 const data = require('../../data/ourNationalParks.js');
