@@ -19,3 +19,9 @@
 .parkname {
   text-align: center
 }
+
+.weatherHeader {
+  color: cornflowerblue;
+  font-weight: bold;
+  font-size: 2em;
+}
