@@ -46,12 +46,9 @@ app.get('/api/campgrounds', (req, res) => {
 });
 
 app.get('/filterparks', (req, res) => {
-	console.log(req.query.filteredActivities)
 	filters.activities(req.query.filteredActivities).then((response) => {
-		console.log(response)
 		res.status(200).send(response);
 	});
-	// res.status(200).send();
 })
 
 app.get('*', (req, res) => {

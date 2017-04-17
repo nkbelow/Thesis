@@ -28,29 +28,30 @@ class App extends React.Component {
       .catch(err => console.log(err))
   }
 
-  handleFilterSelection (filter, selectedState) {
+  handleFilterActivities (filter, selectedState) {
     return new Promise((resolve, reject) => {
-      console.log(selectedState)
       if (selectedState) {
         this.filteredActivitiesArray.push(filter);
+        resolve(this.setState({filteredActivities: this.filteredActivitiesArray}))
       } else if (!selectedState) {
         const index = this.filteredActivitiesArray.indexOf(filter);
-        this.filteredActivitiesArray.splice(index);
-        if (this.state.filteredParks.length === 0) {
-          this.setState({filteredParks: this.state.parks})
-        }
+        this.filteredActivitiesArray.splice(index, 1);
+        resolve(this.setState({filteredActivities: this.filteredActivitiesArray}))
       }
-      resolve(this.setState({filteredActivities: this.filteredActivitiesArray}))
     }).then(() => {
-      axios.get('/filterparks', {
-        params: {
-          filteredActivities: this.state.filteredActivities
-        }
-      }).then((response) => {
-        this.setState({filteredParks: response.data})
-      }).catch((error) => {
-        console.log(error);
-      })
+      if (this.filteredActivitiesArray.length === 0) {
+        this.setState({filteredParks: this.state.parks})
+      } else {
+        axios.get('/filterparks', {
+          params: {
+            filteredActivities: this.state.filteredActivities
+          }
+        }).then((response) => {
+          this.setState({filteredParks: response.data})
+        }).catch((error) => {
+          console.log(error);
+        })
+      }
     })
   }
 
@@ -61,7 +62,7 @@ class App extends React.Component {
 
     		<h1>Nimble Newts Project </h1>
         {this.state.parks !== null && <SearchBar parks={this.state.parks}/>}
-        <Filter handleClick={this.handleFilterSelection.bind(this)} />
+        <Filter handleClick={this.handleFilterActivities.bind(this)} />
         <MapView parks={this.state.filteredParks}/>
     		{this.state.parks !== null && <ParkList parks={this.state.filteredParks}/>}
     	</div>

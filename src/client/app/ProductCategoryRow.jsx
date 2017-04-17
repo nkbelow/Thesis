@@ -6,11 +6,17 @@ class ProductCategoryRow extends React.Component {
     this.state = {
       selected: false
     }
+    this.style = {
+      'font-family':'Arial',
+      'font-weight':'bold',
+      'fontSize': '40',
+      'color': 'black',
+    }
   }
   render () {
     return (
       <tr>
-        <td>{this.props.category}</td>    
+        <td style={this.style} >{this.props.category}</td>    
       </tr>
     )
   }

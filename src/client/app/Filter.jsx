@@ -31,31 +31,16 @@ class Filter extends React.Component {
 									'Visitor Center', 
 									'Horse Camping'
 									],
-			filteredActivities: [],
 			popularity: ['Most Visited', 
 									'Least Visited'],
 			parks: []
 		}
 	}
 
-  componentDidMount(){
-	    // axios.get('/api/parks', {
-	    //     params: {
-	    //       parkcode: this.props.match.params.code
-	    //     }
-	    //   })
-	    //   .then(res => {
-	    //     this.setState({ park: res.data[1][0], activities: res.data[0]});
-	    //     console.log(res.data);
-	    //     })
-	    //   .catch(err => console.log(err))
-  }
-
 	render () {
 		return (
 			<div>
 						<ProductCategoryRow category={'Activities'}/>
-						<div>test</div>
 						{this.state.activities.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
 						<ProductCategoryRow category={'Popularity'}/>
 						{this.state.popularity.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
