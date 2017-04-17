@@ -5,7 +5,7 @@ import ParkDetail from './ParkDetail.jsx';
 class ParkView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {park: null, activities: null, campgrounds: null};
+    this.state = {park: null, activities: null, campgrounds: null, lodgings: null};
   }
 
   componentDidMount(){
@@ -29,13 +29,11 @@ class ParkView extends React.Component {
           }
         })
       .then(res => {
-        console.log(res)
         this.setState({campgrounds: res.data})
 
       })
       .catch(err=> console.err(err))
     }
-
   }
   
   render() {
