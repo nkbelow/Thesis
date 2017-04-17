@@ -6,6 +6,10 @@ th {
   text-align: center;
 }
 
+.header-hidden {
+  color: white;
+}
+
 .mapboxgl-map {
   margin: auto
 }

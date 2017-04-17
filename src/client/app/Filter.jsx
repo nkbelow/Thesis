@@ -56,19 +56,19 @@ class Filter extends React.Component {
 			</div>
 			<div className='col-md-2'>
 			<List>
-			<List.Header></List.Header>
+			<List.Header className='header-hidden'>PlaceHolder</List.Header>
 				{this.state.activities2.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
 			</List>
 			</div>
 			<div className='col-md-2'>
 			<List>
-			<List.Header></List.Header>
+			<List.Header className='header-hidden'>PlaceHolder</List.Header>
 				{this.state.activities3.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
 				</List>
 				</div>
 				<div className='col-md-2'>
 			 <List>
-			 <List.Header></List.Header>
+			 <List.Header className='header-hidden'>PlaceHolder</List.Header>
 				{this.state.activities4.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
 			 </List>
 			</div>
