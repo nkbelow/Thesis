@@ -62,8 +62,16 @@ class ParkDetail extends React.Component {
           <Link to='/'><h1>HOME</h1></Link> <h1 className='parkname'>{this.props.park.name}</h1>
         </div>
         <h3>{this.props.park.description}</h3>
-        <ActivitiesList activities={this.props.activities}/> 
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-6'>
+          <ActivitiesList activities={this.props.activities}/> 
+            </div>
+            <div className='col-md-6'>
         { this.state.tenDayForecast && <WeatherForecast tenDayForecast={this.state.tenDayForecast} />}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
