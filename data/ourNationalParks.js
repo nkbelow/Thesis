@@ -1,5 +1,3 @@
-const db = require('../src/db/index.js');
-
 let ourNationalParks = [ { states: 'ME',
     latLong: 'lat:44.30777545, long:-68.30063316',
     description: 'People have been drawn to the rugged coast of Maine throughout history. Awed by its beauty and diversity, early 20th-century visionaries donated the land that became Acadia National Park. The park is home to many plants and animals, and the tallest mountain on the U.S. Atlantic coast. Today visitors come to Acadia to hike granite peaks, bike historic carriage roads, or relax and enjoy the scenery.',
@@ -904,14 +902,6 @@ let ourNationalParks = [ { states: 'ME',
     // this function inserts lat and long objects into our database
     
 
-    const storeParks = function () {
-    ourNationalParks.forEach((park) => {
-      db.db.query('INSERT INTO parks(id, parkcode, name, description, latitude, longitude, visitors) VALUES($1, $2, $3, $4, $5, $6, $7)', [ park['id'], park['parkcode'], park['fullName'], park['description'], park['latitude'], park['longitude'], park['visitors']])   
-    });
-}
-
-// storeParks();
-
     //this assigns latitude and longitude properties to the park
 
     // ourNationalParks.forEach((park) => {
@@ -925,6 +915,5 @@ let ourNationalParks = [ { states: 'ME',
     // console.log(ourNationalParks);
 
     module.exports = {
-        ourNationalParks: ourNationalParks,
-        storeParks: storeParks
+        ourNationalParks: ourNationalParks
     };
