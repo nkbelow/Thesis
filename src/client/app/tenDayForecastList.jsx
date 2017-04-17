@@ -5,7 +5,7 @@ const TenDayForecastList = (props) => {
   console.log(props.tenDayForecast, 'tenDayForecast')
   return (
     <table>
-    <thead align='center'>
+    <thead>
       <tr>
       <th className='weatherHeader' colSpan='4'>Ten Day Forecast</th>
       </tr>
