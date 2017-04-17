@@ -47,19 +47,16 @@ else {
         password: ''
     }
 
-    const db = pgp(connection);
+    let db = pgp(connection);
     module.exports.db = db;
     return db
 
   // run any scripts to store data
-  }).then(function() {
+  }).then(function(db) {
 
       parks.ourNationalParks.forEach((park) => {
         db.query('INSERT INTO parks(id, parkcode, name, description, latitude, longitude, visitors) VALUES($1, $2, $3, $4, $5, $6, $7)', [ park['id'], park['parkcode'], park['fullName'], park['description'], park['latitude'], park['longitude'], park['visitors']])   
       });
 
   })
-
 }
-
-

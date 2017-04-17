@@ -36,17 +36,15 @@ module.exports = function (db) {
 			return db.query (' \
 				CREATE TABLE IF NOT EXISTS trails ( \
 				id SERIAL PRIMARY KEY, \
-				name VARCHAR(50), \
-				city VARCHAR (25), \
-				state VARCHAR (25), \
+				name VARCHAR (100), \
+				city VARCHAR (50), \
+				state VARCHAR (50), \
 				latitude DOUBLE PRECISION, \
 				longitude DOUBLE PRECISION, \
 				length DOUBLE PRECISION, \
 				description VARCHAR (5000), \
-				directions VARCHAR (5000), \
-				activities VARCHAR (100) [], \
-				park_id INTEGER references parks(id), \
-				campground_id INTEGER references campgrounds(id) \
+				directions VARCHAR (3000), \
+				park_id INTEGER references parks(id) \
 				); \
 			')
 		}).then(function () {
