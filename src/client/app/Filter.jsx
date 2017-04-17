@@ -1,52 +1,70 @@
 import React from 'react';
+import ProductCategoryRow from './ProductCategoryRow.jsx';
+import FilterRow from './FilterRow.jsx';
+import axios from 'axios';
+import Promise from 'bluebird';
 
 class Filter extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			popularityFilter: false,
-			activities : {
-				hasHiking: false,
-				hasBiking: false,
-				hasClimbing: false,
-				hasFishing: false,
-				hasBoating: false,
-				hasHorsebackRiding: false,
-				hasWildlifeViewing: false,
-				hasSwimming: false,
-				hasAutoTouring: false,
-				hasPhotography: false
-			},
-			hasLodging: false
+			activities1: [
+									'Any', 
+									'Auto Touring', 
+									'Biking', 
+									'Climbing', 
+									'Fishing', 
+									'Horseback Riding', 
+									],
+			activities2: [ 
+									'Hiking', 
+									'Wildlife Viewing', 
+									'Photography', 
+									'Camping', 
+									'Boating', 
+									],
+			activities3: [
+									'Swimming', 
+									'Diving', 
+									'Hunting', 
+									'Paddling', 
+									'Interpretive Programs', 
+									],
+			activities4: [
+									'Picnicking', 
+									'Snorkeling', 
+									'Water Sports', 
+									'Visitor Center', 
+									'Horse Camping'
+									],
+			popularity: ['Most Visited', 
+									'Least Visited'],
+			parks: []
 		}
 	}
+
 	render () {
 		return (
-			    <form>
-				  <fieldset>
-				  	<label for="popularity">Filter by: </label>
-				  	<select name="popularity" value={this.state.popularityFilter} />
-				      <option value=true>Popularity</option>
-				  </fieldset>
-				  <fieldset>
-				  	<input type="checkbox" name="hiking" checked={this.state.activities.hasHiking} />
-				  	<input type="checkbox" name="biking" checked={this.state.activities.hasBiking} />
-				  	<input type="checkbox" name="climbing" checked={this.state.activities.hasCliming} />
-				  	<input type="checkbox" name="fishing" checked={this.state.activities.hasFishing} />
-				  	<input type="checkbox" name="boating" checked={this.state.activities.hasBoating} />
-				  	<input type="checkbox" name="horseback" checked={this.state.activities.hasHorsebackRiding} />
-				  	<input type="checkbox" name="wildlife" checked={this.state.activities.hasWildlifeViewing} />
-				  	<input type="checkbox" name="biking" checked={this.state.activities.hasSwimming} />
-				  	<input type="checkbox" name="autoTouring" checked={this.state.activities.hasAutoTouring} />
-				  	<input type="checkbox" name="photography" checked={this.state.activities.hasPhotography} />    
-				  </fieldset>
-				  <fieldset>
-				  	<label for="lodging">Has Lodging: </label>
-				  	<input type="checkbox" name="lodging" checked={this.state.hasLodging} />
-				  </fieldset>
-				  <button value = "Send" onClick="this.sendFilters()"/>
-				</form>
-			   )
+			<div>
+							<ProductCategoryRow category={'Activities'}/>
+								<div style={{'display':'inline', 'position':'float'}} >
+									{this.state.activities1.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+								</div>
+								<div  style={{'display':'inline', 'position':'float', marginTop: 5}} >
+									{this.state.activities2.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+								</div>
+								<div  style={{'display':'inline', 'position':'float', marginTop: 5}} >
+									{this.state.activities3.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+								</div>
+								<div  style={{'display':'inline', 'position':'float', marginTop: 5}} >
+									{this.state.activities4.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+								</div>
+						<div  style={{'display':'inline', 'position':'float'}} >
+							<ProductCategoryRow category={'Popularity'}/>
+									{this.state.popularity.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+						</div>
+			</div>
+		)
 	}
 }
 

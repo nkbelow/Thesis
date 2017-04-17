@@ -16,7 +16,7 @@ class ParkView extends React.Component {
       })
       .then(res => {
         this.setState({ park: res.data[1][0], activities: res.data[0]});
-        }).then()
+        })
       .catch(err => console.log(err))
 
   }
