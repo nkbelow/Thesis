@@ -32,7 +32,7 @@ module.exports = function (db) {
 			); \
 		')
 	}).then(function() {
-		console.log('start trails table')
+			console.log('start trails table')
 			return db.query (' \
 				CREATE TABLE IF NOT EXISTS trails ( \
 				id SERIAL PRIMARY KEY, \
@@ -50,8 +50,8 @@ module.exports = function (db) {
 				); \
 			')
 		}).then(function () {
-		console.log('start lodging table')
-		return db.query('\
+			console.log('start lodging table')
+			return db.query('\
 				CREATE TABLE IF NOT EXISTS lodging ( \
 				id SERIAL PRIMARY KEY, \
 				name VARCHAR(255), \
@@ -59,16 +59,16 @@ module.exports = function (db) {
 				); \
 			')
 		}).then(function () {
-		console.log('start activities table')
-		return db.query('\
+			console.log('start activities table')
+			return db.query('\
 				CREATE TABLE IF NOT EXISTS activities ( \
 				id INTEGER PRIMARY KEY, \
 				activity VARCHAR(255) \
 				); \
 			')
 		}).then(function () {
-		console.log('start activities_parks table')
-		return db.query('\
+			console.log('start activities_parks table')
+			return db.query('\
 				CREATE TABLE IF NOT EXISTS activities_parks ( \
 				park_id INTEGER NOT NULL, \
 				activity_id INTEGER NOT NULL \
