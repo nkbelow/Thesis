@@ -102,7 +102,7 @@ export default class MapBox extends Component {
 
               </Marker>
             ))           
-          } 
+          }           
 
       { this.state.popup && 
       

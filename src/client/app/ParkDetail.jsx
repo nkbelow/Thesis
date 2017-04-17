@@ -10,15 +10,28 @@ class ParkDetail extends React.Component {
     super(props);
     this.state = {
       tenDayForecast: null,
-      climate: null
+      climate: null,
+      lodgings: null
     }
     this.getTenDayForecast = this.getTenDayForecast.bind(this);
     // this.getMonthlyClimate = this.getMonthlyClimate.bind(this);
     let climate = null;
   }
+
   componentDidMount() {
     this.getTenDayForecast(this.props.park.latitude, this.props.park.longitude);
+    Axios.get('/api/park/lodgings', {
+      params: {
+        lat: this.props.park.latitude,
+        lon: this.props.park.longitude
+      }
+    })
+    .then(res => {
+      this.setState({lodgings: res.data});
+    })
+    .catch(err => console.log(err));
   }
+
   getTenDayForecast(latitude, longitude) {
     let config = {
       url: '/api/park/tenDayForecast',
@@ -36,6 +49,7 @@ class ParkDetail extends React.Component {
       console.log(err);
     })
   }
+
   getMonthlyClimate(latitude, longitude) {
     let config = {
       url: '/api/park/climate',
@@ -57,7 +71,7 @@ class ParkDetail extends React.Component {
   render() {
     return(
       <div>
-        <ParkMapView lat={this.props.park.latitude} lon={this.props.park.longitude} campgrounds={this.props.campgrounds} />
+        <ParkMapView lat={this.props.park.latitude} lon={this.props.park.longitude} campgrounds={this.props.campgrounds} lodgings={this.state.lodgings}/>
            <h1 className='parkname'>{this.props.park.name}</h1>
         <h3>{this.props.park.description}</h3>
         <div className='container'>
