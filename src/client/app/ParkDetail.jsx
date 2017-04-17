@@ -12,15 +12,28 @@ class ParkDetail extends React.Component {
     super(props);
     this.state = {
       tenDayForecast: null,
-      climate: null
+      climate: null,
+      lodgings: null
     }
     this.getTenDayForecast = this.getTenDayForecast.bind(this);
     // this.getMonthlyClimate = this.getMonthlyClimate.bind(this);
     let climate = null;
   }
+
   componentDidMount() {
     this.getTenDayForecast(this.props.park.latitude, this.props.park.longitude);
+    Axios.get('/api/park/lodgings', {
+      params: {
+        lat: this.props.park.latitude,
+        lon: this.props.park.longitude
+      }
+    })
+    .then(res => {
+      this.setState({lodgings: res.data});
+    })
+    .catch(err => console.log(err));
   }
+
   getTenDayForecast(latitude, longitude) {
     let config = {
       url: '/api/park/tenDayForecast',
@@ -38,6 +51,7 @@ class ParkDetail extends React.Component {
       console.log(err);
     })
   }
+
   getMonthlyClimate(latitude, longitude) {
     let config = {
       url: '/api/park/climate',
