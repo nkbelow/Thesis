@@ -3,7 +3,7 @@ import ProductCategoryRow from './ProductCategoryRow.jsx';
 import FilterRow from './FilterRow.jsx';
 import axios from 'axios';
 import Promise from 'bluebird';
-import {List} from 'semantic-ui-react';
+import { Sidebar, Segment, Button, Menu, Image, Icon, Header, List, Accordion } from 'semantic-ui-react';
 
 class Filter extends React.Component {
 	constructor (props) {
@@ -40,13 +40,60 @@ class Filter extends React.Component {
 									],
 			popularity: ['Most Visited', 
 									'Least Visited'],
-			parks: []
+			parks: [],
+			visible: false
 		}
 	}
 
+  toggleVisibility() {
+    this.setState({ visible: !this.state.visible })
+  }
+
 	render () {
 		return (
-			<div className='container-fluid'>
+			<div>
+			   <Button onClick={this.toggleVisibility.bind(this)}>Toggle Visibility</Button>
+        <Sidebar.Pushable as={Segment}>
+          <Sidebar as={Menu} animation='push' width='thin' visible={this.state.visible} icon='labeled' vertical inverted>
+            <Menu.Item name='home'>
+              <List>
+              <List.Header>Activities</List.Header>
+              {this.state.activities1.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+              </List>
+              <Accordion>
+    <Accordion.Title>
+      <Icon name='dropdown' />
+      See All Activities
+    </Accordion.Title>
+    <Accordion.Content>
+    	{this.state.activities2.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+    	{this.state.activities3.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+    	{this.state.activities4.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+    </Accordion.Content>
+    </Accordion>
+            </Menu.Item>
+            <Menu.Item name='gamepad'>
+              <Icon name='gamepad' />
+              Games
+            </Menu.Item>
+            <Menu.Item name='camera'>
+              <Icon name='camera' />
+              Channels
+            </Menu.Item>
+          </Sidebar>
+          <Sidebar.Pusher>
+          <Segment basic>
+          </Segment> 
+          </Sidebar.Pusher>
+        </Sidebar.Pushable>
+        </div>
+
+		)
+	}
+}
+
+
+			/*<div className='container-fluid'>
 			<div className='row'>
 			<div className='col-md-2'>
 			<List>
@@ -79,9 +126,6 @@ class Filter extends React.Component {
 			</List>
 			</div>
 			 </div> 
-			 </div>
-		)
-	}
-}
+			 </div>*/
 
 export default Filter;
