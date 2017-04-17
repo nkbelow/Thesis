@@ -29,6 +29,8 @@ app.get('/api/parks', (req, res) => {
 })
 
 app.post('/api/park/tenDayForecast', tenDayForecast.getForecast);
+	// res.send(data.ourNationalParks);
+});
 
 app.get('/api/park/', (req, res) => {
 	individualParkData(req.query.parkcode)
