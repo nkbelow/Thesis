@@ -925,6 +925,6 @@ let ourNationalParks = [ { states: 'ME',
     // console.log(ourNationalParks);
 
     module.exports = {
-        ourNationalParks: ourNationalParks
+        ourNationalParks: ourNationalParks,
         storeParks: storeParks
     };
