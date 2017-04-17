@@ -23,32 +23,32 @@ app.get('/api/parks', (req, res) => {
 		res.status(201).send(result)
 	})
 	.catch((err) => {
-		res.send(data.ourNationalParks);
+		res.send(data.ourNationalParks)
 		// res.status(404).send(err + 'there was an error');
 	})
-});
+})
 
 app.post('/api/park/tenDayForecast', tenDayForecast.getForecast);
 
 app.get('/api/park/', (req, res) => {
-	console.log('this is the req', req)
 	individualParkData(req.query.parkcode)
 	.then((data) => {
 		let park = data;
 		res.status(200).send(data);
-	});
+	})
 })
 
 app.get('/api/campgrounds', (req, res) => {
 	campgroundsData(req.query.parkId)
-.then((data) => {
-		res.status(203).send(data)
-});
+	.then((data) => {
+			res.status(203).send(data)
+	})
+})
 
 app.get('/filterparks', (req, res) => {
 	filters.activities(req.query.filteredActivities).then((response) => {
 		res.status(200).send(response);
-	});
+	})
 })
 
 app.get('*', (req, res) => {
@@ -57,6 +57,6 @@ app.get('*', (req, res) => {
 
 app.listen(port, () => {
   console.log('App is listening to port ' + port);
-});
+})
 
 module.exports = app;
