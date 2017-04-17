@@ -907,7 +907,7 @@ let ourNationalParks = [ { states: 'ME',
     const storeParks = function () {
     ourNationalParks.forEach((park) => {
       db.db.query('INSERT INTO parks(id, parkcode, name, description, latitude, longitude, visitors) VALUES($1, $2, $3, $4, $5, $6, $7)', [ park['id'], park['parkcode'], park['fullName'], park['description'], park['latitude'], park['longitude'], park['visitors']])   
-    }); 
+    });
 }
 
 // storeParks();
