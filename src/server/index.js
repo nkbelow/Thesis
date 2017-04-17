@@ -8,6 +8,8 @@ const db = require('../db/index.js');
 const data = require('../../data/ourNationalParks.js');
 const individualParkData = require('../db/models/getIndividualParksInfo.js');
 const tenDayForecast = require('./handlers/weatherHandlers/tenDayForecastHandler.js')
+const campgroundsData = require('../db/models/getCampgroundsInfo.js');
+
 
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
@@ -41,7 +43,12 @@ app.get('/api/park/', (req, res) => {
 	});
 })
 
-
+app.get('/api/campgrounds', (req, res) => {
+	campgroundsData(req.query.parkId)
+	.then((data) => {
+		res.status(203).send(data)
+	});
+})
 
 app.get('*', (req, res) => {
 	res.redirect('/');

@@ -5,7 +5,7 @@ import ParkDetail from './ParkDetail.jsx';
 class ParkView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {park: null, activities: null};
+    this.state = {park: null, activities: null, campgrounds: null};
   }
 
   componentDidMount(){
@@ -16,13 +16,32 @@ class ParkView extends React.Component {
       })
       .then(res => {
         this.setState({ park: res.data[1][0], activities: res.data[0]});
-        })
+        }).then()
       .catch(err => console.log(err))
+
   }
+
+    componentDidUpdate() {
+      if (this.state.park && this.state.campgrounds === null) {
+      axios.get('/api/campgrounds', {
+        params: {
+          parkId: this.state.park.id
+          }
+        })
+      .then(res => {
+        console.log(res)
+        this.setState({campgrounds: res.data})
+
+      })
+      .catch(err=> console.err(err))
+    }
+
+  }
+  
   render() {
     return(
     	<div>
-    		{ this.state.park !== null && <ParkDetail park={this.state.park} activities={this.state.activities} /> }
+    		{ this.state.park !== null && <ParkDetail park={this.state.park} activities={this.state.activities} campgrounds={this.state.campgrounds} /> }
     	</div>
     );
   }

@@ -1,164 +1,177 @@
-178,Devils Garden - Arches National Park,3,38,-109
-180,Chisos Basin - Big Bend National Park,5,29,-103
-177,Blackwoods - Acadia National Park,1,44,-68
-182,Cedar Pass - Badlands National Park,4,43,-101
-183,Rio Grande Village - Big Bend National Park,5,29,-102
-184,North Rim - Gunnison National Park,7,38,-107
-185,South Rim - Gunnison National Park,7,38,-107
-186,North - Bryce National Park,8,37,-112
-179,Seawall - Acadia National Park,1,44,-68
-181,Cottonwood - Big Bend National Park,5,29,-103
-187,Sunset - Bryce National Park,8,37,-112
-188,Squaw Flat - Canyonlands National Park,9,38,-109
-189,Willow Flat - Island in the Sky - Canyonlands National Park,9,38,-109
-190,Cathedral Valley - Capitol Reef National Park,10,38,-111
-191,Cedar Mesa - Capitol Reef National Park,10,38,-111
-192,Fruita - Capitol Reef National Park,10,38,-111
-193,Lost Creek - Crater Lake National Park,14,42,-122
-194,Furnace Creek - Death Valley National Park,16,36,-116
-196,Emigrant - Death Valley National Park,16,36,-117
-197,Mahogany Flat - Death Valley National Park,16,36,-117
-195,Mazama  - Crater Lake National Park,14,42,-122
-198,Mesquite Spring - Death Valley National Park,16,36,-117
-199,Panamint Springs,16,36,-117
-200,Stove Pipe Wells - Death Valley National Park,16,36,-117
-201,Sunset - Death Valley National Park,16,36,-116
-202,Texas Spring - Death Valley National Park,16,36,-116
-203,Thorndike - Death Valley National Park,16,36,-117
-204,Wildrose - Death Valley National Park,16,36,-117
-206,Savage River - Denali National Park,17,63,-149
-207,Teklanika  River - Denali National Park,17,63,-149
-205,Riley Creek - Denali National Park,17,63,-148
-209,Apgar - Glacier National Park,21,48,-113
-208,Flamingo - Everglades National Park,19,25,-80
-210,Long Pine Key - Everglades National Park,19,25,-80
-211,Avalanche Creek - Glacier National Park,21,48,-113
-212,Bowman Lake - Glacier National Park,21,48,-114
-213,Fish Creek - Glacier National Park,21,48,-113
-214,Kintla Lake - Glacier National Park,21,48,-114
-215,Many Glacier - Glacier National Park,21,48,-113
-216,Quartz Creek - Glacier National Park,21,48,-114
-217,Rising Sun - Glacier National Park,21,48,-113
-218,Sprague Creek - Glacier National Park,21,48,-113
-219,St. Mary Lake - Glacier National Park,21,48,-113
-220,Two Medicine - Glacier National Park,21,48,-113
-221,Desert View - Grand Canyon National Park,23,36,-111
-222,Mather - Grand Canyon National Park,23,36,-112
-223,North Rim - Grand Canyon National Park,23,36,-112
-224,Colter Bay - Grand Teton National Park,24,43,-110
-225,Gros Ventre - Grand Teton National Park,24,43,-110
-226,Jenny Lake - Grand Teton National Park,24,43,-110
-227,Trailer Village - Grand Canyon National Park,23,36,-112
-228,Lizard Creek - Grand Teton National Park,24,44,-110
-229,Signal Mountain - Grand Teton National Park,24,43,-110
-230,Baker Creek - Great Basin National Park,25,38,-114
-231,Lower Lehman  - Great Basin National Park,25,39,-114
-232,Upper Lehman  - Great Basin National Park,25,39,-114
-234,Pinyon Flats - Sand Dunes National Monument,26,37,-105
-235,Balsam Mountain - Great Smoky Mountains,27,35,-83
-233,Wheeler Peak - Great Basin National Park,25,39,-114
-236,Big Creek - Great Smoky Mountains,27,35,-83
-237,Cataloochee - Great Smoky Mountains,27,35,-83
-238,Deep Creek - Great Smoky Mountains,27,35,-83
-239,Smokemont - Smoky Mountains National Park,27,35,-83
-241,Cades Cove  - Great Smoky Mountains National Park,27,35,-83
-242,Cosby - Great Smoky Mountains National Park,27,35,-83
-240,Abrams Creek - Great Smoky Mountains National Park,27,35,-83
-243,Elkmont - Great Smoky Mountains National Park,27,35,-83
-244,Look Rock - Great Smoky Mountains National Park,27,35,-83
-245,Dog Canyon  - Guadalupe Mountains National Park,28,31,-104
-246,Pine Springs - Guadalupe Mountains National Park,28,31,-104
-247,Holua Dispersed - Haleakala National Park - Maui,29,20,-156
-248,Hosmer Grove  - Haleakala National Park - Maui,29,20,-156
-249,Namakani Paio - Hawaii Volcanoes National Park,30,19,-155
-250,Gulpha Gorge - Hot Springs National Park,31,34,-93
-251,Belle - Joshua Tree National Park,33,34,-116
-252,Black Rock Canyon - Joshua Tree National Park,33,34,-116
-253,Cottonwood - Joshua Tree National Park,33,33,-115
-254,Indian Cove - Joshua Tree National Park,33,34,-116
-256,Jumbo Rocks - Joshua Tree National Park,33,33,-116
-255,Hidden Valley - Joshua Tree National Park,33,34,-116
-257,Ryan - Joshua Tree National Park,33,33,-116
-258,White Tank - Joshua Tree National Park,33,33,-116
-259,Azalea - Sequoia and Kings Canyon National Park,36,36,-118
-260,Canyon View - Sequoia and Kings Canyon National Park,36,36,-118
-261,Moraine - Kings Canyon National Park,36,36,-118
-265,Crags - Lassen Volcanic National Park,39,40,-121
-272,Mammoth Cave - Mammoth Cave National Park,40,37,-86
-282,Elwha - Olympic National Park,44,48,-123
-294,Gold Bluffs Beach - Prarie Creek Redwoods State Park,47,41,-124
-303,Buckeye Flat - Sequoia National Park,50,36,-118
-313,Cottonwood - Theodore Roosevelt National Park,52,46,-103
-324,Norris - Yellowstone National Park,57,44,-110
-334,Tamarack Flat - Yosemite National Park,58,37,-119
-266,Juniper Lake - Lassen Volcanic National Park,39,40,-121
-273,Cougar Rock - Mount Rainier National Park,42,46,-121
-284,Fairholm - Olympic National Park,44,48,-123
-292,Pinnacles,46,36,-121
-305,Dorst  Creek - Sequoia National Park,50,36,-118
-315,Bridge Bay - Yellowstone National Park,57,44,-110
-326,Slough Creek - Yellowstone National Park,57,44,-110
-267,Manzanita Lake - Lassen Volcanic National Park,39,40,-121
-274,Morefield - Mesa Verde National Park,41,37,-108
-285,Heart O The Hills - Olympic National Park,44,48,-123
-295,Jedediah Smith Redwoods State Park,47,41,-124
-308,South Fork - Sequoia National Park,50,36,-118
-316,Canyon - Yellowstone National Park,57,44,-110
-327,Tower Falls - Yellowstone National Park,57,44,-110
-332,Porcupine Flat - Yosemite National Park,58,37,-119
-268,Southwest - Lassen Volcanic National Park,39,40,-121
-276,Mowich Lake - Mount Rainier National Park,42,46,-121
-287,Mora - Olympic National Park,44,47,-124
-298,Glacier Basin - Rocky Mountain National Park,48,40,-105
-301,Moraine Park,48,40,-105
-318,Elk Mountain  - Wind Cave National Park,55,43,-103
-328,Bridalveil Creek - Yosemite National Park,58,37,-119
-340,Yosemite Creek - Yosemite National Park,58,37,-119
-269,Warner Valley - Lassen Volcanic National Park,39,40,-121
-275,Ipsut Creek - Mount Rainier National Park,42,46,-121
-283,Graves Creek,44,47,-123
-293,Elk Prairie  - Prairie Creek Redwoods State Park,47,41,-124
-300,Timber Creek - Rocky Mountain National Park,48,40,-105
-311,Lewis Mountain - Shenandoah National Park,51,38,-78
-319,Grant - Yellowstone National Park,57,44,-110
-329,Crane Flat - Yosemite National Park,58,37,-119
-335,Tuolumne Meadows - Yosemite National Park,58,37,-119
-270,Houchins Ferry  - Mammoth Cave National Park,40,37,-86
-277,Ohanapecosh - Mount Rainier National Park,42,46,-121
-286,Kalaloch - Olympic National Park,44,47,-124
-296,Mill Creek - Del Norte Coast Redwoods State Park,47,41,-124
-306,Lodgepole - Sequoia National Park,50,36,-118
-312,Mathews Arm - Shenandoah National Park,51,38,-78
-323,Madison - Yellowstone National Park,57,44,-110
-336,Upper Pines - Yosemite National Park,58,37,-119
-271,Summit Lake (north and south) - Lassen Volcanic National Park,39,40,-121
-278,White River - Mount Rainier National Park,42,46,-121
-290,Queets,44,47,-124
-302,Atwell Mill - Sequoia National Park,50,36,-118
-310,Loft Mountain - Shenandoah National Park,51,38,-78
-320,Indian Creek - Yellowstone National Park,57,44,-110
-331,Hodgdon Meadow - Yosemite National Park,58,37,-119
-337,Upper River - Yosemite National Park,58,37,-119
-263,Sheep Creek - Kings Canyon National Park,36,36,-118
-279,Altaire - Olympic National Park,44,48,-123
-289,Sol Duc - Olympic National Park,44,47,-123
-297,Aspenglen - Rocky Mountain National Park,48,40,-105
-307,Potwisha - Sequoia National Park,50,36,-118
-317,Fishing Bridge RV - Yellowstone National Park,57,44,-110
-325,Pebble Creek - Yellowstone National Park,57,44,-110
-339,White Wolf - Yosemite National Park,58,37,-119
-264,Butte Lake - Lassen Volcanic National Park,39,40,-121
-281,Dosewallips,44,47,-123
-291,Staircase - Olympic National Park,44,47,-123
-304,Cold Springs - Sequoia National Park,50,36,-118
-314,Juniper - Theodore Roosevelt National Park,52,47,-103
-322,Mammoth - Yellowstone National Park,57,44,-110
-333,North Pines - Yosemite National Park,58,37,-119
-262,Sentinel - Sequoia and Kings Canyon National Park,36,36,-118
-280,Deer Park - Olympic National Park,44,47,-123
-288,Ozette - Olympic National Park,44,48,-124
-299,Longs Peak - Rocky Mountain National Park,48,40,-105
-309,Big Meadows - Shenandoah National Park,51,38,-78
-321,Lewis Lake - Yellowstone National Park,57,44,-110
-330,Lower Pines - Yosemite National Park,58,37,-119
-338,Wawona  - Yosemite National Park,58,37,-119
+id,name,park_id,latitude,longitude
+5,Cottonwood - Big Bend National Park,5,29.137,-103.523
+4,Rio Grande Village - Big Bend National Park,5,29.181,-102.956
+3,South Rim - Gunnison National Park,7,38.544,-107.688
+1,Chisos Basin - Big Bend National Park,5,29.276,-103.303
+2,North - Bryce National Park,8,37.638,-112.168
+8,Seawall - Acadia National Park,1,44.241,-68.306
+7,North Rim - Gunnison National Park,7,38.586,-107.709
+11,Sunset - Bryce National Park,8,37.622,-112.175
+14,Cathedral Valley - Capitol Reef National Park,10,38.476,-111.368
+15,Cedar Mesa - Capitol Reef National Park,10,38.007,-111.085
+12,Squaw Flat - Canyonlands National Park,9,38.147,-109.801
+18,Mazama  - Crater Lake National Park,14,42.866,-122.165
+20,Furnace Creek - Death Valley National Park,16,36.463,-116.869
+21,Mahogany Flat - Death Valley National Park,16,36.231,-117.068
+23,Panamint Springs,16,36.339,-117.467
+24,Stove Pipe Wells - Death Valley National Park,16,36.607,-117.147
+25,Sunset - Death Valley National Park,16,36.46,-116.863
+27,Thorndike - Death Valley National Park,16,36.237,-117.071
+29,Riley Creek - Denali National Park,17,63.73,-148.894
+30,Savage River - Denali National Park,17,63.74,-149.294
+31,Teklanika  River - Denali National Park,17,63.671,-149.576
+32,Flamingo - Everglades National Park,19,25.137,-80.943
+34,Apgar - Glacier National Park,21,48.528,-113.977
+36,Bowman Lake - Glacier National Park,21,48.829,-114.203
+38,Kintla Lake - Glacier National Park,21,48.936,-114.346
+39,Many Glacier - Glacier National Park,21,48.798,-113.674
+41,Rising Sun - Glacier National Park,21,48.696,-113.519
+43,St. Mary Lake - Glacier National Park,21,48.751,-113.446
+46,Mather - Grand Canyon National Park,23,36.05,-112.12
+44,Two Medicine - Glacier National Park,21,48.486,-113.367
+45,Desert View - Grand Canyon National Park,23,36.039,-111.823
+48,Trailer Village - Grand Canyon National Park,23,36.053,-112.113
+50,Jenny Lake - Grand Teton National Park,24,43.754,-110.72
+51,Gros Ventre - Grand Teton National Park,24,43.616,-110.667
+52,Lizard Creek - Grand Teton National Park,24,44.002,-110.689
+54,Baker Creek - Great Basin National Park,25,38.987,-114.24
+55,Lower Lehman  - Great Basin National Park,25,39.017,-114.238
+57,Wheeler Peak - Great Basin National Park,25,39.011,-114.303
+58,Pinyon Flats - Sand Dunes National Monument,26,37.745,-105.505
+61,Cataloochee - Great Smoky Mountains,27,35.632,-83.087
+62,Deep Creek - Great Smoky Mountains,27,35.461,-83.436
+63,Smokemont - Smoky Mountains National Park,27,35.553,-83.309
+64,Abrams Creek - Great Smoky Mountains National Park,27,35.611,-83.934
+66,Cosby - Great Smoky Mountains National Park,27,35.752,-83.21
+67,Elkmont - Great Smoky Mountains National Park,27,35.659,-83.586
+70,Pine Springs - Guadalupe Mountains National Park,28,31.896,-104.827
+71,Holua Dispersed - Haleakala National Park - Maui,29,20.753,-156.229
+73,Namakani Paio - Hawaii Volcanoes National Park,30,19.425,-155.296
+74,Gulpha Gorge - Hot Springs National Park,31,34.525,-93.036
+76,Black Rock Canyon - Joshua Tree National Park,33,34.076,-116.388
+77,Cottonwood - Joshua Tree National Park,33,33.748,-115.825
+78,Hidden Valley - Joshua Tree National Park,33,34.017,-116.163
+79,Indian Cove - Joshua Tree National Park,33,34.094,-116.158
+81,Ryan - Joshua Tree National Park,33,33.983,-116.155
+82,White Tank - Joshua Tree National Park,33,33.984,-116.016
+84,Canyon View - Sequoia and Kings Canyon National Park,36,36.788,-118.666
+85,Moraine - Kings Canyon National Park,36,36.786,-118.661
+87,Sheep Creek - Kings Canyon National Park,36,36.792,-118.679
+89,Crags - Lassen Volcanic National Park,39,40.563,-121.52
+90,Juniper Lake - Lassen Volcanic National Park,39,40.451,-121.294
+91,Manzanita Lake - Lassen Volcanic National Park,39,40.531,-121.561
+93,Summit Lake (north and south) - Lassen Volcanic National Park,39,40.494,-121.425
+94,Warner Valley - Lassen Volcanic National Park,39,40.442,-121.394
+95,Houchins Ferry  - Mammoth Cave National Park,40,37.202,-86.237
+100,Mowich Lake - Mount Rainier National Park,42,46.939,-121.862
+97,Morefield - Mesa Verde National Park,41,37.302,-108.42
+101,Ohanapecosh - Mount Rainier National Park,42,46.734,-121.569
+98,Cougar Rock - Mount Rainier National Park,42,46.767,-121.796
+103,Altaire - Olympic National Park,44,48.012,-123.594
+104,Deer Park - Olympic National Park,44,47.949,-123.256
+106,Elwha - Olympic National Park,44,48.028,-123.588
+107,Fairholm - Olympic National Park,44,48.068,-123.915
+109,Heart O The Hills - Olympic National Park,44,48.035,-123.427
+110,Kalaloch - Olympic National Park,44,47.61,-124.375
+111,Mora - Olympic National Park,44,47.918,-124.608
+112,Ozette - Olympic National Park,44,48.153,-124.668
+114,Sol Duc - Olympic National Park,44,47.965,-123.855
+115,Staircase - Olympic National Park,44,47.515,-123.328
+116,Pinnacles,46,36.499,-121.141
+118,Gold Bluffs Beach - Prarie Creek Redwoods State Park,47,41.396,-124.068
+119,Jedediah Smith Redwoods State Park,47,41.796,-124.086
+121,Aspenglen - Rocky Mountain National Park,48,40.4,-105.594
+123,Longs Peak - Rocky Mountain National Park,48,40.275,-105.559
+124,Moraine Park,48,40.358,-105.6
+125,Timber Creek - Rocky Mountain National Park,48,40.379,-105.852
+126,Atwell Mill - Sequoia National Park,50,36.464,-118.668
+9,Blackwoods - Acadia National Park,1,44.313,-68.214
+10,Devils Garden - Arches National Park,3,38.774,-109.586
+16,Fruita - Capitol Reef National Park,10,38.283,-111.249
+17,Lost Creek - Crater Lake National Park,14,42.879,-122.038
+19,Emigrant - Death Valley National Park,16,36.495,-117.227
+22,Mesquite Spring - Death Valley National Park,16,36.964,-117.367
+28,Wildrose - Death Valley National Park,16,36.266,-117.185
+35,Avalanche Creek - Glacier National Park,21,48.68,-113.819
+37,Fish Creek - Glacier National Park,21,48.548,-113.986
+42,Sprague Creek - Glacier National Park,21,48.607,-113.884
+49,Colter Bay - Grand Teton National Park,24,43.909,-110.642
+53,Signal Mountain - Grand Teton National Park,24,43.841,-110.615
+56,Upper Lehman  - Great Basin National Park,25,39.013,-114.254
+60,Big Creek - Great Smoky Mountains,27,35.753,-83.11
+65,Cades Cove  - Great Smoky Mountains National Park,27,35.604,-83.777
+69,Dog Canyon  - Guadalupe Mountains National Park,28,31.994,-104.834
+72,Hosmer Grove  - Haleakala National Park - Maui,29,20.768,-156.238
+80,Jumbo Rocks - Joshua Tree National Park,33,33.992,-116.061
+83,Azalea - Sequoia and Kings Canyon National Park,36,36.742,-118.966
+86,Sentinel - Sequoia and Kings Canyon National Park,36,36.792,-118.673
+92,Southwest - Lassen Volcanic National Park,39,40.437,-121.533
+96,Mammoth Cave - Mammoth Cave National Park,40,37.184,-86.097
+102,White River - Mount Rainier National Park,42,46.903,-121.641
+105,Dosewallips,44,47.737,-123.165
+113,Queets,44,47.626,-124.018
+117,Elk Prairie  - Prairie Creek Redwoods State Park,47,41.359,-124.03
+120,Mill Creek - Del Norte Coast Redwoods State Park,47,41.703,-124.097
+127,Buckeye Flat - Sequoia National Park,50,36.521,-118.764
+128,Cold Springs - Sequoia National Park,50,36.452,-118.611
+130,Lodgepole - Sequoia National Park,50,36.605,-118.728
+138,Juniper - Theodore Roosevelt National Park,52,47.594,-103.337
+140,Bridge Bay - Yellowstone National Park,57,44.535,-110.437
+141,Canyon - Yellowstone National Park,57,44.735,-110.488
+146,Madison - Yellowstone National Park,57,44.645,-110.861
+148,Norris - Yellowstone National Park,57,44.738,-110.695
+150,Pebble Creek - Yellowstone National Park,57,44.918,-110.115
+155,Lower Pines - Yosemite National Park,58,37.742,-119.571
+157,Porcupine Flat - Yosemite National Park,58,37.809,-119.566
+158,Tamarack Flat - Yosemite National Park,58,37.752,-119.737
+165,Yosemite Creek - Yosemite National Park,58,37.828,-119.595
+166,Canyon - Yellowstone National Park,59,44.735,-110.488
+167,Fishing Bridge RV - Yellowstone National Park,59,44.564,-110.369
+129,Dorst  Creek - Sequoia National Park,50,36.636,-118.811
+142,Fishing Bridge RV - Yellowstone National Park,57,44.564,-110.369
+160,Upper Pines - Yosemite National Park,58,37.735,-119.563
+173,Norris - Yellowstone National Park,59,44.738,-110.695
+131,Potwisha - Sequoia National Park,50,36.517,-118.801
+135,Loft Mountain - Shenandoah National Park,51,38.246,-78.669
+143,Grant - Yellowstone National Park,57,44.393,-110.563
+152,Bridalveil Creek - Yosemite National Park,58,37.663,-119.624
+161,Upper River - Yosemite National Park,58,37.743,-119.575
+169,Indian Creek - Yellowstone National Park,59,44.886,-110.736
+175,Slough Creek - Yellowstone National Park,59,44.948,-110.31
+133,Big Meadows - Shenandoah National Park,51,38.527,-78.439
+149,Slough Creek - Yellowstone National Park,57,44.948,-110.31
+159,Tuolumne Meadows - Yosemite National Park,58,37.871,-119.359
+174,Pebble Creek - Yellowstone National Park,59,44.918,-110.115
+134,Lewis Mountain - Shenandoah National Park,51,38.436,-78.477
+151,Tower Falls - Yellowstone National Park,57,44.891,-110.391
+168,Grant - Yellowstone National Park,59,44.393,-110.563
+137,Cottonwood - Theodore Roosevelt National Park,52,46.948,-103.528
+145,Lewis Lake - Yellowstone National Park,57,44.283,-110.627
+154,Hodgdon Meadow - Yosemite National Park,58,37.797,-119.868
+163,White Wolf - Yosemite National Park,58,37.873,-119.647
+171,Madison - Yellowstone National Park,59,44.645,-110.861
+139,Elk Mountain  - Wind Cave National Park,55,43.565,-103.492
+147,Mammoth - Yellowstone National Park,57,44.978,-110.693
+156,North Pines - Yosemite National Park,58,37.742,-119.567
+164,Bridge Bay - Yellowstone National Park,59,44.535,-110.437
+172,Mammoth - Yellowstone National Park,59,44.978,-110.693
+6,Cedar Pass - Badlands National Park,4,43.746,-101.948
+13,Willow Flat - Island in the Sky - Canyonlands National Park,9,38.383,-109.889
+26,Texas Spring - Death Valley National Park,16,36.459,-116.853
+33,Long Pine Key - Everglades National Park,19,25.417,-80.647
+40,Quartz Creek - Glacier National Park,21,48.722,-114.225
+47,North Rim - Grand Canyon National Park,23,36.211,-112.061
+59,Balsam Mountain - Great Smoky Mountains,27,35.566,-83.175
+68,Look Rock - Great Smoky Mountains National Park,27,35.639,-83.934
+75,Belle - Joshua Tree National Park,33,34.002,-116.02
+88,Butte Lake - Lassen Volcanic National Park,39,40.564,-121.304
+99,Ipsut Creek - Mount Rainier National Park,42,46.978,-121.83
+108,Graves Creek,44,47.573,-123.578
+122,Glacier Basin - Rocky Mountain National Park,48,40.33,-105.596
+132,South Fork - Sequoia National Park,50,36.35,-118.765
+136,Mathews Arm - Shenandoah National Park,51,38.751,-78.294
+144,Indian Creek - Yellowstone National Park,57,44.886,-110.736
+153,Crane Flat - Yosemite National Park,58,37.752,-119.795
+162,Wawona  - Yosemite National Park,58,37.547,-119.679
+170,Lewis Lake - Yellowstone National Park,59,44.283,-110.627
+176,Tower Falls - Yellowstone National Park,59,44.891,-110.391
