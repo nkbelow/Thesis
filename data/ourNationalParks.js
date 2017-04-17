@@ -910,7 +910,7 @@ let ourNationalParks = [ { states: 'ME',
     }); 
 }
 
-storeParks();
+// storeParks();
 
     //this assigns latitude and longitude properties to the park
 
@@ -926,5 +926,5 @@ storeParks();
 
     module.exports = {
         ourNationalParks: ourNationalParks
-        // storeParks: storeParks
+        storeParks: storeParks
     };
