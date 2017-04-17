@@ -74,4 +74,5 @@ module.exports = function (db) {
 				activity_id INTEGER NOT NULL \
 				); \
 			')
-})} 
+		})
+	} 

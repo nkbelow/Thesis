@@ -57,7 +57,7 @@ if (process.env.DATABASE_URL) {
 else {
   let db = pgp({
     database: database
-  });Ï
+  });
 
   module.exports.db = db;
 }

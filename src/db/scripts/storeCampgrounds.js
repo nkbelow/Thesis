@@ -14,8 +14,8 @@ exports.storeCampgrounds = function() {
 		if (park.campgrounds) {
 		for (campground of park.campgrounds) {
 		let name = campground.name
-		let lat = parseInt(campground.lat)
-		let lon = parseInt(campground.lon)
+		let lat = Number(campground.lat)
+		let lon = Number(campground.lon)
 		
 		let queryParameters = [name, park.parkCode, lat, lon]
         db.query('INSERT INTO campgrounds (name, park_id, latitude, longitude) VALUES ($1, (SELECT id FROM parks WHERE parkcode=$2), $3, $4)', queryParameters)
@@ -23,3 +23,5 @@ exports.storeCampgrounds = function() {
 }
 	}
 }
+
+exports.storeCampgrounds()

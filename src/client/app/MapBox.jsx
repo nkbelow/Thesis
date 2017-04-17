@@ -70,6 +70,7 @@ export default class MapBox extends Component {
 
 
 	render () {
+    console.log(this)
 		return (
 		<div>
 		<ReactMapboxGl
@@ -110,9 +111,9 @@ export default class MapBox extends Component {
                 offset={ [0, -35] }
                 >
                 <div>
-                  <h2>{this.state.popup.fullName}</h2>
-                  <Link to={`park/${this.state.popup.parkCode}/`}>
-                    <p>{this.state.popup.url}</p>
+                  <h2>{this.state.popup.name}</h2>
+                  <Link to={`park/${this.state.popup.parkcode}/`}>
+                    <p>Go to page</p>
                   </Link>
                   <p style={{color:"blue"}} onClick={this.removePopup.bind(this)}> Hide </p>
                 </div>
@@ -127,9 +128,3 @@ export default class MapBox extends Component {
     )
 	}
 }
- // <Cluster ClusterMarkerFactory={this.clusterMarker} clusterThreshold={100}>
-     //   <Layer
-     //  type="symbol"
-     //  id="marker">
-     //  <Feature coordinates={this.state.center}/>
-    	// </Layer>
