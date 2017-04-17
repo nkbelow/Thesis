@@ -1,4 +1,5 @@
 import React from 'react';
+import {List} from 'semantic-ui-react';
 
 class FilterRow extends React.Component {
   constructor (props) {
@@ -8,13 +9,13 @@ class FilterRow extends React.Component {
     }
     this.selectedStyle = {
       'font-family':'Helvetica Neue',
-      'fontSize': '20',
       'color': 'teal',
+      'font-weight': 'bold'
     };
     this.deSelectedStyle = {
       'font-family':'Helvetica Neue',
-      'fontSize': '20',
       'color': 'blue'
+
     }
   }
 
@@ -26,10 +27,10 @@ class FilterRow extends React.Component {
 
   render () {
     return (
-      <tr>
-      { this.state.selectedState === true && <td style={this.selectedStyle} onClick={this.handleClick.bind(this)}>{this.props.category}</td> }
-      { this.state.selectedState === false && <td style={this.deSelectedStyle} onClick={this.handleClick.bind(this)}>{this.props.category}</td> }
-      </tr>
+      <div>
+      { this.state.selectedState === true && <List.Item style={this.selectedStyle} onClick={this.handleClick.bind(this)}>{this.props.category}</List.Item> }
+      { this.state.selectedState === false && <List.Item style={this.deSelectedStyle} onClick={this.handleClick.bind(this)}>{this.props.category}</List.Item> }
+      </div>
     )
   }
 }
