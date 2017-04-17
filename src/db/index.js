@@ -15,7 +15,7 @@ if (process.env.DATABASE_URL) {
 } 
 else {
   let database = pgp({})
-
+  // check if database exists
   database.query('SELECT count(*) FROM pg_catalog.pg_database WHERE DATNAME = \'thesis\'').then(function (response) {
     
     const databaseExists = parseInt(response[0].count)
@@ -26,15 +26,17 @@ else {
       return databaseExists;
     }
 
+  // instantiate a new instance with the created database thesis
   }).then(function () {
 
-    db = pgp({database: databaseName})
-    return db;
-
+    return db = pgp({database: databaseName})
+  
+  // create tables, run script in other file (see above)
   }).then(function(db) {
 
     return createTables(db)
 
+  // instantiate final connection with the updated database
   }).then(function() {
 
     const connection = {
@@ -45,15 +47,17 @@ else {
         password: ''
     }
 
-    module.exports.db = pgp(connection);
-    pgp.end();
+    const db = pgp(connection);
+    module.exports.db = db;
+    return db
 
+  // run any scripts to store data
   }).then(function() {
 
       parks.ourNationalParks.forEach((park) => {
         db.query('INSERT INTO parks(id, parkcode, name, description, latitude, longitude, visitors) VALUES($1, $2, $3, $4, $5, $6, $7)', [ park['id'], park['parkcode'], park['fullName'], park['description'], park['latitude'], park['longitude'], park['visitors']])   
       });
-      
+
   })
 
 }
