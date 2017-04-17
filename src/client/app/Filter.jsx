@@ -3,6 +3,7 @@ import ProductCategoryRow from './ProductCategoryRow.jsx';
 import FilterRow from './FilterRow.jsx';
 import axios from 'axios';
 import Promise from 'bluebird';
+import {List} from 'semantic-ui-react';
 
 class Filter extends React.Component {
 	constructor (props) {
@@ -45,25 +46,40 @@ class Filter extends React.Component {
 
 	render () {
 		return (
-			<div>
-							<ProductCategoryRow category={'Activities'}/>
-								<div style={{'display':'inline', 'position':'float'}} >
-									{this.state.activities1.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
-								</div>
-								<div  style={{'display':'inline', 'position':'float', marginTop: 5}} >
-									{this.state.activities2.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
-								</div>
-								<div  style={{'display':'inline', 'position':'float', marginTop: 5}} >
-									{this.state.activities3.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
-								</div>
-								<div  style={{'display':'inline', 'position':'float', marginTop: 5}} >
-									{this.state.activities4.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
-								</div>
-						<div  style={{'display':'inline', 'position':'float'}} >
-							<ProductCategoryRow category={'Popularity'}/>
-									{this.state.popularity.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
-						</div>
+			<div className='container-fluid'>
+			<div className='row'>
+			<div className='col-md-2'>
+			<List>
+			<List.Header>Activities</List.Header>
+				{this.state.activities1.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+			</List>
 			</div>
+			<div className='col-md-2'>
+			<List>
+			<List.Header></List.Header>
+				{this.state.activities2.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+			</List>
+			</div>
+			<div className='col-md-2'>
+			<List>
+			<List.Header></List.Header>
+				{this.state.activities3.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+				</List>
+				</div>
+				<div className='col-md-2'>
+			 <List>
+			 <List.Header></List.Header>
+				{this.state.activities4.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+			 </List>
+			</div>
+			<div className='col-md-2'>
+			<List>
+			<List.Header>Popularity</List.Header>
+			{this.state.popularity.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+			</List>
+			</div>
+			 </div> 
+			 </div>
 		)
 	}
 }

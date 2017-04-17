@@ -58,9 +58,7 @@ class ParkDetail extends React.Component {
     return(
       <div>
         <ParkMapView lat={this.props.park.latitude} lon={this.props.park.longitude} campgrounds={this.props.campgrounds} />
-        <div>
-          <Link to='/'><h1>HOME</h1></Link> <h1 className='parkname'>{this.props.park.name}</h1>
-        </div>
+           <h1 className='parkname'>{this.props.park.name}</h1>
         <h3>{this.props.park.description}</h3>
         <div className='container'>
           <div className='row'>
@@ -72,6 +70,7 @@ class ParkDetail extends React.Component {
             </div>
           </div>
         </div>
+        <Link to='/'><h1>HOME</h1></Link>
       </div>
     );
   }

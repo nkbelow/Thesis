@@ -1,14 +1,17 @@
 import React from 'react';
+import {List} from 'semantic-ui-react';
 
 const ActivitiesList = (props) => {
   console.log(props.activities);
   return (
-    <ol>
+    <List>
         {props.activities.map((activity, i) => {
-          return <li key={i}>{activity.activity}</li> 
+          return <List.Item key={i}>
+                   <List.Content>{activity.activity}</List.Content>
+                 </List.Item> 
         })
       }
-    </ol>)
+    </List>)
 }
 
 export default ActivitiesList;

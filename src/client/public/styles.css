@@ -1,18 +1,11 @@
+td {
+  padding: 0px 15px 0px 15px;
+}
 
-/*This CSS is to make the google map on the single page view responsive*/
-.map-responsive{
-    overflow:hidden;
-    padding-bottom:56.25%;
-    position:relative;
-    height:0;
+th {
+  text-align: center;
 }
-.map-responsive iframe{
-    left:0;
-    top:0;
-    height:100%;
-    width:100%;
-    position:absolute;
-}
+
 .mapboxgl-map {
   margin: auto
 }
@@ -25,3 +18,4 @@
   font-weight: bold;
   font-size: 2em;
 }
+
