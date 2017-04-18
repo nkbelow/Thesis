@@ -32,26 +32,24 @@ module.exports = function (db) {
 			); \
 		')
 	}).then(function() {
-		console.log('start trails table')
+			console.log('start trails table')
 			return db.query (' \
 				CREATE TABLE IF NOT EXISTS trails ( \
 				id SERIAL PRIMARY KEY, \
-				name VARCHAR(50), \
-				city VARCHAR (25), \
-				state VARCHAR (25), \
+				name VARCHAR (100), \
+				city VARCHAR (50), \
+				state VARCHAR (50), \
 				latitude DOUBLE PRECISION, \
 				longitude DOUBLE PRECISION, \
 				length DOUBLE PRECISION, \
 				description VARCHAR (5000), \
-				directions VARCHAR (5000), \
-				activities VARCHAR (100) [], \
-				park_id INTEGER references parks(id), \
-				campground_id INTEGER references campgrounds(id) \
+				directions VARCHAR (3000), \
+				park_id INTEGER references parks(id) \
 				); \
 			')
 		}).then(function () {
-		console.log('start lodging table')
-		return db.query('\
+			console.log('start lodging table')
+			return db.query('\
 				CREATE TABLE IF NOT EXISTS lodging ( \
 				id SERIAL PRIMARY KEY, \
 				name VARCHAR(255), \
@@ -59,16 +57,16 @@ module.exports = function (db) {
 				); \
 			')
 		}).then(function () {
-		console.log('start activities table')
-		return db.query('\
+			console.log('start activities table')
+			return db.query('\
 				CREATE TABLE IF NOT EXISTS activities ( \
 				id INTEGER PRIMARY KEY, \
 				activity VARCHAR(255) \
 				); \
 			')
 		}).then(function () {
-		console.log('start activities_parks table')
-		return db.query('\
+			console.log('start activities_parks table')
+			return db.query('\
 				CREATE TABLE IF NOT EXISTS activities_parks ( \
 				park_id INTEGER NOT NULL, \
 				activity_id INTEGER NOT NULL \

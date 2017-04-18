@@ -1,9 +1,6 @@
-td {
-  padding: 0px 15px 0px 15px;
-}
 
-th {
-  text-align: center;
+.logout-link {
+  text-align: right;
 }
 
 .header-hidden {
