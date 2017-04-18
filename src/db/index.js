@@ -3,7 +3,7 @@ const createTables = require('./tablesConfig.js');
 const databaseName = 'thesis';
 const parks = require('../../data/ourNationalParks.js');
 const options = {
-	promiseLib: promise
+  promiseLib: promise
 };
 const pgp = require('pg-promise')(options);
 
@@ -15,7 +15,7 @@ if (process.env.DATABASE_URL) {
 } 
 else {
   let database = pgp({})
-  // check if database exists.
+  // check if database exists
   database.query('SELECT count(*) FROM pg_catalog.pg_database WHERE DATNAME = \'thesis\'').then(function (response) {
     
     const databaseExists = parseInt(response[0].count)
@@ -29,7 +29,7 @@ else {
   // instantiate a new instance with the created database thesis
   }).then(function () {
 
-    return db = pgp({database: databaseName})
+    return db = pgp({database: 'thesis'})
   
   // create tables, run script in other file (see above)
   }).then(function(db) {
@@ -52,27 +52,21 @@ else {
   //   module.exports.db = db;
   //   return db
 
-  // // run any scripts to store data
+  // // run any scripts to store data.
   // }).then(function(db) {
 
   //     parks.ourNationalParks.forEach((park) => {
   //       db.query('INSERT INTO parks(id, parkcode, name, description, latitude, longitude, visitors) VALUES($1, $2, $3, $4, $5, $6, $7)', [ park['id'], park['parkcode'], park['fullName'], park['description'], park['latitude'], park['longitude'], park['visitors']])   
   //     });
-
   // })
-
     const connection = {
-      host: 'localhost',
-      port: 5432,
-      database: databaseName,
-      user: '',
-      password: ''
+        host: 'localhost',
+        port: 5432,
+        database: 'thesis',
+        user: '',
+        password: ''
     }
 
     let db = pgp(connection);
     module.exports.db = db;
-    return db
-
 }
-
-

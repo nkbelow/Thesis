@@ -62,7 +62,7 @@ class App extends React.Component {
 
     		<h1>Nimble Newts Project </h1>
         {this.state.parks !== null && <SearchBar parks={this.state.parks}/>}
-        <Filter handleClick={this.handleFilterActivities.bind(this)} />
+        <Filter handleActivitiesClick={this.handleFilterActivities.bind(this)} />
         <MapView parks={this.state.filteredParks}/>
     		{this.state.parks !== null && <ParkList parks={this.state.filteredParks}/>}
     	</div>

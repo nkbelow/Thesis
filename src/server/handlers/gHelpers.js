@@ -34,7 +34,7 @@ const places = (location, radius, type) => {
     method: 'get',
     url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
     params: {
-      key: process.env.G_PLACES_API_KEY,
+      key: 'AIzaSyCCDdJR3V7_V8qEPKRQiEx_gqEu8olqELk',
       location: '' + location.lat + ',' + location.lng,
       radius: radius || '50000',
       type: type || 'lodging'

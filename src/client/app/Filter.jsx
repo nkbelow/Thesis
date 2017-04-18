@@ -58,7 +58,8 @@ class Filter extends React.Component {
             <Menu.Item name='home'>
               <List>
               <List.Header>Activities</List.Header>
-              {this.state.activities1.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+              {this.state.activities1.map((category) => <FilterRow onClick={
+              } category={category}/>)}
               </List>
               <Accordion>
     <Accordion.Title>
@@ -73,8 +74,10 @@ class Filter extends React.Component {
     </Accordion>
             </Menu.Item>
             <Menu.Item name='gamepad'>
-              <Icon name='gamepad' />
-              Games
+              <List>
+                <List.Header>Popularity</List.Header>
+                {this.state.popularity.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+              </List>
             </Menu.Item>
             <Menu.Item name='camera'>
               <Icon name='camera' />

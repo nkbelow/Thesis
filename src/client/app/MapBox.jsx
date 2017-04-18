@@ -70,7 +70,6 @@ export default class MapBox extends Component {
 
 
 	render () {
-    console.log(this)
 		return (
 		<div>
 		<ReactMapboxGl
@@ -86,7 +85,6 @@ export default class MapBox extends Component {
 		 
 		 {  this.props.parks &&
 		 	this.props.parks.map((park) => (
-		 		
               <Marker
                 key={park.id}
                 style={styles.marker}
@@ -102,7 +100,7 @@ export default class MapBox extends Component {
 
               </Marker>
             ))           
-          } 
+          }           
 
       { this.state.popup && 
       

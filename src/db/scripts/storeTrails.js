@@ -17,7 +17,7 @@ const storeTrails = function() {
         trail.lat = trail.lat || null;
         trail.lon = trail.lon || null;
         trail.activities = trail.activities || [{}];
-        trailLength = (!!trail.activities[0].length === false) ? null : trail.activities[0].length;
+        trailLength = (!!trail.activities[0].length === false) ? 0 : trail.activities[0].length;
         trailDescription = (!!trail.activities[0].description === false) ? null : trail.activities[0].description;
         trail.directions = trail.directions || null;
         park.parkCode = trail.directions || null;
