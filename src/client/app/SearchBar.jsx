@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import { Link } from 'react-router-dom'
 import Autosuggest from "react-autosuggest"
@@ -35,7 +33,7 @@ class SearchBar extends React.Component {
 
     const regex = new RegExp('^' + escapedValue, 'i');
 
-    return this.props.parks.filter(park => regex.test(park.fullName));
+    return this.props.parks.filter(park => regex.test(park.name));
   }
 
   getSuggestionValue(suggestion) {
@@ -44,8 +42,8 @@ class SearchBar extends React.Component {
 
   renderSuggestion(suggestion) {
     return (
-        <Link to={`park/${suggestion.parkCode}/`}>
-          <h5>{suggestion.fullName}</h5>
+        <Link to={`park/${suggestion.parkcode}/`}>
+          <h5>{suggestion.name}</h5>
         </Link>
     );
   }
