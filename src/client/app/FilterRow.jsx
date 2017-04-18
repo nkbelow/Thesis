@@ -12,12 +12,13 @@ class FilterRow extends React.Component {
       'color': 'teal',
       'font-weight': 'bold'
     };
-    this.deSelectedStyle = {
-      'font-family':'Helvetica Neue',
-      'color': 'blue'
+  //   this.deSelectedStyle = {
+  //     'font-family':'Helvetica Neue',
+  //     'color': 'blue'
 
-    }
-  }
+  //   }
+  // }
+}
 
   handleClick () {
     this.setState({selectedState: !this.state.selectedState}, function() {
@@ -27,10 +28,7 @@ class FilterRow extends React.Component {
 
   render () {
     return (
-      <div>
-      { this.state.selectedState === true && <List.Item style={this.selectedStyle} onClick={this.handleClick.bind(this)}>{this.props.category}</List.Item> }
-      { this.state.selectedState === false && <List.Item style={this.deSelectedStyle} onClick={this.handleClick.bind(this)}>{this.props.category}</List.Item> }
-      </div>
+      <List.Item style={this.selectedStyle} onClick={this.handleClick.bind(this)}>{this.props.category}</List.Item> 
     )
   }
 }
