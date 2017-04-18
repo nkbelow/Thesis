@@ -5,7 +5,7 @@ const trails = (location) => {
     method: 'get',
     url: 'https://trailapi-trailapi.p.mashape.com/',
     headers: {
-      'X-Mashape-Key': '1O1DB7fWiOmsh7FJ0yvH6iEWlXqgp1ljsptjsnD20PZKeY0p28',
+      'X-Mashape-Key': process.env.X_Mashape_Key,
     },
     params: {
       lat: location.lat,

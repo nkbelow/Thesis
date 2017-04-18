@@ -35,7 +35,7 @@ class ParkItem extends React.Component {
     return(
       <div style={this.containerStyle}>
         <Link to={`park/${this.props.park.parkcode}/`}>
-          <img style={this.imageStyle} src={'http://res.cloudinary.com/djzaih6fz/image/upload/' + this.props.park.parkcode + '.jpg'} />
+          <img style={this.imageStyle} src={'https://res.cloudinary.com/djzaih6fz/image/upload/' + this.props.park.parkcode + '.jpg'} />
           <h2 style={this.textStyle}>{this.props.park.name}</h2>
         </Link>
       </div>

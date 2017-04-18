@@ -9,6 +9,7 @@
     "WEATHER_UNDERGROUND_API_KEY": {
      "required": true 
     },
+  },
   "formation": {
   },
   "addons": [
