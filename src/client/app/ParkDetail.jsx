@@ -3,7 +3,9 @@ import Axios from 'axios';
 import ParkMapView from './singlePageMapView.jsx';
 import WeatherForecast from './tenDayForecastList.jsx'
 import ActivitiesList from './activitiesList.jsx';
+import SinglePageNavBar from './singlePageNavBar.jsx'
 import {Link} from 'react-router-dom'
+import {Message} from 'semantic-ui-react'
 // import Climate from 
 class ParkDetail extends React.Component {
   constructor(props) {
@@ -57,9 +59,15 @@ class ParkDetail extends React.Component {
   render() {
     return(
       <div>
+      <SinglePageNavBar />
         <ParkMapView lat={this.props.park.latitude} lon={this.props.park.longitude} campgrounds={this.props.campgrounds} />
-           <h1 className='parkname'>{this.props.park.name}</h1>
+        <h1 className='parkname'>{this.props.park.name}</h1>
+           <Message>
+           <Message.Header>
+           Park Description
+           </Message.Header>
         <h3>{this.props.park.description}</h3>
+        </Message>
         <div className='container'>
           <div className='row'>
             <div className='col-md-6'>
@@ -70,7 +78,6 @@ class ParkDetail extends React.Component {
             </div>
           </div>
         </div>
-        <Link to='/'><h1>HOME</h1></Link>
       </div>
     );
   }

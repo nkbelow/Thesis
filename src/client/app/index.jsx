@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom'
+import Filter from './Filter.jsx'
 
 import App from './App.jsx';
 import ParkView from './ParkView.jsx';
