@@ -19,19 +19,6 @@ class ParkView extends React.Component {
         })
       .catch(err => console.log(err));
 
-    // axios.get('/api/boundaries', {
-    //     params: {
-    //       parkcode: this.props.match.params.code
-    //     }
-    //   })
-    //     .then(res => {
-    //       console.log(res)
-    //       this.setState({boundaries: res.data})
-
-    //     })
-    //     .catch(err=> console.err(err))
-    //   }
-
   }
 
     componentDidUpdate() {
@@ -49,6 +36,7 @@ class ParkView extends React.Component {
 
     }
   }
+
   
   render() {
     return(
