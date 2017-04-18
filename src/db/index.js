@@ -15,7 +15,7 @@ if (process.env.DATABASE_URL) {
 } 
 else {
   let database = pgp({})
-  // check if database exists
+  // check if database exists.
   database.query('SELECT count(*) FROM pg_catalog.pg_database WHERE DATNAME = \'thesis\'').then(function (response) {
     
     const databaseExists = parseInt(response[0].count)
