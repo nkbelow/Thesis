@@ -65,10 +65,7 @@ class Filter extends React.Component {
       <Icon name='dropdown' />
       See All Activities
     </Accordion.Title>
-    <Accordion.Content>
-    	{this.state.activities2.map((category) => <FilterRow onClick={this.props.handleActivitiesClick} category={category}/>)}
-    	{this.state.activities3.map((category) => <FilterRow onClick={this.props.handleActivitiesClick} category={category}/>)}
-    	{this.state.activities4.map((category) => <FilterRow onClick={this.props.handleActivitiesClick} category={category}/>)}
+ 
     </Accordion.Content>
     </Accordion>
             </Menu.Item>
