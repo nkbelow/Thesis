@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+const parks = require('../../../data/parksAndBoundaries');
 
-import ReactMapboxGl, { Layer, Feature, Marker } from "react-mapbox-gl";
+
+import ReactMapboxGl, { Layer, Feature, Marker, GeoJSONLayer } from "react-mapbox-gl";
 
 const styles = {
   marker: {
@@ -18,6 +20,7 @@ const styles = {
 
 
 const Map = (props) => {
+  let boundary = {"type":"Feature", "geometry": {"type": "Polygon", "coordinates": parks.parks[props.id-1].boundaries}};
   return (
     <div>
     <ReactMapboxGl
@@ -47,6 +50,10 @@ const Map = (props) => {
           </Marker>
       ))
     }
+    <GeoJSONLayer
+          data={boundary}
+          lineLayout={{visibility:"visible"}}/>
+
   </ReactMapboxGl>
   </div>
   )
