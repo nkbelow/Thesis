@@ -58,7 +58,7 @@ class Filter extends React.Component {
             <Menu.Item name='home'>
               <List>
               <List.Header>Activities</List.Header>
-              {this.state.activities1.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+              {this.state.activities1.map((category) => <FilterRow onClick={this.props.handleActivitiesClick} category={category}/>)}
               </List>
               <Accordion>
     <Accordion.Title>
@@ -66,16 +66,16 @@ class Filter extends React.Component {
       See All Activities
     </Accordion.Title>
     <Accordion.Content>
-    	{this.state.activities2.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
-    	{this.state.activities3.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
-    	{this.state.activities4.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+    	{this.state.activities2.map((category) => <FilterRow onClick={this.props.handleActivitiesClick} category={category}/>)}
+    	{this.state.activities3.map((category) => <FilterRow onClick={this.props.handleActivitiesClick} category={category}/>)}
+    	{this.state.activities4.map((category) => <FilterRow onClick={this.props.handleActivitiesClick} category={category}/>)}
     </Accordion.Content>
     </Accordion>
             </Menu.Item>
             <Menu.Item name='gamepad'>
               <List>
                 <List.Header>Popularity</List.Header>
-                {this.state.popularity.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+                {this.state.popularity.map((category) => <FilterRow onClick={this.props.handleActivitiesClick} category={category}/>)}
               </List>
             </Menu.Item>
             <Menu.Item name='camera'>
@@ -100,31 +100,31 @@ class Filter extends React.Component {
 			<div className='col-md-2'>
 			<List>
 			<List.Header>Activities</List.Header>
-				{this.state.activities1.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+				{this.state.activities1.map((category) => <FilterRow onClick={this.props.handleActivitiesClick} category={category}/>)}
 			</List>
 			</div>
 			<div className='col-md-2'>
 			<List>
 			<List.Header className='header-hidden'>PlaceHolder</List.Header>
-				{this.state.activities2.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+				{this.state.activities2.map((category) => <FilterRow onClick={this.props.handleActivitiesClick} category={category}/>)}
 			</List>
 			</div>
 			<div className='col-md-2'>
 			<List>
 			<List.Header className='header-hidden'>PlaceHolder</List.Header>
-				{this.state.activities3.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+				{this.state.activities3.map((category) => <FilterRow onClick={this.props.handleActivitiesClick} category={category}/>)}
 				</List>
 				</div>
 				<div className='col-md-2'>
 			 <List>
 			 <List.Header className='header-hidden'>PlaceHolder</List.Header>
-				{this.state.activities4.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+				{this.state.activities4.map((category) => <FilterRow onClick={this.props.handleActivitiesClick} category={category}/>)}
 			 </List>
 			</div>
 			<div className='col-md-2'>
 			<List>
 			<List.Header>Popularity</List.Header>
-			{this.state.popularity.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+			{this.state.popularity.map((category) => <FilterRow onClick={this.props.handleActivitiesClick} category={category}/>)}
 			</List>
 			</div>
 			 </div> 
