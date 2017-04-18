@@ -5,8 +5,10 @@
   "env": {
     "DATABASE_URL": {
       "required": true
-    }
-  },
+    },
+    "WEATHER_UNDERGROUND_API_KEY": {
+     "required": true 
+    },
   "formation": {
   },
   "addons": [
