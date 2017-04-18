@@ -51,6 +51,7 @@ else {
     let db = pgp(connection);
     module.exports.db = db;
     return db
+
   // run any scripts to store data
   }).then(function(db) {
 

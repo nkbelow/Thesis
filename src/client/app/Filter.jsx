@@ -58,7 +58,8 @@ class Filter extends React.Component {
             <Menu.Item name='home'>
               <List>
               <List.Header>Activities</List.Header>
-              {this.state.activities1.map((category) => <FilterRow onClick={this.props.handleClick} category={category}/>)}
+              {this.state.activities1.map((category) => <FilterRow onClick={
+              } category={category}/>)}
               </List>
               <Accordion>
     <Accordion.Title>
