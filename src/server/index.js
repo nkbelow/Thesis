@@ -9,6 +9,7 @@ const data = require('../../data/ourNationalParks.js');
 const filters = require('./handlers/filtersRequestHelper.js')
 const individualParkData = require('../db/models/getIndividualParksInfo.js');
 const tenDayForecast = require('./handlers/weatherHandlers/tenDayForecastHandler.js')
+const googleHelpers = require('./handlers/gHelpers.js')
 const campgroundsData = require('../db/models/getCampgroundsInfo.js');
 
 app.use('/', express.static(path.join(__dirname, '../client/public')));
@@ -29,6 +30,16 @@ app.get('/api/parks', (req, res) => {
 })
 
 app.post('/api/park/tenDayForecast', tenDayForecast.getForecast);
+	// res.send(data.ourNationalParks);
+
+
+app.get('/api/park/lodgings', (req, res) => {
+	googleHelpers.places({lat: req.query.lat, lng: req.query.lon})
+	.then((result) => {
+		console.log(result)
+		res.status(201).send(result);
+	})
+})
 
 app.get('/api/park/', (req, res) => {
 	individualParkData(req.query.parkcode)
