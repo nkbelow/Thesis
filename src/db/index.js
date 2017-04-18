@@ -52,7 +52,7 @@ else {
     module.exports.db = db;
     return db
 
-  // run any scripts to store data
+  // run any scripts to store data.
   }).then(function(db) {
 
       parks.ourNationalParks.forEach((park) => {
