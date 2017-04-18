@@ -28,6 +28,7 @@ else {
 
   // instantiate a new instance with the created database thesis
   }).then(function () {
+
     return db = pgp({database: 'thesis'})
   
   // create tables, run script in other file (see above)
@@ -37,36 +38,34 @@ else {
 
   // instantiate final connection with the updated database
   })
-  // .then(function() {
+  .then(function() {
 
-    // const connection = {
-    //     host: 'localhost',
-    //     port: 5432,
-    //     database: databaseName,
-    //     user: '',
-    //     password: ''
-    // }
-
-    // let db = pgp(connection);
-    // module.exports.db = db;
-    // return db
-
-  // // run any scripts to store data
-  // }).then(function(db) {
-
-  //     parks.ourNationalParks.forEach((park) => {
-  //       db.query('INSERT INTO parks(id, parkcode, name, description, latitude, longitude, visitors) VALUES($1, $2, $3, $4, $5, $6, $7)', [ park['id'], park['parkcode'], park['fullName'], park['description'], park['latitude'], park['longitude'], park['visitors']])   
-  //     });
-
-  // })
     const connection = {
         host: 'localhost',
         port: 5432,
-        database: 'thesis',
+        database: databaseName,
         user: '',
         password: ''
     }
 
     let db = pgp(connection);
     module.exports.db = db;
+    return db
+  // run any scripts to store data
+  }).then(function(db) {
+
+      parks.ourNationalParks.forEach((park) => {
+        db.query('INSERT INTO parks(id, parkcode, name, description, latitude, longitude, visitors) VALUES($1, $2, $3, $4, $5, $6, $7)', [ park['id'], park['parkcode'], park['fullName'], park['description'], park['latitude'], park['longitude'], park['visitors']])   
+      });
+  })
+    // const connection = {
+    //     host: 'localhost',
+    //     port: 5432,
+    //     database: 'thesis',
+    //     user: '',
+    //     password: ''
+    // }
+
+    // let db = pgp(connection);
+    // module.exports.db = db;
 }
