@@ -74,7 +74,7 @@ class ParkDetail extends React.Component {
     return(
       <div>
       <SinglePageNavBar />
-        <ParkMapView lat={this.props.park.latitude} lon={this.props.park.longitude} campgrounds={this.props.campgrounds} lodgings={this.state.lodgings}/>
+        <ParkMapView id = {this.props.park.id} lat={this.props.park.latitude} lon={this.props.park.longitude} campgrounds={this.props.campgrounds} lodgings={this.state.lodgings}/>
         <h1 className='parkname'>{this.props.park.name}</h1>
         <Message>
            <Message.Header>
