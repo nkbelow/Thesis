@@ -73,10 +73,7 @@ class Filter extends React.Component {
     </Accordion>
             </Menu.Item>
             <Menu.Item name='gamepad'>
-              <List>
-                <List.Header>Popularity</List.Header>
-                {this.state.popularity.map((category) => <FilterRow onClick={this.props.handleActivitiesClick} category={category}/>)}
-              </List>
+
             </Menu.Item>
             <Menu.Item name='camera'>
               <Icon name='camera' />
