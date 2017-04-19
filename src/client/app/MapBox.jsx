@@ -45,14 +45,7 @@ export default class MapBox extends Component {
   		};
 	}
 
-	toggleInfoWindow(id) {
-		let currentPopups = this.state.popups;
-		currentPopups[id] = !currentPopups[id];
-		this.setState({
-			popups: currentPopups
-		});
-		console.log(this.state)
-	}
+	
 
   addPopup (park) {
     this.setState({popup: park});
@@ -62,11 +55,7 @@ export default class MapBox extends Component {
     this.setState({popup: null});
   }
 
-  componentDidUpdate () {
-    this.props.parks.map((park) => {
-      park.visible = false;
-    })
-  }
+ 
 
 
 	render () {
