@@ -67,10 +67,10 @@ class App extends React.Component {
   render () {
     return (
     	<div>
-         <Button onClick={this.toggleVisibility.bind(this)}>Toggle Visibility</Button>
+        <Button onClick={this.toggleVisibility.bind(this)}>Toggle Visibility</Button>
         <Sidebar.Pushable as={Segment}>
           <Sidebar as={Menu} animation='push' width='thin' visible={!this.state.visible} icon='labeled' vertical inverted>
-          <SidebarFilters handleFilterActivities={this.handleFilterActivities.bind(this)} visible={!this.state.visible} />
+            <SidebarFilters handleFilterActivities={this.handleFilterActivities.bind(this)} visible={!this.state.visible} />
           </Sidebar>
           <Sidebar.Pusher>
           <Segment basic>
