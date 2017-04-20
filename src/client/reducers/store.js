@@ -6,7 +6,7 @@ import {individualPark} from './getParkReducer';
 
 export default function configureStore(initialState) {
     return createStore(
-        individualPark,
+        rootReducer,
         initialState,
         applyMiddleware(thunk, createLogger())
 
