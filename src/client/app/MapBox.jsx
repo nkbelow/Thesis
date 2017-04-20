@@ -26,51 +26,23 @@ const styles = {
   }
 }
 
-const clusterMarker = (coordinates) => (
-  <Marker coordinates={coordinates} style={styles.clusterMarker}>
-    C
-  </Marker>
-);
-
 export default class MapBox extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-    		center: [-98.5, 39],
-    		zoom: [1],
-    		skip: 0,
-   		 	popupShowLabel: true,
-   		 	parks: null,
-   		 	popup: null
-  		};
-	}
 
-	
-
-  addPopup (park) {
-    this.setState({popup: park});
-  }
-
-  removePopup () {
-    this.setState({popup: null});
-  }
-
- 
-
+  
 
 	render () {
 		return (
 		<div>
 		<ReactMapboxGl
 		  style="mapbox://styles/mapbox/streets-v8"
-          center={this.state.center}
-          zoom={this.state.zoom}
+          center={this.props.center}
+          zoom={this.props.zoom}
           accessToken={'pk.eyJ1IjoidHdhbGs0ODIxIiwiYSI6ImNqMWk3ajQ3YjAxazMyd28wbmxpeG5pOW0ifQ.pD4Uic9vRI0_fh0_XV0tCg'}
           containerStyle={{
 		        height: "80vh",
 		        width: "80vw"
 		      }}
-          onClick={this.removePopup.bind(this)}>
+          onClick={this.props.removePopup.bind(this)}>
 		 
 		 {  this.props.parks &&
 		 	this.props.parks.map((park) => (
@@ -78,7 +50,7 @@ export default class MapBox extends Component {
                 key={park.id}
                 style={styles.marker}
                 coordinates={[park.longitude, park.latitude]}
-                onClick={this.addPopup.bind(this, park)}>
+                onClick={this.props.addPopup.bind(this, park)}>
 
                 <img style= {{
                   maxHeight:'20px',
@@ -91,18 +63,18 @@ export default class MapBox extends Component {
             ))           
           }           
 
-      { this.state.popup && 
+      { this.props.popup && 
       
               <Popup
-                coordinates={[this.state.popup.longitude, this.state.popup.latitude]}
+                coordinates={[this.props.popup.longitude, this.props.popup.latitude]}
                 offset={ [0, -35] }
                 >
                 <div>
-                  <h2>{this.state.popup.name}</h2>
-                  <Link to={`park/${this.state.popup.parkcode}/`}>
+                  <h2>{this.props.popup.name}</h2>
+                  <Link to={`park/${this.props.popup.parkcode}/`}>
                     <p>Go to page</p>
                   </Link>
-                  <p style={{color:"blue"}} onClick={this.removePopup.bind(this)}> Hide </p>
+                  <p style={{color:"blue"}} onClick={this.props.removePopup.bind(this)}> Hide </p>
                 </div>
               </Popup>
       

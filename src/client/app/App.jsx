@@ -3,7 +3,7 @@ import FilterRow from './FilterRow.jsx'
 import ParkList from './ParkList.jsx';
 import ParkView from './ParkView.jsx';
 import SearchBar from './SearchBar.jsx';
-import MapView from './MapBox.jsx';
+import MapView from './filterMap.jsx';
 import axios from 'axios';
 import SidebarFilters from './sidebarFilters.jsx';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header, List, Accordion } from 'semantic-ui-react';

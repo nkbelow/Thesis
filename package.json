@@ -68,6 +68,7 @@
     "redux-logger": "^3.0.1",
     "redux-thunk": "^2.2.0",
     "semantic-ui-react": "^0.68.0",
+    "thunk": "0.0.1",
     "webpack": "^2.3.3",
     "xlsx": "^0.9.9"
   }
