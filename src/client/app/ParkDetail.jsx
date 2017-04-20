@@ -52,25 +52,26 @@ class ParkDetail extends React.Component {
     })
   }
 
-  getMonthlyClimate(latitude, longitude) {
-    let config = {
-      url: '/api/park/climate',
-      method: 'post',
-      data: {
-        latitude: latitude,
-        longitude: longitude,
-        date: climate
-      }
-    }
-    return Axios(config)
-    .then(data => {
-      this.setState({climate: data['data']})
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  }
+  // getMonthlyClimate(latitude, longitude) {
+  //   let config = {
+  //     url: '/api/park/climate',
+  //     method: 'post',
+  //     data: {
+  //       latitude: latitude,
+  //       longitude: longitude,
+  //       date: climate
+  //     }
+  //   }
+  //   return Axios(config)
+  //   .then(data => {
+  //     this.setState({climate: data['data']})
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   })
+  // }
   render() {
+    console.log('these are my campgrounds', this.props);
     return(
       <div>
       <SinglePageNavBar />

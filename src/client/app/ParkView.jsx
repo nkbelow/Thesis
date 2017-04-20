@@ -2,25 +2,30 @@ import React from 'react';
 import axios from 'axios';
 import ParkDetail from './ParkDetail.jsx';
 import {individualPark} from '../reducers/getParkReducer.js'
-import {getPark} from '../thunks/getPark.js';
+import {getPark} from '../actions/getPark.js';
 import {connect} from 'react-redux'
-import {getCampgrounds} from '../thunks/getCampgrounds.js'
+import {getCampgrounds} from '../actions/getCampgrounds.js'
 
 class ParkView extends React.Component {
   componentWillMount() {
     this.props.getPark(this.props.match.params.code)
   }
-  // componentDidMount() {
-  //   console.log('this fired');
-  //     console.log('this fired after')
-  //     this.props.getCampgrounds(this.props.park.id);
-  // }
+  componentDidUpdate() {
+    console.log(this.props.getCampgrounds.campgrounds, 'do you get null');
+    if (this.props.park && this.props.getCampgrounds.campgrounds == null) {
+    console.log('this fired');
+      console.log('this fired after')
+      console.log(this.props.park, 'the park');
+      this.props.getCampgrounds(this.props.park[1][0].id);
+    }
+  }
   
   render() {
+    console.log(this.props, 'props baby');
     return(
     	<div>
     		{ this.props.park && <ParkDetail park={this.props.park[1][0]}  activities={this.props.park[0]} 
-        campground={this.props.campgrounds} /> }
+        campgrounds={this.props.campgrounds} /> }
     	</div>
     );
   }
@@ -28,8 +33,8 @@ class ParkView extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-      park: state.individualPark,
-      campgrounds: state.campgrounds
+      park: state.individualPark.individualPark,
+      campgrounds: state.getCampgrounds.campgrounds
     }
   }
 
