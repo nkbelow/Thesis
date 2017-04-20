@@ -4,6 +4,7 @@ import {individualPark} from './getParkReducer';
 
 
 export default combineReducers( {
- getCampgrounds,
- individualPark
+ individualPark: individualPark,
+ getCampgrounds: getCampgrounds 
+ 
 });

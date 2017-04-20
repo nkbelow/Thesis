@@ -1,4 +1,4 @@
-import {campgrounds} from '../actions/actions.js';
+
 import axios from 'axios';
 
 export const getCampgrounds = (id) => {

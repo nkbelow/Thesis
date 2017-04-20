@@ -1,8 +1,8 @@
-export const getCampgrounds = (state = {}, action) => {
+export const getCampgrounds = (state = {} , action) => {
   switch (action.type) {
     case 'GET_CAMPGROUNDS':
     return Object.assign({}, state, 
-      {campgrounds: [action.campgrounds]
+      {campgrounds: action.campgrounds
     })
 
   default: 
