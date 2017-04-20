@@ -1,7 +1,8 @@
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import {createLogger} from 'redux-logger';
-import {individualPark} from './getParkReducer.js'
+import rootReducer from './combineReducers.js'
+import {individualPark} from './getParkReducer';
 
 export default function configureStore(initialState) {
     return createStore(
