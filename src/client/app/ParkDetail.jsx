@@ -85,7 +85,7 @@ class ParkDetail extends React.Component {
         <div className='container'>
           <div className='row'>
             <div className='col-md-6'>
-          <ActivitiesList activities={this.props.activities}/> 
+          <ActivitiesList activities={this.props.activities}/>
             </div>
             <div className='col-md-6'>
         { this.state.tenDayForecast && <WeatherForecast tenDayForecast={this.state.tenDayForecast} />}
