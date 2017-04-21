@@ -3,17 +3,6 @@ import ReactMapboxGl, { Layer, Feature, Popup, ZoomControl, Marker, Cluster } fr
 import { Link } from 'react-router-dom'
 
 const styles = {
-  clusterMarker: {
-    width: 15,
-    height: 15,
-    borderRadius: '50%',
-    backgroundColor: '#51D5A0',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: 'white',
-    border: '2px solid #56C498'
-  },
   marker: {
     width: 15,
     height: 15,
