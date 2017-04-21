@@ -3,54 +3,27 @@ import Axios from 'axios';
 import ParkMapView from './singlePageMapView.jsx';
 import WeatherForecast from './tenDayForecastList.jsx'
 import ActivitiesList from './activitiesList.jsx';
-import SinglePageNavBar from './singlePageNavBar.jsx'
+import SinglePageNavBar from './singlePageNavBar.jsx';
+import {getTenDayForecast} from '../actions/getTenDayForecast.js';
 import {Link} from 'react-router-dom'
 import {Message} from 'semantic-ui-react'
+import {connect} from 'react-redux';
 // import Climate from 
 class ParkDetail extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tenDayForecast: null,
-      climate: null,
-      lodgings: null
-    }
-    this.getTenDayForecast = this.getTenDayForecast.bind(this);
-    // this.getMonthlyClimate = this.getMonthlyClimate.bind(this);
-    let climate = null;
-  }
-
   componentDidMount() {
-    this.getTenDayForecast(this.props.park.latitude, this.props.park.longitude);
-    Axios.get('/api/park/lodgings', {
-      params: {
-        lat: this.props.park.latitude,
-        lon: this.props.park.longitude
-      }
-    })
-    .then(res => {
-      this.setState({lodgings: res.data});
-    })
-    .catch(err => console.log(err));
+    this.props.getTenDayForecast(this.props.park.latitude, this.props.park.longitude)
   }
-
-  getTenDayForecast(latitude, longitude) {
-    let config = {
-      url: '/api/park/tenDayForecast',
-      method: 'post',
-      data: {
-        latitude: latitude,
-        longitude: longitude
-      }
-    }
-    return Axios(config)
-    .then(data => {
-      this.setState({tenDayForecast: data['data']['simpleforecast']['forecastday']})
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  }
+  //   Axios.get('/api/park/lodgings', {
+  //     params: {
+  //       lat: this.props.park.latitude,
+  //       lon: this.props.park.longitude
+  //     }
+  //   })
+  //   .then(res => {
+  //     this.setState({lodgings: res.data});
+  //   })
+  //   .catch(err => console.log(err));
+  // }
 
   // getMonthlyClimate(latitude, longitude) {
   //   let config = {
@@ -70,12 +43,13 @@ class ParkDetail extends React.Component {
   //     console.log(err);
   //   })
   // }
+  /*lodgings={this.state.lodgings}*/
   render() {
     console.log('these are my campgrounds', this.props);
     return(
       <div>
       <SinglePageNavBar />
-        <ParkMapView id = {this.props.park.id} lat={this.props.park.latitude} lon={this.props.park.longitude} campgrounds={this.props.campgrounds} lodgings={this.state.lodgings}/>
+        <ParkMapView id = {this.props.park.id} lat={this.props.park.latitude} lon={this.props.park.longitude} campgrounds={this.props.campgrounds} />
         <h1 className='parkname'>{this.props.park.name}</h1>
         <Message>
            <Message.Header>
@@ -89,7 +63,7 @@ class ParkDetail extends React.Component {
           <ActivitiesList activities={this.props.activities}/>
             </div>
             <div className='col-md-6'>
-        { this.state.tenDayForecast && <WeatherForecast tenDayForecast={this.state.tenDayForecast} />}
+        { this.props.tenDayForecast && <WeatherForecast tenDayForecast={this.props.tenDayForecast} />}
             </div>
           </div>
         </div>
@@ -98,4 +72,17 @@ class ParkDetail extends React.Component {
   }
 }
 
-export default ParkDetail;
+const mapStateToProps = (state) => {
+    return {
+      tenDayForecast: state.getTenDayForecast.tenDayForecast,
+      park: state.individualPark.individualPark[1][0]
+    }
+  }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getTenDayForecast: (latitude, longitude) => dispatch(getTenDayForecast(latitude, longitude))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ParkDetail);

@@ -1,9 +1,9 @@
-import {getIndividualPark} from '../actions/actions.js';
+import {getIndividualPark} from './actions.js';
 import axios from 'axios';
 
 export const getPark = (code) => {
   return (dispatch) => {
-     axios.get('/api/park', {
+     return axios.get('/api/park', {
         params: {
           parkcode: code
         }
@@ -11,6 +11,7 @@ export const getPark = (code) => {
       .then((res) => {
         console.log(res.data, 'this is the data');
         dispatch(getIndividualPark(res.data))
+        return res.data;
         })
       .catch(err => console.log(err))
     }

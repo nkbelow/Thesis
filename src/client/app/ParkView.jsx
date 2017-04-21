@@ -9,16 +9,19 @@ import {getCampgrounds} from '../actions/getCampgrounds.js'
 class ParkView extends React.Component {
   componentWillMount() {
     this.props.getPark(this.props.match.params.code)
+    .then((result) => {
+      this.props.getCampgrounds(result[1][0].id)
+    })
   }
-  componentDidUpdate() {
-    console.log(this.props.getCampgrounds.campgrounds, 'do you get null');
-    if (this.props.park && this.props.getCampgrounds.campgrounds == null) {
-    console.log('this fired');
-      console.log('this fired after')
-      console.log(this.props.park, 'the park');
-      this.props.getCampgrounds(this.props.park[1][0].id);
-    }
-  }
+  // componentDidUpdate() {
+  //   console.log(this.props.getCampgrounds.campgrounds, 'do you get null');
+  //   if (this.props.park && this.props.campgrounds == null) {
+  //   console.log('this fired');
+  //     console.log('this fired after')
+  //     console.log(this.props.park, 'the park');
+  //     this.props.getCampgrounds(this.props.park[1][0].id);
+  //   }
+  // }
   
   render() {
     console.log(this.props, 'props baby');

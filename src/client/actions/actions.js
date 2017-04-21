@@ -18,3 +18,14 @@ export const showFilters = (visible) => {
     visible: visible
   }
 }
+
+export const tenDayForecast = (tenDayForecast) => {
+  return {
+    type: 'GET_TEN_DAY_FORECAST',
+    tenDayForecast: tenDayForecast
+  }
+}
+
+// componentDidMount() {
+//     this.props.getTenDayForecast(this.props.park.latitude, this.props.park.longitude)
+//   }
