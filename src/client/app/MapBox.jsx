@@ -35,8 +35,8 @@ export default class MapBox extends Component {
 		<div>
 		<ReactMapboxGl
 		  style="mapbox://styles/mapbox/streets-v8"
-          center={this.props.center}
-          zoom={this.props.zoom}
+          center={[-98.35, 39.5]}
+          zoom={[2]}
           accessToken={'pk.eyJ1IjoidHdhbGs0ODIxIiwiYSI6ImNqMWk3ajQ3YjAxazMyd28wbmxpeG5pOW0ifQ.pD4Uic9vRI0_fh0_XV0tCg'}
           containerStyle={{
 		        height: "80vh",
