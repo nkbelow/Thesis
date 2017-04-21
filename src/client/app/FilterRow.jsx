@@ -1,36 +1,52 @@
 import React from 'react';
-import {List} from 'semantic-ui-react';
+import { List } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { onFilterClick } from './actions/filters.js';
+import { getParks } from './actions/getParks.js';
+import Promise from 'bluebird';
 
 class FilterRow extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {
-      selectedState: false
-    }
     this.selectedStyle = {
       'font-family':'Helvetica Neue',
       'color': 'teal',
-      'font-weight': 'bold'
     };
-  //   this.deSelectedStyle = {
-  //     'font-family':'Helvetica Neue',
-  //     'color': 'blue'
+    this.deSelectedStyle = {
+      'font-family':'Helvetica Neue',
+      'color': 'blue'
+    }
+  }
 
-  //   }
-  // }
-}
-
-  handleClick () {
-    this.setState({selectedState: !this.state.selectedState}, function() {
-      this.props.onClick(this.props.category, this.state.selectedState);
-    });
+  handleOnClick () {
+    const context = this;
+    return new Promise(function(resolve, reject) {
+      resolve()
+    }).then(function(){
+      context.props.updateFilters(context.props.filter.name)
+    }).then(function(){
+      context.props.getParks(context.props.filters)
+    })
   }
 
   render () {
     return (
-      <List.Item style={this.selectedStyle} onClick={this.handleClick.bind(this)}>{this.props.category}</List.Item> 
+      <List.Item style={this.props.isSelected ? this.selectedStyle : this.deSelectedStyle} onClick={this.handleOnClick.bind(this)}>{this.props.name}</List.Item> 
     )
   }
 }
 
-export default FilterRow;
+const mapStateToProps = (state) => {
+    return {
+      filters: state.updateFiltersSelections
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateFilters: (filter) => dispatch(onFilterClick(filter)),
+        getParks: (filters) => dispatch(getParks(filters))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilterRow)

@@ -1,12 +1,18 @@
 import React from 'react';
-import { render } from 'react-dom'
+import { render } from 'react-dom';
 import App from './App.jsx';
 import ParkView from './ParkView.jsx';
 import {Provider} from 'react-redux';
 import store from '../reducers/store.js'
 
 
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk  from 'redux-thunk';
+import { createLogger } from 'redux-logger';
+import rootReducer from './reducers/combinedReducers.js';
 
 class Root extends React.Component {
   constructor(props){
