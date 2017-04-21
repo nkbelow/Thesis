@@ -18,16 +18,6 @@ app.use('/', express.static(path.join(__dirname, '../client/public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.get('/api/parks', (req, res) => {
-	db.db.query('SELECT * from parks')
-	.then((result) => {
-		res.status(201).send(result)
-	})
-	.catch((err) => {
-		res.send(data.ourNationalParks)
-		// res.status(404).send(err + 'there was an error');
-	})
-})
 
 app.post('/api/park/tenDayForecast', tenDayForecast.getForecast);
 	// res.send(data.ourNationalParks);
@@ -49,6 +39,39 @@ app.get('/api/park/', (req, res) => {
 	})
 })
 
+app.get('/api/parks', (req, res) => {
+	console.log(req.query, 'REQUEST FILTERS REQUEST FILTERS')
+
+	const filtersState = req.query.filters.map((filter) => {
+		return JSON.parse(filter)
+	}) 
+
+	const filtersArray = filtersState.filter((filter) => {
+		
+		return filter.isSelected === true && filter.name !== 'Most Visited' && filter.name !== 'Least Visited';
+	})
+
+	const filterNames = filtersArray.map((filter) => {
+		return filter.name
+	})
+
+	console.log(filterNames, 'FILTERS FILTERS FILTERS')
+	if (filterNames.length > 0) {
+		filters.activities(filterNames).then((response) => {
+			res.status(200).send(response);
+		})
+	} else {
+		db.db.query('SELECT * from parks')
+		.then((result) => {
+			res.status(201).send(result)
+		})
+		.catch((err) => {
+			res.send(data.ourNationalParks)
+			// res.status(404).send(err + 'there was an error');
+		})
+	}
+})
+
 app.get('/api/campgrounds', (req, res) => {
 	campgroundsData(req.query.parkId)
 	.then((data) => {
@@ -56,11 +79,6 @@ app.get('/api/campgrounds', (req, res) => {
 	})
 })
 
-app.get('/filterparks', (req, res) => {
-	filters.activities(req.query.filteredActivities).then((response) => {
-		res.status(200).send(response);
-	})
-})
 
 app.get('*', (req, res) => {
 	res.redirect('/');
