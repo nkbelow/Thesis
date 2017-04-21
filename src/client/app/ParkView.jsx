@@ -3,11 +3,6 @@ import axios from 'axios';
 import {individualPark} from '../reducers/getParkReducer.js'
 import {getPark} from '../actions/getPark.js';
 import {connect} from 'react-redux'
-<<<<<<< HEAD
-import {getCampgrounds} from '../actions/getCampgrounds.js'
-||||||| merged common ancestors
-import {getCampgrounds} from '../thunks/getCampgrounds.js'
-=======
 import {getCampgrounds} from '../actions/getCampgrounds.js'
 import ParkMapView from './singlePageMapView.jsx';
 import WeatherForecast from './tenDayForecastList.jsx'
@@ -17,17 +12,10 @@ import {getTenDayForecast} from '../actions/getTenDayForecast.js';
 import {getLodging} from '../actions/getLodging.js';
 import {Link} from 'react-router-dom'
 import {Message} from 'semantic-ui-react'
->>>>>>> feat move thunks to actions folder
 
 class ParkView extends React.Component {
   componentWillMount() {
     this.props.getPark(this.props.match.params.code)
-<<<<<<< HEAD
-    .then((result) =>
-      this.props.getCampgrounds(result[1][0].id)
-      );
-||||||| merged common ancestors
-=======
     .then((result) => {
       this.props.getCampgrounds(result[1][0].id)
       return result
@@ -37,30 +25,11 @@ class ParkView extends React.Component {
     }).then((result) => {
       this.props.getTenDayForecast(result[1][0].latitude, result[1][0].longitude)
     })
->>>>>>> feat move thunks to actions folder
   }
-<<<<<<< HEAD
- 
-||||||| merged common ancestors
-  // componentDidMount() {
-  //   console.log('this fired');
-  //     console.log('this fired after')
-  //     this.props.getCampgrounds(this.props.park.id);
-  // }
-=======
->>>>>>> feat move thunks to actions folder
-  
   render() {
     console.log(this.props, 'props baby');
     return(
     	<div>
-<<<<<<< HEAD
-    		{ this.props.park && <ParkDetail park={this.props.park[1][0]}  activities={this.props.park[0]} 
-        campgrounds={this.props.campgrounds} /> }
-||||||| merged common ancestors
-    		{ this.props.park && <ParkDetail park={this.props.park[1][0]}  activities={this.props.park[0]} 
-        campground={this.props.campgrounds} /> }
-=======
     		{this.props.park && <div> <SinglePageNavBar />
         <ParkMapView id = {this.props.park[1][0].id} lat={this.props.park[1][0].latitude} lon={this.props.park[1][0].longitude} campgrounds={this.props.campgrounds} lodgings={this.props.lodgings}/>
         <h1 className='parkname'>{this.props.park[1][0].name}</h1>
@@ -81,7 +50,6 @@ class ParkView extends React.Component {
           </div>
         </div>
         </div>}
->>>>>>> feat move thunks to actions folder
     	</div>
     );
   }
@@ -89,18 +57,10 @@ class ParkView extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-<<<<<<< HEAD
-      park: state.individualPark.individualPark,
-      campgrounds: state.getCampgrounds.campgrounds
-||||||| merged common ancestors
-      park: state.individualPark,
-      campgrounds: state.campgrounds
-=======
       park: state.individualPark.individualPark,
       campgrounds: state.getCampgrounds.campgrounds,
       tenDayForecast: state.getTenDayForecast.tenDayForecast,
       lodgings: state.getLodging.lodging
->>>>>>> feat move thunks to actions folder
     }
   }
 

@@ -1,8 +1,9 @@
-export const visibleFilter = (state = true, action) => {
+export const visibleFilter = (state = {visible: false}, action) => {
   switch(action.type) {
     case 'IS_VISIBLE':
-    return !state;
-
+    return Object.assign({}, state, {
+      visible: !action.visible
+    })
     default: 
     return state;
   }
