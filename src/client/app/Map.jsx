@@ -3,8 +3,8 @@ import map from './MapBox.jsx'
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, state, {
-    popup: state.popup,
-    parks: state.parks
+    popup: state.map.popup,
+    parks: state.map.parks
   })
 }
 
