@@ -7,7 +7,7 @@ import MapView from './Map.jsx';
 import axios from 'axios';
 import SidebarFilters from './sidebarFilters.jsx';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header, List, Accordion } from 'semantic-ui-react';
-import { getParks } from './actions/getParks.js';
+import { getParks } from '../actions/getParks.js';
 import { connect } from 'react-redux';
 
 class App extends React.Component {

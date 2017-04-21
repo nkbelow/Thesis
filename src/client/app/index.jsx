@@ -8,11 +8,6 @@ import store from '../reducers/store.js'
 
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import thunk  from 'redux-thunk';
-import { createLogger } from 'redux-logger';
-import rootReducer from './reducers/combinedReducers.js';
 
 class Root extends React.Component {
   constructor(props){

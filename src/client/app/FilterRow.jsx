@@ -1,8 +1,8 @@
 import React from 'react';
 import { List } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { onFilterClick } from './actions/filters.js';
-import { getParks } from './actions/getParks.js';
+import { onFilterClick } from '../actions/filters.js';
+import { getParks } from '../actions/getParks.js';
 import Promise from 'bluebird';
 
 class FilterRow extends React.Component {
