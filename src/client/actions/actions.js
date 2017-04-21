@@ -26,6 +26,9 @@ export const tenDayForecast = (tenDayForecast) => {
   }
 }
 
-// componentDidMount() {
-//     this.props.getTenDayForecast(this.props.park.latitude, this.props.park.longitude)
-//   }
+export const lodging = (lodging) => {
+  return {
+    type: 'GET_LODGING',
+    lodging: lodging
+  }
+}

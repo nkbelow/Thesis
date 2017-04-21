@@ -5,6 +5,7 @@ import WeatherForecast from './tenDayForecastList.jsx'
 import ActivitiesList from './activitiesList.jsx';
 import SinglePageNavBar from './singlePageNavBar.jsx';
 import {getTenDayForecast} from '../actions/getTenDayForecast.js';
+import {getLodging} from '../actions/getLodging.js';
 import {Link} from 'react-router-dom'
 import {Message} from 'semantic-ui-react'
 import {connect} from 'react-redux';
@@ -12,18 +13,9 @@ import {connect} from 'react-redux';
 class ParkDetail extends React.Component {
   componentDidMount() {
     this.props.getTenDayForecast(this.props.park.latitude, this.props.park.longitude)
+    this.props.getLodging(this.props.park.latitude, this.props.park.longitude)
   }
-  //   Axios.get('/api/park/lodgings', {
-  //     params: {
-  //       lat: this.props.park.latitude,
-  //       lon: this.props.park.longitude
-  //     }
-  //   })
-  //   .then(res => {
-  //     this.setState({lodgings: res.data});
-  //   })
-  //   .catch(err => console.log(err));
-  // }
+  
 
   // getMonthlyClimate(latitude, longitude) {
   //   let config = {
@@ -49,7 +41,7 @@ class ParkDetail extends React.Component {
     return(
       <div>
       <SinglePageNavBar />
-        <ParkMapView id = {this.props.park.id} lat={this.props.park.latitude} lon={this.props.park.longitude} campgrounds={this.props.campgrounds} />
+        <ParkMapView id = {this.props.park.id} lat={this.props.park.latitude} lon={this.props.park.longitude} campgrounds={this.props.campgrounds} lodgings={this.props.lodgings}/>
         <h1 className='parkname'>{this.props.park.name}</h1>
         <Message>
            <Message.Header>
@@ -75,13 +67,15 @@ class ParkDetail extends React.Component {
 const mapStateToProps = (state) => {
     return {
       tenDayForecast: state.getTenDayForecast.tenDayForecast,
-      park: state.individualPark.individualPark[1][0]
+      park: state.individualPark.individualPark[1][0],
+      lodgings: state.getLodging.lodging
     }
   }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getTenDayForecast: (latitude, longitude) => dispatch(getTenDayForecast(latitude, longitude))
+    getTenDayForecast: (latitude, longitude) => dispatch(getTenDayForecast(latitude, longitude)),
+    getLodging: (latitude, longitude) => dispatch(getLodging(latitude, longitude))
   }
 }
 

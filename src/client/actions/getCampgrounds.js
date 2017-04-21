@@ -4,7 +4,7 @@ import axios from 'axios';
 export const getCampgrounds = (id) => {
   return (dispatch) => {
     console.log(id, 'this is the id');
-    return axios.get('/api/campgrounds', {
+     axios.get('/api/campgrounds', {
         params: {
           parkId: id
           }
@@ -12,6 +12,7 @@ export const getCampgrounds = (id) => {
       .then(res => {
         console.log(res.data, 'this are campgrounds');
         dispatch(campgrounds(res.data))
+
       })
       .catch(err => {
         console.log(campgrounds);
