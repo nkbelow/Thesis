@@ -9,6 +9,7 @@ import SidebarFilters from './sidebarFilters.jsx';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header, List, Accordion } from 'semantic-ui-react';
 import { getParks } from '../actions/getParks.js';
 import { connect } from 'react-redux';
+import {showFilters} from '../actions/actions.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -22,19 +23,13 @@ class App extends React.Component {
     this.props.getParks(this.props.filters)
   }
 
-
-  toggleVisibility() {
-    this.setState({ visible: !this.state.visible })
-  }
-
-
   render () {
     return (
     	<div>
-        <Button onClick={this.toggleVisibility.bind(this)}>Toggle Visibility</Button>
+        <Button onClick={() => {this.props.toggleVisibility(this.props.visible)}}>Toggle Visibility</Button>
         <Sidebar.Pushable as={Segment}>
-          <Sidebar as={Menu} animation='push' width='thin' visible={!this.state.visible} icon='labeled' vertical inverted>
-            <SidebarFilters visible={!this.state.visible} />
+          <Sidebar as={Menu} animation='push' width='thin' visible={!this.props.visible} icon='labeled' vertical inverted>
+            <SidebarFilters visible={!this.props.visible} />
           </Sidebar>
           <Sidebar.Pusher>
           <Segment basic>
@@ -54,13 +49,16 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
     return {
       filters: state.updateFiltersSelections,
-      parks: state.getParksReducer.parks
+      parks: state.getParksReducer.parks,
+      visible: state.visibleFilter.visible
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getParks: (filters) => dispatch(getParks(filters))
+        getParks: (filters) => dispatch(getParks(filters)),
+        toggleVisibility: (visible) => dispatch(showFilters(visible))
+
     };
 };
 

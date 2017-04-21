@@ -1,4 +1,4 @@
-import {getIndividualPark} from '../actions/actions.js';
+import {getIndividualPark} from './actions.js';
 import axios from 'axios';
 
 export const getPark = (code) => {

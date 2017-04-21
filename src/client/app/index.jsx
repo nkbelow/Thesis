@@ -4,10 +4,7 @@ import App from './App.jsx';
 import ParkView from './ParkView.jsx';
 import {Provider} from 'react-redux';
 import store from '../reducers/store.js'
-
-
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 class Root extends React.Component {
   constructor(props){

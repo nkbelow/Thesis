@@ -18,3 +18,17 @@ export const showFilters = (visible) => {
     visible: visible
   }
 }
+
+export const tenDayForecast = (tenDayForecast) => {
+  return {
+    type: 'GET_TEN_DAY_FORECAST',
+    tenDayForecast: tenDayForecast
+  }
+}
+
+export const lodging = (lodging) => {
+  return {
+    type: 'GET_LODGING',
+    lodging: lodging
+  }
+}
