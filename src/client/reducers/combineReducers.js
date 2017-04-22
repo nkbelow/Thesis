@@ -7,6 +7,7 @@ import map from './mapReducer.jsx'
 import {getTenDayForecast} from './getTenDayForecastReducer.js'
 import {getLodging} from './getLodgingReducer.js'
 import {visibleFilter} from './visibleFilterReducer.js'
+import {getTrails} from './getTrailsReducer.js';
 
 
 export default combineReducers( {
@@ -17,5 +18,6 @@ export default combineReducers( {
  map: map, 
  getTenDayForecast: getTenDayForecast,
  getLodging: getLodging,
- visibleFilter: visibleFilter 
+ visibleFilter: visibleFilter,
+ getTrails: getTrails 
 });

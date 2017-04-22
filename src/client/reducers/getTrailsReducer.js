@@ -4,5 +4,7 @@ export const getTrails = (state = {}, action) => {
     return Object.assign({}, state, 
       {trails: action.trails
       })
+    default: 
+      return state;
   }
 }

@@ -2,7 +2,6 @@ import React from 'react';
 import TenDayForecastListItem from './tenDayForecastListItem.jsx'
 
 const TenDayForecastList = (props) => {
-  console.log(props.tenDayForecast, 'tenDayForecast')
   return (
     <table>
     <thead>

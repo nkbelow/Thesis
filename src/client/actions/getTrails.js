@@ -1,12 +1,16 @@
 import axios from 'axios';
 import {trails} from './actions.js';
 
-export const getTrails(id) => {
+export const getTrails = (id) => {
   return (dispatch) => {
-    axios.get('/api/trails')
+    axios.get('/api/trails', {
+      params: {
+        parkId: id
+      }
+    })
     .then((result) => {
-      console.log(result, 'these are the trails');
-      dispatch(trails(result))
+      console.log(result['data'], 'these are the trails');
+      dispatch(trails(result['data']))
     })
     .catch((err) => {
       console.log(err, 'this is the error')
