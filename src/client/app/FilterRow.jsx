@@ -9,11 +9,11 @@ class FilterRow extends React.Component {
   constructor (props) {
     super(props)
     this.selectedStyle = {
-      'font-family':'Helvetica Neue',
+      'fontFamily':'Helvetica Neue',
       'color': 'teal',
     };
     this.deSelectedStyle = {
-      'font-family':'Helvetica Neue',
+      'fontFamily':'Helvetica Neue',
       'color': 'blue'
     }
   }
