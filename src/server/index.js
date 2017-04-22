@@ -1,4 +1,7 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const passport = require('./passport/passport.js')
 const dotenv = require('dotenv').config();
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -20,8 +23,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 
 app.post('/api/park/tenDayForecast', tenDayForecast.getForecast);
-	// res.send(data.ourNationalParks);
 
+// app.get('/api/trails', )
 
 app.get('/api/park/lodgings', (req, res) => {
 	googleHelpers.places({lat: req.query.lat, lng: req.query.lon})
