@@ -9,8 +9,6 @@ console.log(req['body'], 'this is the req data');
     responseType: 'json'
   }
   return axios(config).then((result) => {
-    // console.log(config.url);
-    console.log(result['data']);
     res.send(result['data']['forecast']);
   })
   .catch((err) => {
