@@ -34,7 +34,7 @@ class ParkView extends React.Component {
     return(
     	<div>
     		{this.props.park && <div> <SinglePageNavBar />
-        <ParkMapView id = {this.props.park[1][0].id} lat={this.props.park[1][0].latitude} lon={this.props.park[1][0].longitude} campgrounds={this.props.campgrounds} lodgings={this.props.lodgings}/>
+        <ParkMapView parkCode = {this.props.match.params.code} id = {this.props.park[1][0].id} lat={this.props.park[1][0].latitude} lon={this.props.park[1][0].longitude} campgrounds={this.props.campgrounds} lodgings={this.props.lodgings}/>
         <h1 className='parkname'>{this.props.park[1][0].name}</h1>
         <Message>
            <Message.Header>
