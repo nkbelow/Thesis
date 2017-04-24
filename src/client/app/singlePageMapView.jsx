@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
-const parks = require('../../../data/parksAndBoundaries');
+
 
 
 import ReactMapboxGl, { Layer, Feature, Marker, GeoJSONLayer } from "react-mapbox-gl";
