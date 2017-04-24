@@ -11,6 +11,7 @@ import SinglePageNavBar from './singlePageNavBar.jsx';
 import {getTenDayForecast} from '../actions/getTenDayForecast.js';
 import {getLodging} from '../actions/getLodging.js';
 import {getTrails} from '../actions/getTrails.js';
+import {getDistance} from '../actions/getDistance.js';
 import {Link} from 'react-router-dom'
 import {Message} from 'semantic-ui-react'
 import HistoricalWeatherDropdown from './historicalWeatherDataDropDown.jsx'
@@ -31,6 +32,7 @@ class ParkView extends React.Component {
       this.props.getTrails(result[1][0].id)
     })
   }
+
   render() {
     return(
     	<div>
@@ -43,6 +45,8 @@ class ParkView extends React.Component {
            </Message.Header>
         <h3>{this.props.park[1][0].description}</h3>
         </Message>
+        <button onClick={this.props.getDistance}>Get Distance</button>
+        <a href="http://localhost:3000/auth/fitbit" > Test </a>
         <div className='container'>
           <div className='row'>
             <div className='col-md-4'>
@@ -69,6 +73,8 @@ const mapStateToProps = (state) => {
       tenDayForecast: state.getTenDayForecast.tenDayForecast,
       lodgings: state.getLodging.lodging,
       trails: state.getTrails.trails
+      distance: state.getDistance,
+      state: state
     }
   }
 
@@ -79,6 +85,7 @@ const mapDispatchToProps = (dispatch) => {
     getTenDayForecast: (latitude, longitude) => dispatch(getTenDayForecast(latitude, longitude)),
     getLodging: (latitude, longitude) => dispatch(getLodging(latitude, longitude)),
     getTrails: (id) => dispatch(getTrails(id))
+    getDistance: () => dispatch(getDistance())
   }
 }
 

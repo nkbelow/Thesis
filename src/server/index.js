@@ -11,6 +11,7 @@ const data = require('../../data/ourNationalParks.js');
 const filters = require('./handlers/filtersRequestHelper.js')
 const individualParkData = require('../db/models/getIndividualParksInfo.js');
 const tenDayForecast = require('./handlers/weatherHandlers/tenDayForecastHandler.js')
+
 const googleHelpers = require('./handlers/gHelpers.js')
 const campgroundsData = require('../db/models/getCampgroundsInfo.js');
 const trails = require('../db/models/getTrailsInfo.js');
@@ -23,8 +24,6 @@ const keyPublishable = process.env.STRIPE_PUBLISHABLE_KEY;
 const keySecret = process.env.STRIPE_SECRET_KEY;
 const stripe = require("stripe")(keySecret);
 
-app.use('/', express.static(path.join(__dirname, '../client/public')));
-
 app.use(session({
 	store: new pgSession({
 		pg: db.pgp.pg,
@@ -36,8 +35,40 @@ app.use(session({
 	cookie: {maxAge: new Date(Date.now() + 600000) }
 }))
 
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const fitbitStrategy = require('./passport/fitbitConfig.js');
+const passport = require('passport');
+const fitbitHelper = require('./handlers/fitbitHelper.js')
+
+
+app.use('/', express.static(path.join(__dirname, '../client/public')));
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(passport.initialize());
+passport.use(fitbitStrategy);
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
+app.get(
+	'/auth/fitbit', 
+	passport.authenticate('fitbit', { scope: ['activity','heartrate','location','profile'] })
+);
+
+app.get( '/auth/fitbit/callback', passport.authenticate( 'fitbit' ), function(req, res){
+	if(req.user){
+		console.log('made it');
+	}
+});
+
 
 app.get('/api/sendEmail', sendEmail);
 
@@ -122,7 +153,6 @@ app.get('/api/parks', (req, res) => {
 		return filter.name
 	})
 
-	console.log(filterNames, 'FILTERS FILTERS FILTERS')
 	if (filterNames.length > 0) {
 		filters.activities(filterNames).then((response) => {
 			res.status(200).send(response);

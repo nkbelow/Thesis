@@ -10,6 +10,7 @@ import {visibleFilter} from './visibleFilterReducer.js';
 import {getTrails} from './getTrailsReducer.js';
 import {getHistoricalData} from './getHistoricalDataReducer.js';
 import {payments} from './payments.js'
+import {getDistance} from './getDistanceReducer.js'
 
 
 export default combineReducers( {
@@ -21,7 +22,8 @@ export default combineReducers( {
  getTenDayForecast: getTenDayForecast,
  getLodging: getLodging,
  visibleFilter: visibleFilter,
- getTrails: getTrails,
  getHistoricalData: getHistoricalData,
  payments: payments
+ getTrails: getTrails 
+ getDistance: getDistance
 });

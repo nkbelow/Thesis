@@ -33,6 +33,7 @@ export const lodging = (lodging) => {
   }
 }
 
+
 export const trails = (trails) => {
   return {
     type: 'GET_TRAILS',
@@ -40,9 +41,17 @@ export const trails = (trails) => {
   }
 }
 
+
 export const historicalData = (historicalData) => {
   return {
     type: 'HISTORICAL_DATA',
     historicalData: historicalData
+  }
+}
+
+export const distance = (distance) => {
+  return {
+    type: 'GET_DISTANCE',
+    distance: distance
   }
 }
