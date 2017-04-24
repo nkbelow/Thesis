@@ -1,14 +1,15 @@
 import {combineReducers} from 'redux';
 import {getCampgrounds} from './getCampgroundsReducer.js';
 import {individualPark} from './getParkReducer';
-import  {updateFiltersSelections}  from './updateFilters.js'
-import  {getParksReducer}  from './getParks.js'
-import map from './mapReducer.jsx'
-import {getTenDayForecast} from './getTenDayForecastReducer.js'
-import {getLodging} from './getLodgingReducer.js'
-import {visibleFilter} from './visibleFilterReducer.js'
+import  {updateFiltersSelections}  from './updateFilters.js';
+import  {getParksReducer}  from './getParks.js';
+import map from './mapReducer.jsx';
+import {getTenDayForecast} from './getTenDayForecastReducer.js';
+import {getLodging} from './getLodgingReducer.js';
+import {visibleFilter} from './visibleFilterReducer.js';
 import {getTrails} from './getTrailsReducer.js';
 import {getHistoricalData} from './getHistoricalDataReducer.js';
+import {checkout} from './checkout.js';
 
 export default combineReducers( {
  individualPark: individualPark,
@@ -20,5 +21,6 @@ export default combineReducers( {
  getLodging: getLodging,
  visibleFilter: visibleFilter,
  getTrails: getTrails,
- getHistoricalData: getHistoricalData 
+ getHistoricalData: getHistoricalData,
+ checkout: checkout
 });

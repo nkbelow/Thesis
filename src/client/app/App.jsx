@@ -2,6 +2,7 @@ import React from 'react';
 import FilterRow from './FilterRow.jsx'
 import ParkList from './ParkList.jsx';
 import ParkView from './ParkView.jsx';
+import Checkout from './Checkout.jsx';
 import SearchBar from './SearchBar.jsx';
 import MapView from './Map.jsx';
 import axios from 'axios';
@@ -40,6 +41,7 @@ class App extends React.Component {
           </Segment> 
           </Sidebar.Pusher>
         </Sidebar.Pushable>
+        <Checkout />
       </div>
     );
   }

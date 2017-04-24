@@ -21,6 +21,11 @@ const app = express();
 
 
 
+
+const keyPublishable = process.env.STRIPE_PUBLISHABLE_KEY;
+const keySecret = process.env.STRIPE_SECRET_KEY;
+const stripe = require("stripe")(keySecret);
+
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
 app.use(session({
@@ -38,6 +43,28 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/api/sendEmail', sendEmail);
+
+app.post('/charge', (req, res) => {
+  let amount = 500;
+
+  console.log(req.body.card, 'req.body.card req.body.card req.body.card req.body.card req.body.card')
+  console.log(req.body, 'req.body req.body req.body req.body req.body' )
+
+  stripe.customers.create({
+    email: req.body.stripeEmail,
+    source: req.body.stripeToken,
+    
+  })
+  .then(customer =>
+    stripe.charges.create({
+      amount,
+      description: "Sample Charge",
+         currency: "usd",
+         customer: customer.id
+    }))
+  .then(charge => res.status(200).send());
+});
+
 app.post('/api/park/tenDayForecast', tenDayForecast.getForecast);
 
 app.get('/api/trails', (req, res) => {
@@ -86,6 +113,9 @@ app.get('/api/parks', (req, res) => {
 	if (filterNames.length > 0) {
 		filters.activities(filterNames).then((response) => {
 			res.status(200).send(response);
+		})
+		.catch((error) => {
+			console.log(error)
 		})
 	} else {
 		db.db.query('SELECT * from parks')
