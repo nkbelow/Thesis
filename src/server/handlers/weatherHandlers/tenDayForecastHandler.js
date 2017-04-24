@@ -18,4 +18,4 @@ let getForecast = (req, res) => {
   })
 };
 
-module.exports.getForecast = getForecast;
+module.exports = getForecast;

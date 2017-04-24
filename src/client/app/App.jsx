@@ -4,6 +4,7 @@ import ParkList from './ParkList.jsx';
 import ParkView from './ParkView.jsx';
 import ShoppingCart from './ShoppingCart.jsx';
 import AddToCart from './AddToCart.jsx';
+import SearchBar from './SearchBar.jsx';
 import MapView from './Map.jsx';
 import axios from 'axios';
 import SidebarFilters from './sidebarFilters.jsx';
@@ -30,6 +31,7 @@ class App extends React.Component {
     	<div>
         <NavBar parks={this.props.parks} />
         <Button onClick={() => {this.props.toggleVisibility(this.props.visible)}}>Toggle Visibility</Button>
+        <ShoppingCart />
         <Sidebar.Pushable as={Segment}>
           <Sidebar as={Menu} animation='push' width='thin' visible={!this.props.visible} icon='labeled' vertical inverted>
             <SidebarFilters visible={!this.props.visible} />

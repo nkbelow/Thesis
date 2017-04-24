@@ -4,6 +4,10 @@ import React, { Component } from 'react'
 import { Search, Grid, Header, Label } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
+||||||| merged common ancestors
+import React from 'react';
+import { Link } from 'react-router-dom'
+import Autosuggest from "react-autosuggest"
 
 class SearchBar extends Component {
   componentWillMount() {
@@ -55,4 +59,12 @@ class SearchBar extends Component {
   }
 }
 
-export default connect()(SearchBar);
+const mapStateToProps = (state) => {
+    return {
+      parks: state.getParksReducer.parks,
+    };
+};
+
+
+export default connect(mapStateToProps)(SearchBar);
+
