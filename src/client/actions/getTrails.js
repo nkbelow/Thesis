@@ -3,6 +3,7 @@ import {trails} from './actions.js';
 
 export const getTrails = (id) => {
   return (dispatch) => {
+    console.log('made it into trails');
     axios.get('/api/trails', {
       params: {
         parkId: id

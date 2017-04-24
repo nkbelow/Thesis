@@ -35,8 +35,6 @@ app.use(session({
 	cookie: {maxAge: new Date(Date.now() + 600000) }
 }))
 
-const session = require('express-session');
-const cookieParser = require('cookie-parser');
 const fitbitStrategy = require('./passport/fitbitConfig.js');
 const passport = require('passport');
 const fitbitHelper = require('./handlers/fitbitHelper.js')

@@ -77,8 +77,8 @@ const mapStateToProps = (state) => {
       campgrounds: state.getCampgrounds.campgrounds,
       tenDayForecast: state.getTenDayForecast.tenDayForecast,
       lodgings: state.getLodging.lodging,
-      trails: state.getTrails.trails
-      distance: state.getDistance,
+      trails: state.getTrails.trails,
+      distance: state.getDistance
     }
   }
 
@@ -88,7 +88,7 @@ const mapDispatchToProps = (dispatch) => {
     getCampgrounds: (id) => dispatch(getCampgrounds(id)),
     getTenDayForecast: (latitude, longitude) => dispatch(getTenDayForecast(latitude, longitude)),
     getLodging: (latitude, longitude) => dispatch(getLodging(latitude, longitude)),
-    getTrails: (id) => dispatch(getTrails(id))
+    getTrails: (id) => dispatch(getTrails(id)),
     getDistance: () => dispatch(getDistance())
   }
 }
