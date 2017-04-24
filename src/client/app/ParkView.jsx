@@ -31,6 +31,13 @@ class ParkView extends React.Component {
     }).then((result) => {
       this.props.getTrails(result[1][0].id)
     })
+    // .then((result) => {
+    //   this.props.getTenDayForecast(result[1][0].latitude, result[1][0].longitude)
+    // })
+    .then((result) => {
+      this.props.getDistance()
+    })
+
   }
 
   render() {
@@ -45,8 +52,6 @@ class ParkView extends React.Component {
            </Message.Header>
         <h3>{this.props.park[1][0].description}</h3>
         </Message>
-        <button onClick={this.props.getDistance}>Get Distance</button>
-        <a href="http://localhost:3000/auth/fitbit" > Test </a>
         <div className='container'>
           <div className='row'>
             <div className='col-md-4'>
@@ -74,7 +79,6 @@ const mapStateToProps = (state) => {
       lodgings: state.getLodging.lodging,
       trails: state.getTrails.trails
       distance: state.getDistance,
-      state: state
     }
   }
 

@@ -1,6 +1,7 @@
 const db = require('../index.js').db;
 
 module.exports = (parkCode) => {
+
   let query1 = 'SELECT activity FROM activities \
    inner join activities_parks on \
    (activities_parks.activity_id = activities.id AND activities_parks.park_id \

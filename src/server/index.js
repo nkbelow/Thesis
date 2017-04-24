@@ -45,9 +45,17 @@ const fitbitHelper = require('./handlers/fitbitHelper.js')
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookieParser());
+app.use(bodyParser());
+
+app.use(session({ secret: 'keyboard cat' }));
+
 app.use(passport.initialize());
+app.use(passport.session({
+  resave: false,
+  saveUninitialized: true
+}));
+
 passport.use(fitbitStrategy);
 
 passport.serializeUser(function(user, done) {
@@ -58,16 +66,11 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-app.get(
-	'/auth/fitbit', 
-	passport.authenticate('fitbit', { scope: ['activity','heartrate','location','profile'] })
-);
-
-app.get( '/auth/fitbit/callback', passport.authenticate( 'fitbit' ), function(req, res){
-	if(req.user){
-		console.log('made it');
-	}
+var fitbitAuthenticate = passport.authenticate('fitbit', {
+  successRedirect: '/auth/fitbit/success',
+  failureRedirect: '/auth/fitbit/failure'
 });
+
 
 
 app.get('/api/sendEmail', sendEmail);
@@ -106,6 +109,17 @@ app.post("/charge", (req, res) => {
     })
   })
 });
+
+app.get('/auth/fitbit',
+  passport.authenticate('fitbit', { scope: ['activity','heartrate','location','profile'] }
+));
+
+app.get('/auth/fitbit/callback', fitbitAuthenticate);
+
+app.get('/api/fitbit', (req, res) => {
+	res.send(fitbitHelper(req.user.profile.id, req.user.accessToken));
+})
+
 
 app.post('/api/park/tenDayForecast', tenDayForecast.getForecast);
 

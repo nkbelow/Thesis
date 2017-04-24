@@ -38,6 +38,7 @@ class App extends React.Component {
           <Segment basic>
             <h1> Nimble Newts Project </h1>
             {this.props.parks !== null && <SearchBar parks={this.props.parks}/>}
+            <a href="/auth/fitbit"> Trail Connect </a>
             <MapView parks={this.props.parks}/>
             <ParkList />
           </Segment> 
