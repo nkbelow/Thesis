@@ -72,5 +72,14 @@ module.exports = function (db) {
 				activity_id INTEGER NOT NULL \
 				); \
 			')
+		}).then(function () {
+			console.log('start session table')
+			return db.query('\
+				CREATE TABLE IF NOT EXISTS session ( \
+				"sid" varchar NOT NULL COLLATE "default", \
+				"sess" json NOT NULL, \
+				"expire" timestamp(6) NOT NULL \
+				); \
+			')
 		})
 	} 
