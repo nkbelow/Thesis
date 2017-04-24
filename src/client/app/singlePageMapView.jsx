@@ -19,7 +19,9 @@ const styles = {
 }
 
 const Map = (props) => {
-  let boundary = {"type":"Feature", "geometry": {"type": "Polygon", "coordinates": parks.parks[props.id-1].boundaries}};
+  // let boundary = {"type":"Feature", "geometry": {"type": "Polygon", "coordinates": parks.parks[props.id-1].boundaries}};
+  let url = 'https://raw.githubusercontent.com/nationalparkservice/data/gh-pages/base_data/boundaries/parks/' + props.parkCode + '.geojson';
+
   return (
     <div>
     <ReactMapboxGl
@@ -68,7 +70,7 @@ const Map = (props) => {
 
 
         <GeoJSONLayer
-          data={boundary}
+          data={url}
           lineLayout={{visibility:"visible"}}/>
 
   </ReactMapboxGl>
