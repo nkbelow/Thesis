@@ -31,7 +31,6 @@ export const parksRequestSuccess = (filters, parks) => {
 // invoke the thunk by dispatch(getParks(filters))
 // filters should equal the whole filters property
 export const getParks = (filters) => {
-  console.log('GETPARKS IS CALLED handleOnClick handleOnClick handleOnClick', filters)
   return (dispatch) => { 
     dispatch(parksRequestStart(filters))
     return axios.get('/api/parks', {

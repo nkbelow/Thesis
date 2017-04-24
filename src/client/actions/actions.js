@@ -32,3 +32,10 @@ export const lodging = (lodging) => {
     lodging: lodging
   }
 }
+
+export const trails = (trails) => {
+  return {
+    type: 'GET_TRAILS',
+    trails: trails
+  }
+}

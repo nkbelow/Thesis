@@ -10,6 +10,7 @@ import ActivitiesList from './activitiesList.jsx';
 import SinglePageNavBar from './singlePageNavBar.jsx';
 import {getTenDayForecast} from '../actions/getTenDayForecast.js';
 import {getLodging} from '../actions/getLodging.js';
+import {getTrails} from '../actions/getTrails.js';
 import {Link} from 'react-router-dom'
 import {Message} from 'semantic-ui-react'
 
@@ -24,10 +25,12 @@ class ParkView extends React.Component {
       return result
     }).then((result) => {
       this.props.getTenDayForecast(result[1][0].latitude, result[1][0].longitude)
+      return result
+    }).then((result) => {
+      this.props.getTrails(result[1][0].id)
     })
   }
   render() {
-    console.log(this.props, 'props baby');
     return(
     	<div>
     		{this.props.park && <div> <SinglePageNavBar />
@@ -60,7 +63,8 @@ const mapStateToProps = (state) => {
       park: state.individualPark.individualPark,
       campgrounds: state.getCampgrounds.campgrounds,
       tenDayForecast: state.getTenDayForecast.tenDayForecast,
-      lodgings: state.getLodging.lodging
+      lodgings: state.getLodging.lodging,
+      trails: state.getTrails.trails
     }
   }
 
@@ -69,7 +73,8 @@ const mapDispatchToProps = (dispatch) => {
     getPark: (code) => dispatch(getPark(code)),
     getCampgrounds: (id) => dispatch(getCampgrounds(id)),
     getTenDayForecast: (latitude, longitude) => dispatch(getTenDayForecast(latitude, longitude)),
-    getLodging: (latitude, longitude) => dispatch(getLodging(latitude, longitude))
+    getLodging: (latitude, longitude) => dispatch(getLodging(latitude, longitude)),
+    getTrails: (id) => dispatch(getTrails(id))
   }
 }
 

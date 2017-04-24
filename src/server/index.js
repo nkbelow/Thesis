@@ -1,4 +1,7 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const passport = require('./passport/passport.js')
 const dotenv = require('dotenv').config();
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -11,6 +14,7 @@ const individualParkData = require('../db/models/getIndividualParksInfo.js');
 const tenDayForecast = require('./handlers/weatherHandlers/tenDayForecastHandler.js')
 const googleHelpers = require('./handlers/gHelpers.js')
 const campgroundsData = require('../db/models/getCampgroundsInfo.js');
+const trails = require('../db/models/getTrailsInfo.js');
 
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
@@ -20,13 +24,16 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 
 app.post('/api/park/tenDayForecast', tenDayForecast.getForecast);
-	// res.send(data.ourNationalParks);
 
+app.get('/api/trails', (req, res) => {
+	trails(req.query.parkId).then((trails) => {
+		res.status(200).send(trails);
+	})
+})
 
 app.get('/api/park/lodgings', (req, res) => {
 	googleHelpers.places({lat: req.query.lat, lng: req.query.lon})
 	.then((result) => {
-		console.log(result)
 		res.status(201).send(result);
 	})
 })
@@ -40,7 +47,6 @@ app.get('/api/park/', (req, res) => {
 })
 
 app.get('/api/parks', (req, res) => {
-	console.log(req.query, 'REQUEST FILTERS REQUEST FILTERS')
 
 	const filtersState = req.query.filters.map((filter) => {
 		return JSON.parse(filter)

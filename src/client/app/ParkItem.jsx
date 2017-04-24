@@ -9,7 +9,7 @@ class ParkItem extends React.Component {
       height:'200px',
       zIndex:'-100',
       position: 'relative',
-      'box-shadow': '2px 2px 2px 1px rgba(0, 0, 0, 0.8)'
+      'boxShadow': '2px 2px 2px 1px rgba(0, 0, 0, 0.8)'
     }
     this.textStyle = {
       position: 'absolute',
@@ -18,15 +18,15 @@ class ParkItem extends React.Component {
       height:'150px',
       top:'7px',
       left: '22px',
-      'font-family':'Arial',
-      'font-weight':'bold',
+      'fontFamily':'Arial',
+      'fontWeight':'bold',
       color: 'white',
-      'text-shadow': '-1px 0 #000000,0 1px #000000,1px 0 #000000,0 -1px #000000'
+      'textShadow': '-1px 0 #000000,0 1px #000000,1px 0 #000000,0 -1px #000000'
     }
     this.containerStyle = {
       position:'relative',
-      'padding-left':'10px',
-      'padding-top':'10px'
+      'paddingLeft':'10px',
+      'paddingTop':'10px'
     }
   }
 
