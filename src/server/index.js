@@ -15,6 +15,7 @@ const tenDayForecast = require('./handlers/weatherHandlers/tenDayForecastHandler
 const googleHelpers = require('./handlers/gHelpers.js')
 const campgroundsData = require('../db/models/getCampgroundsInfo.js');
 const trails = require('../db/models/getTrailsInfo.js');
+const sendEmail = require('./handlers/emailHandler.js');
 
 const app = express();
 
@@ -36,7 +37,7 @@ app.use(session({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-
+app.get('/api/sendEmail', sendEmail);
 app.post('/api/park/tenDayForecast', tenDayForecast.getForecast);
 
 app.get('/api/trails', (req, res) => {
