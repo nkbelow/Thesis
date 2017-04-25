@@ -31,7 +31,6 @@ class ParkItem extends React.Component {
   }
 
   render() {
-    console.log(this.props.parkcode)
     return(
       <div style={this.containerStyle}>
         <Link to={`park/${this.props.park.parkcode}/`}>

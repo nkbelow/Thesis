@@ -17,6 +17,7 @@ import {getDistance} from '../actions/getDistance.js';
 import {Link} from 'react-router-dom'
 import {Message} from 'semantic-ui-react'
 import HistoricalWeatherDropdown from './historicalWeatherDataDropDown.jsx'
+import NavBar from './NavBar.jsx';
 
 class ParkView extends React.Component {
   componentWillMount() {
@@ -83,7 +84,6 @@ class ParkView extends React.Component {
             <HistoricalWeatherDropdown />
             </div>
           </div>
-        </div>
         </div>}
     	</div>
     );

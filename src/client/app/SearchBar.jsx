@@ -1,7 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import Autosuggest from "react-autosuggest";
+import { Link } from 'react-router-dom'
+import Autosuggest from "react-autosuggest"
+import { Menu, Input, Dropdown } from 'semantic-ui-react'
+>>>>>>> Implement NavBar
 
 class SearchBar extends React.Component {
   constructor() {
@@ -43,11 +44,21 @@ class SearchBar extends React.Component {
 
   renderSuggestion(suggestion) {
     return (
-        <Link to={`park/${suggestion.parkcode}/`}>
-          <h5>{suggestion.name}</h5>
-        </Link>
+        <Dropdown.Item>
+          <Link to={`park/${suggestion.parkcode}/`}>
+            <h5>{suggestion.name}</h5>
+          </Link>
+        </Dropdown.Item>
     );
   }
+
+  renderInputComponent = inputProps => (
+    <div>
+      <Dropdown>
+        <Input {...inputProps} />
+      </Dropdown>
+    </div>
+  );
 
   onChange(event, { newValue, method }) {
     this.setState({

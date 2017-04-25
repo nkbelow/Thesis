@@ -11,7 +11,8 @@ import SidebarFilters from './sidebarFilters.jsx';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header, List, Accordion } from 'semantic-ui-react';
 import { getParks } from '../actions/getParks.js';
 import { connect } from 'react-redux';
-import {showFilters} from '../actions/actions.js'
+import {showFilters} from '../actions/actions.js';
+import NavBar from './NavBar.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getParks(this.props.filters)
+    this.props.getParks()
   }
 
   render () {
@@ -65,7 +66,6 @@ const mapDispatchToProps = (dispatch) => {
 
     };
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 

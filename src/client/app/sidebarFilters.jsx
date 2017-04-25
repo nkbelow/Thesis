@@ -2,6 +2,7 @@ import React from 'react';
 import { Sidebar, Segment, Button, Menu, Icon, List, Accordion } from 'semantic-ui-react';
 import FilterRow from './FilterRow.jsx';
 import { connect } from 'react-redux';
+import {showFilters} from '../actions/actions.js'
 
 
 class SidebarFilters extends React.Component {
