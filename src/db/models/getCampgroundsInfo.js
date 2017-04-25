@@ -1,7 +1,6 @@
 const db = require('../index.js').db;
 
 module.exports = (id) => {
-	console.log(id)
 	let query1 = 'SELECT * from campgrounds where park_id = $1';
 	return db.tx(t => {
 		return t.any(query1, id)

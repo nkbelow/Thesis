@@ -1,12 +1,12 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('./passport/passport.js')
 const dotenv = require('dotenv').config();
 const bodyParser = require('body-parser');
 const path = require('path');
-const app = express();
 const port = process.env.PORT || 3000;
+const pgSession = require('connect-pg-simple')(session);
+
 const db = require('../db/index.js');
 const data = require('../../data/ourNationalParks.js');
 const filters = require('./handlers/filtersRequestHelper.js')
@@ -16,8 +16,22 @@ const googleHelpers = require('./handlers/gHelpers.js')
 const campgroundsData = require('../db/models/getCampgroundsInfo.js');
 const trails = require('../db/models/getTrailsInfo.js');
 
+const app = express();
+
+
+
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
+app.use(session({
+	store: new pgSession({
+		pg: db.pgp.pg,
+		conString: process.env.DATABASE_URL || db.connection
+	}),
+	secret: 'Victoria\'s',
+	resave: false,
+	saveUninitialized: true,
+	cookie: {maxAge: new Date(Date.now() + 600000) }
+}))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -39,6 +53,10 @@ app.get('/api/park/lodgings', (req, res) => {
 })
 
 app.get('/api/park/', (req, res) => {
+	console.log(req.session, 'this is the session');
+	console.log(req.session.ID, 'this is the session id');
+	console.log(req.session.views, 'these are the views');
+	console.log(req.cookies, 'these are the cookies');
 	individualParkData(req.query.parkcode)
 	.then((data) => {
 		let park = data;

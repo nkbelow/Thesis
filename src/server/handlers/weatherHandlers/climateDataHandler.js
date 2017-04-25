@@ -10,8 +10,6 @@ let getClimate = (req, res) => {
     method: 'get',
   }
   return axios(config).then((result) => {
-    console.log(config.url);
-    console.log(result['data']);
     res.status(200).send(result['data']);
   })
   .catch((err) => {

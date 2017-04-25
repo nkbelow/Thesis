@@ -69,4 +69,7 @@ else {
 
     let db = pgp(connection);
     module.exports.db = db;
+    module.exports.pgp = pgp;
+    module.exports.connection = connection;
+
 }
