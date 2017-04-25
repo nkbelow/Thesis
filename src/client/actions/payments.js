@@ -72,7 +72,7 @@ export const addToCart = (quantity, item) => {
   }
 }
 
-export const getShoppingCartState = (quantity, item) => {
+export const getshoppingCartState = (quantity, item) => {
   return {
     'type': ADD_TO_CART,
     'quantity': quantity,

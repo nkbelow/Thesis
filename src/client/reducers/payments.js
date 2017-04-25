@@ -1,10 +1,13 @@
 import { ADD_TO_CART, ORDER_QUANTITY_INCREASE, ORDER_QUANTITY_DECREASE, ORDER_QUANTITY_MANUAL_ENTRY, SHOPPING_CART_QUANTITY_INCREASE, SHOPPING_CART_QUANTITY_DECREASE, SHOPPING_CART_ORDER_COMPLETED } from '../actions/payments.js'
 
 const initialState = {
+  dayPassQuantity: 0,
+  dayPassPrice: 10,
   annualPassQuantity: 0,
   annualPassPrice: 80,
   shoppingCartState: {
-    'annualPass': 0
+    'annualPass': 0,
+    'dayPass': 0
   },
 }
 

@@ -14,7 +14,7 @@ class PaymentWidget extends React.Component {
       zipCode: true,
       name: 'Demo Site',
       description: 'Annual All-Park Pass',
-      amount: this.props.checkoutTotal,
+      amount: this.props.shoppingCartTotal,
       token: function(token) {
         // You can access the token ID with `token.id`.
         // Get the token ID to your server-side code for use.
@@ -30,13 +30,13 @@ class PaymentWidget extends React.Component {
             livemode: token.livemode,
             type: token.type,
             used: token.used,
-            amount: context.props.checkoutTotal
+            amount: context.props.shoppingCartTotal
 
           }
         }
 
         axios(axiosConfig).then( function(response) {
-          context.props.shoppingCartCompletion(context.props.checkoutTotal)
+          context.props.shoppingCartCompletion(context.props.shoppingCartTotal)
           console.log(response, 'response response response response response')
         })
       }
