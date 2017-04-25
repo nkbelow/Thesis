@@ -108,12 +108,13 @@ app.get('/api/park/', (req, res) => {
 
 app.get('/api/parks', (req, res) => {
 
+  console.log(req.query.filters)
+
 	const filtersState = req.query.filters.map((filter) => {
 		return JSON.parse(filter)
 	}) 
 
 	const filtersArray = filtersState.filter((filter) => {
-		
 		return filter.isSelected === true && filter.name !== 'Most Visited' && filter.name !== 'Least Visited';
 	})
 

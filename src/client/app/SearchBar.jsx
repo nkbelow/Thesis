@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import Autosuggest from "react-autosuggest"
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import Autosuggest from "react-autosuggest";
 
 class SearchBar extends React.Component {
   constructor() {
@@ -86,4 +87,11 @@ class SearchBar extends React.Component {
   }
 }
 
-export default SearchBar;
+const mapStateToProps = (state) => {
+    return {
+      parks: state.getParksReducer.parks,
+    };
+};
+
+
+export default connect(mapStateToProps)(SearchBar);
