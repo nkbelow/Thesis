@@ -9,7 +9,8 @@ import {getLodging} from './getLodgingReducer.js';
 import {visibleFilter} from './visibleFilterReducer.js';
 import {getTrails} from './getTrailsReducer.js';
 import {getHistoricalData} from './getHistoricalDataReducer.js';
-import {checkout} from './checkout.js';
+import {payments} from './payments.js'
+
 
 export default combineReducers( {
  individualPark: individualPark,
@@ -22,5 +23,5 @@ export default combineReducers( {
  visibleFilter: visibleFilter,
  getTrails: getTrails,
  getHistoricalData: getHistoricalData,
- checkout: checkout
+ payments: payments
 });

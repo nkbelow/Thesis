@@ -1,22 +1,23 @@
 import React from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import {shoppingCartCompletion} from '../actions/payments.js';
 
 class PaymentWidget extends React.Component {
-  
   componentDidMount () {
-    var handler = StripeCheckout.configure({
+    const context = this;
+    let handler = StripeCheckout.configure({
       key: 'pk_test_v8fGa5OlY3D6QSIKd3ii9q6g',
       image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
       locale: 'auto',
       billingAddress: true,
       zipCode: true,
       name: 'Demo Site',
-      description: '2 widgets',
-      amount: 2000,
+      description: 'Annual All-Park Pass',
+      amount: this.props.checkoutTotal,
       token: function(token) {
         // You can access the token ID with `token.id`.
         // Get the token ID to your server-side code for use.
-        console.log(token)
         const axiosConfig = {
           method: 'POST',
           url: '/charge',
@@ -29,13 +30,14 @@ class PaymentWidget extends React.Component {
             livemode: token.livemode,
             type: token.type,
             used: token.used,
-            amount: 2000
+            amount: context.props.checkoutTotal
 
           }
         }
 
         axios(axiosConfig).then( function(response) {
-          console.log(response)
+          context.props.shoppingCartCompletion(context.props.checkoutTotal)
+          console.log(response, 'response response response response response')
         })
       }
     });
@@ -61,4 +63,16 @@ class PaymentWidget extends React.Component {
   }
 }
 
-export default PaymentWidget;
+const mapStateToProps = (state) => {
+    return {
+      shoppingCartTotal: state.payments.shoppingCartTotal,
+    }
+  }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    shoppingCartCompletion: (totalAmount) => dispatch(shoppingCartCompletion()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PaymentWidget);

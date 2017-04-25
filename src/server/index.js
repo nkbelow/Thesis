@@ -44,9 +44,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/api/sendEmail', sendEmail);
 
-app.post('/charge', (req, res) => {
-  let amount = 500;
-
+app.post("/charge", (req, res) => {
+  
   console.log(req.body.card, 'req.body.card req.body.card req.body.card req.body.card req.body.card')
   console.log(req.body, 'req.body req.body req.body req.body req.body' )
 
@@ -57,10 +56,10 @@ app.post('/charge', (req, res) => {
   })
   .then(customer =>
     stripe.charges.create({
-      amount,
+      amount: req.body.amount,
       description: "Sample Charge",
-         currency: "usd",
-         customer: customer.id
+      currency: "usd",
+      customer: customer.id
     }))
   .then(charge => res.status(200).send());
 });

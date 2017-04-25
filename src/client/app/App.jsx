@@ -2,7 +2,8 @@ import React from 'react';
 import FilterRow from './FilterRow.jsx'
 import ParkList from './ParkList.jsx';
 import ParkView from './ParkView.jsx';
-import Checkout from './Checkout.jsx';
+import ShoppingCart from './ShoppingCart.jsx';
+import AddToCart from './AddToCart.jsx';
 import SearchBar from './SearchBar.jsx';
 import MapView from './Map.jsx';
 import axios from 'axios';
@@ -28,6 +29,7 @@ class App extends React.Component {
     return (
     	<div>
         <Button onClick={() => {this.props.toggleVisibility(this.props.visible)}}>Toggle Visibility</Button>
+        <ShoppingCart />
         <Sidebar.Pushable as={Segment}>
           <Sidebar as={Menu} animation='push' width='thin' visible={!this.props.visible} icon='labeled' vertical inverted>
             <SidebarFilters visible={!this.props.visible} />
@@ -41,7 +43,7 @@ class App extends React.Component {
           </Segment> 
           </Sidebar.Pusher>
         </Sidebar.Pushable>
-        <Checkout />
+        <AddToCart />
       </div>
     );
   }
