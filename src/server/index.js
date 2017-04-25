@@ -19,7 +19,9 @@ const getHistoricalData = require('./handlers/weatherHandlers/historicalWeatherD
 
 const app = express();
 
-
+const keyPublishable = process.env.STRIPE_PUBLISHABLE_KEY;
+const keySecret = process.env.STRIPE_SECRET_KEY;
+const stripe = require("stripe")(keySecret);
 
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
@@ -38,6 +40,42 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/api/sendEmail', sendEmail);
+
+app.get('/api/shoppingcart', function(req, res, next) {
+  console.log('get api shoppingcart received!!!')
+  res.status(200).send(req.session.shoppingcart)
+});
+
+app.post('/api/shoppingcart', function(req, res, next) {
+  req.session.shoppingcart = req.body.params
+  console.log(req.session)
+  res.status(200).send('works!')
+});
+
+
+app.post("/charge", (req, res) => {
+  
+  console.log(req.body, 'req.body req.body req.body req.body req.body' )
+  sendEmail(req, res)
+  stripe.customers.create({
+    email: req.body.stripeEmail,
+    source: req.body.stripeToken,
+    
+  })
+  .then(customer => {
+    stripe.charges.create({
+        amount: req.body.amount,
+        description: "Sample Charge",
+        currency: "usd",
+        customer: customer.id
+      })
+    .then((charge) => {
+      console.log(charge, 'CHARGE CHARGE CHARGE')
+      res.status(200).send();
+    })
+  })
+});
+
 app.post('/api/park/tenDayForecast', tenDayForecast.getForecast);
 
 app.get('/api/trails', (req, res) => {
@@ -56,6 +94,7 @@ app.get('/api/park/lodgings', (req, res) => {
 })
 
 app.get('/api/park/', (req, res) => {
+  console.log(req.session.id, 'SESSION ID IS THIS ONE')
 	console.log(req.session, 'this is the session');
 	console.log(req.session.ID, 'this is the session id');
 	console.log(req.session.views, 'these are the views');
@@ -86,6 +125,9 @@ app.get('/api/parks', (req, res) => {
 	if (filterNames.length > 0) {
 		filters.activities(filterNames).then((response) => {
 			res.status(200).send(response);
+		})
+		.catch((error) => {
+			console.log(error)
 		})
 	} else {
 		db.db.query('SELECT * from parks')
