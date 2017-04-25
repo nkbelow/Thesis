@@ -24,10 +24,8 @@ class FilterRow extends React.Component {
       new Promise(function(resolve, reject) {
         resolve()
       }).then(function(){
-        console.log(context, '.then')
           context.props.onCombinationFilterClick(context.props.filter.name);
       }).then(function(){
-        console.log(context.props.filters, 'context.props.getParks(context.props.filters);')
         context.props.getParks(context.props.filters);
       })
     } else {
