@@ -39,3 +39,10 @@ export const trails = (trails) => {
     trails: trails
   }
 }
+
+export const historicalData = (historicalData) => {
+  return {
+    type: 'HISTORICAL_DATA',
+    historicalData: historicalData
+  }
+}
