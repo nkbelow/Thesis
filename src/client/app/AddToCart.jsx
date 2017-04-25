@@ -7,7 +7,7 @@ class AddToCart extends React.Component {
   render () {
     return (
       <div>
-      {Object.keys(this.props.shoppingCartState).map((item) => <ShopItemsList item={item} />)}
+      {Object.keys(this.props.shoppingCartState).map((item) => <ShopItemsList key={item} item={item} />)}
       </div>
     )
   }

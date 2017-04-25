@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import ParkItem from './ParkItem.jsx';
 import Masonry from 'react-masonry-component';
 
@@ -14,12 +15,40 @@ class ParkList extends React.Component {
   }
 
   render() {
+
+    let singleSelectionArray = [];
+
+    this.props.filters.filter(function(filter){
+      if (filter.isSelected === true) {
+        singleSelectionArray.push(filter.name)
+      }
+    })
+
+    let filteredParks = this.props.parks
+
+    if (singleSelectionArray[0] === 'Most Visited') {
+      filteredParks = this.props.parks.sort(function(a, b) {
+        return b.visitors - a.visitors
+      })
+    } else if(singleSelectionArray[0] === 'Least Visited') {
+      filteredParks = this.props.parks.sort(function(a, b) {
+        return a.visitors - b.visitors
+      })
+    }
+
     return (
           <Masonry style={this.style}>
-          {this.props.parks.map((park) => (<ParkItem key={park.parkcode} park={park} />))}
+          {filteredParks.map((park) => (<ParkItem key={park.parkcode} park={park} />))}
           </Masonry>
     );
   }
 }
 
-export default ParkList;
+const mapStateToProps = (state) => {
+    return {
+        filters: state.updateFiltersSelections.popularity,
+        parks: state.getParksReducer.parks,
+    };
+};
+
+export default connect(mapStateToProps)(ParkList)

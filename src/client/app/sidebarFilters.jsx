@@ -12,7 +12,7 @@ class SidebarFilters extends React.Component {
             <Menu.Item name='home'>
               <List>
               <List.Header>Activities</List.Header>
-                {this.props.updateFiltersSelections.slice(0, 5).map((filter) => <FilterRow getParks={this.props.getParks} filter={filter} isSelected={filter.isSelected} name={filter.name} key={filter.name} category={'Activities'}/>)}
+                {this.props.updateFiltersSelections.activities.slice(0, 5).map((filter) => <FilterRow getParks={this.props.getParks} filter={filter} isSelected={filter.isSelected} name={filter.name} key={filter.name} category={'Activities'}/>)}
               </List>
               <Accordion>
                 <Accordion.Title>
@@ -21,7 +21,7 @@ class SidebarFilters extends React.Component {
                 </Accordion.Title>
                 <Accordion.Content>
                   <List>
-                    {this.props.updateFiltersSelections.slice(5, 21).map((filter) => <FilterRow getParks={this.props.getParks} filter={filter} isSelected={filter.isSelected} name={filter.name} key={filter.name} />)}
+                    {this.props.updateFiltersSelections.activities.slice(5, 21).map((filter) => <FilterRow getParks={this.props.getParks} filter={filter} isSelected={filter.isSelected} name={filter.name} key={filter.name} />)}
                   </List>
                 </Accordion.Content>
               </Accordion>
@@ -29,7 +29,7 @@ class SidebarFilters extends React.Component {
             <Menu.Item name='gamepad'>
               <List>
               <List.Header>Popularity</List.Header>
-               {this.props.updateFiltersSelections.slice(21, 23).map((filter) => <FilterRow getParks={this.props.getParks} filter={filter} isSelected={filter.isSelected} name={filter.name} key={filter.name} category={'Popularity'}/>)}
+               {this.props.updateFiltersSelections.popularity.slice(0, 2).map((filter) => <FilterRow getParks={this.props.getParks} filter={filter} isSelected={filter.isSelected} name={filter.name} key={filter.name} category={'Popularity'}/>)}
               </List>
             </Menu.Item>
             <Menu.Item name='camera'>

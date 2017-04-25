@@ -39,7 +39,7 @@ class App extends React.Component {
             <h1> Nimble Newts Project </h1>
             {this.props.parks !== null && <SearchBar parks={this.props.parks}/>}
             <MapView parks={this.props.parks}/>
-            {this.props.parks !== null && <ParkList parks={this.props.parks}/>}
+            <ParkList />
           </Segment> 
           </Sidebar.Pusher>
         </Sidebar.Pushable>
@@ -51,7 +51,7 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-      filters: state.updateFiltersSelections,
+      filters: state.updateFiltersSelections.activities,
       parks: state.getParksReducer.parks,
       visible: state.visibleFilter.visible
     };

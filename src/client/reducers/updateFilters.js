@@ -1,6 +1,7 @@
-import { UPDATE_ACTIVITIES_SELECTION } from '../actions/filters.js'
+import { UPDATE_COMBINATION_SELECTIONS, UPDATE_SINGLE_SELECTION } from '../actions/filters.js'
 
-let initialState = [{
+let initialState = {
+  activities: [{
     name: 'Any',
     isSelected: false
   },
@@ -83,23 +84,22 @@ let initialState = [{
   {
     name: 'Horse Camping',
     isSelected: false
-  },
-  {
+  }],
+  popularity: [{
     name: 'Most Visited',
     isSelected: false
   },
   {
     name: 'Least Visited',
     isSelected: false
-  }]
+  }]}
 
 
 // reducer for the filters
 export const updateFiltersSelections = (state=initialState, action) => {
   switch (action.type) {
-    case UPDATE_ACTIVITIES_SELECTION:
-      return state.map(filter => {
-        
+    case UPDATE_COMBINATION_SELECTIONS:
+      return Object.assign({}, state, {activities: state.activities.map(filter => {
         if(filter.name !== action.name) {
           return filter;
         }
@@ -108,7 +108,21 @@ export const updateFiltersSelections = (state=initialState, action) => {
           name: filter.name,
           isSelected: !filter.isSelected
         };
-      })
+      })})
+    case UPDATE_SINGLE_SELECTION:
+      return Object.assign({}, state, {popularity: state.popularity.map(filter => {
+        if (filter.name !== action.name) {
+          return {
+              name: filter.name,
+              isSelected: false
+          }
+        }
+
+        return {
+          name: filter.name,
+          isSelected: !filter.isSelected
+        };
+      })})
     default:
       return state
   }
