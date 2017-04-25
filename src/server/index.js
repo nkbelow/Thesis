@@ -1,6 +1,5 @@
 const express = require('express');
 const session = require('express-session');
-const passport = require('./passport/passport.js')
 const dotenv = require('dotenv').config();
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -16,6 +15,7 @@ const googleHelpers = require('./handlers/gHelpers.js')
 const campgroundsData = require('../db/models/getCampgroundsInfo.js');
 const trails = require('../db/models/getTrailsInfo.js');
 const sendEmail = require('./handlers/emailHandler.js');
+const getHistoricalData = require('./handlers/weatherHandlers/historicalWeatherData.js')
 
 const app = express();
 
@@ -25,7 +25,7 @@ app.use('/', express.static(path.join(__dirname, '../client/public')));
 
 app.use(session({
 	store: new pgSession({
-		pg: db.pgp.pg || db.pgp,
+		pg: db.pgp.pg,
 		conString: process.env.DATABASE_URL || db.connection
 	}),
 	secret: 'Victoria\'s',
@@ -46,7 +46,7 @@ app.get('/api/trails', (req, res) => {
 	})
 })
 
-// app.get('api/historicalWeatherData', )
+app.get('/api/historicalWeatherData', getHistoricalData);
 
 app.get('/api/park/lodgings', (req, res) => {
 	googleHelpers.places({lat: req.query.lat, lng: req.query.lon})

@@ -6,9 +6,10 @@ import {getHistoricalData} from '../actions/getHistoricalData.js'
 
 const HistoricalWeatherDataDropDown = (props) => {
 
-  // const handleClick = (event, {value}) => {
-  //   props.getHistoricalData(props.park[1][0].latitude, props.park[1][0].longitude, value);
-  // }
+  const handleClick = (event, {value}) => {
+    console.log('this changed');
+    props.getHistoricalData(props.park[1][0].latitude, props.park[1][0].longitude, value);
+  }
 
   const monthOptions = [
   {key: 'Jan', value: '01010131', text: 'January'}, 
@@ -37,7 +38,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  getHistoricalData: (latitude, longitude, month) => {getHistoricalData(latitude, longitude, month)}
+  return {
+    getHistoricalData: (latitude, longitude, month) => dispatch(getHistoricalData(latitude, longitude, month))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HistoricalWeatherDataDropDown);
