@@ -10,7 +10,7 @@ const getYesterdaysDistance = (userId, accessToken) => {
     }
   }
   return axios(config).then((result) => {
-    let average = (result.data['activities-distance'].map(function(data){
+    const average = (result.data['activities-distance'].map(function(data){
       return parseInt(data.value);
     }).reduce(function(prev, cur){
       return prev + cur;

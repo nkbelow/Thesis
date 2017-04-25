@@ -115,7 +115,10 @@ app.get('/auth/fitbit',
 app.get('/auth/fitbit/callback', fitbitAuthenticate);
 
 app.get('/api/fitbit', (req, res) => {
-	res.send(fitbitHelper(req.user.profile.id, req.user.accessToken));
+	fitbitHelper(req.user.profile.id, req.user.accessToken)
+	.then((result)=> {
+		res.status(200).send('' + result);
+	})
 })
 
 

@@ -5,6 +5,8 @@ import {getPark} from '../actions/getPark.js';
 import {connect} from 'react-redux'
 import {getCampgrounds} from '../actions/getCampgrounds.js'
 import ParkMapView from './singlePageMapView.jsx';
+import TrailList from './TrailList.jsx';
+import PersonalizedTrailList from './PersonalizedTrailList.jsx';
 import WeatherForecast from './tenDayForecastList.jsx'
 import ActivitiesList from './activitiesList.jsx';
 import SinglePageNavBar from './singlePageNavBar.jsx';
@@ -22,13 +24,15 @@ class ParkView extends React.Component {
     .then((result) => {
       this.props.getCampgrounds(result[1][0].id)
       return result
-    }).then((result) => {
-      this.props.getLodging(result[1][0].latitude, result[1][0].longitude)
-      return result
-    }).then((result) => {
-      this.props.getTenDayForecast(result[1][0].latitude, result[1][0].longitude)
-      return result
-    }).then((result) => {
+    })
+    // .then((result) => {
+    //   this.props.getLodging(result[1][0].latitude, result[1][0].longitude)
+    //   return result
+    // }).then((result) => {
+    //   this.props.getTenDayForecast(result[1][0].latitude, result[1][0].longitude)
+    //   return result
+    // })
+    .then((result) => {
       this.props.getTrails(result[1][0].id)
     })
     // .then((result) => {
@@ -41,6 +45,20 @@ class ParkView extends React.Component {
   }
 
   render() {
+    let trailsDisplay = null;
+
+    if(this.props.trails !== undefined && this.props.distance !== undefined){
+      let trailsAchieved = [];
+      for(var i = 0; i < this.props.trails.length; i++){
+        if(this.props.trails[i].length <= this.props.distance){
+          trailsAchieved.push(this.props.trails[i]);
+        }
+      }
+      trailsDisplay = <PersonalizedTrailList trails={trailsAchieved} />
+    } else if(this.props.trails !== undefined && this.props.distance === undefined){
+      trailsDisplay = <TrailList trails={this.props.trails} />
+    }
+
     return(
     	<div>
     		{this.props.park && <div> <SinglePageNavBar />
@@ -52,6 +70,7 @@ class ParkView extends React.Component {
            </Message.Header>
         <h3>{this.props.park[1][0].description}</h3>
         </Message>
+        {trailsDisplay}
         <div className='container'>
           <div className='row'>
             <div className='col-md-4'>
@@ -78,7 +97,7 @@ const mapStateToProps = (state) => {
       tenDayForecast: state.getTenDayForecast.tenDayForecast,
       lodgings: state.getLodging.lodging,
       trails: state.getTrails.trails,
-      distance: state.getDistance
+      distance: state.getDistance.distance
     }
   }
 
