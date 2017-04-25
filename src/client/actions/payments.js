@@ -7,7 +7,10 @@ export const SHOPPING_CART_QUANTITY_INCREASE = 'SHOPPING_CART_QUANTITY_INCREASE'
 export const SHOPPING_CART_QUANTITY_DECREASE = 'SHOPPING_CART_QUANTITY_DECREASE';
 export const SHOPPING_CART_ORDER_COMPLETED = 'SHOPPING_CART_ORDER_COMPLETED';
 
-export const ADD_TO_CART = 'ADD_TO_CART'
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const RELOAD_CART = 'RELOAD_CART';
+export const PAYMENT_SUCCESSFULLY_SENT = 'PAYMENT_SUCCESSFULLY_SENT';
+export const CALCULATE_SHOPPING_CART_TOTAL = 'CALCULATE_SHOPPING_CART_TOTAL';
 
 // dispatch to toggle the selection
 export const orderQuantityIncrease = (quantity, item) => {
@@ -25,20 +28,6 @@ export const orderQuantityDecrease = (quantity, item) => {
     'item': item
   }
 }
-  
-// export const shoppingCartOrderStart = () => {
-//   return {
-//     'type': SHOPPING_CART_ORDER_START,
-//     'status': 'start'
-//   }
-// }
-
-// export const shoppingCartPending = () => {
-//   return {
-//     'type': SHOPPING_CART_ORDER_PENDING,
-//     'status': 'pending'
-//   }
-// }
 
 export const shoppingCartQuantityIncrease = (quantity, item) => {
   return {
@@ -57,13 +46,6 @@ export const shoppingCartQuantityDecrease = (quantity, item) => {
   }
 }
 
-export const shoppingCartCompletion = () => {
-  return {
-    'type': SHOPPING_CART_ORDER_COMPLETED,
-    'status': 'completed'
-  }
-}
-
 export const addToCart = (quantity, item) => {
   return {
     'type': ADD_TO_CART,
@@ -72,10 +54,31 @@ export const addToCart = (quantity, item) => {
   }
 }
 
+export const reloadCart = (shoppingcartcookie) => {
+  return {
+    'type': RELOAD_CART,
+    'shoppingcart': shoppingcartcookie
+  }
+}
+
 export const getshoppingCartState = (quantity, item) => {
   return {
     'type': ADD_TO_CART,
     'quantity': quantity,
     'item': item
+  }
+}
+
+export const paymentSuccessfullySent = () => {
+  return {
+    'type': PAYMENT_SUCCESSFULLY_SENT,
+    'status': 'completed'
+  }
+}
+
+export const calculateShoppingCartTotal = (total) => {
+  return {
+    'type': CALCULATE_SHOPPING_CART_TOTAL,
+    'total': total
   }
 }

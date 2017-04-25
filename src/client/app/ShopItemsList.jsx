@@ -20,7 +20,6 @@ const mapStateToProps = (state) => {
     dayPassQuantity: state.payments.dayPassQuantity,
     annualPassPrice: state.payments.annualPassPrice,
     annualPassQuantity: state.payments.annualPassQuantity,
-    shoppingCartTotal: state.payments.shoppingCartTotal,
   }
 }
 

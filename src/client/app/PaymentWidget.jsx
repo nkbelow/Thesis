@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import {connect} from 'react-redux';
-import {shoppingCartCompletion} from '../actions/payments.js';
+import { connect } from 'react-redux';
+import { shoppingCartCompletion, paymentSuccessfullySent } from '../actions/payments.js';
 
 class PaymentWidget extends React.Component {
   componentDidMount () {
@@ -30,14 +30,15 @@ class PaymentWidget extends React.Component {
             livemode: token.livemode,
             type: token.type,
             used: token.used,
-            amount: context.props.shoppingCartTotal
+            amount: context.props.shoppingCartTotal * 100,
+            shoppingCartState: context.props.shoppingCartState
 
           }
         }
 
         axios(axiosConfig).then( function(response) {
-          context.props.shoppingCartCompletion(context.props.shoppingCartTotal)
-          console.log(response, 'response response response response response')
+          console.log('this.props.paymentSuccessfullySent(response);')
+          context.props.paymentSuccessfullySent(response);
         })
       }
     });
@@ -57,7 +58,7 @@ class PaymentWidget extends React.Component {
   render () {
     return (
     <div>
-      <button id="customButton">Purchase</button>
+      <button id="customButton" >Purchase</button>
     </div>
     )
   }
@@ -66,12 +67,13 @@ class PaymentWidget extends React.Component {
 const mapStateToProps = (state) => {
     return {
       shoppingCartTotal: state.payments.shoppingCartTotal,
+      shoppingCartState: state.payments.shoppingCartState
     }
   }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    shoppingCartCompletion: (totalAmount) => dispatch(shoppingCartCompletion()),
+    paymentSuccessfullySent: () => dispatch(paymentSuccessfullySent())
   }
 }
 

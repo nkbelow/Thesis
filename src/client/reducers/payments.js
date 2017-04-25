@@ -1,4 +1,4 @@
-import { ADD_TO_CART, ORDER_QUANTITY_INCREASE, ORDER_QUANTITY_DECREASE, ORDER_QUANTITY_MANUAL_ENTRY, SHOPPING_CART_QUANTITY_INCREASE, SHOPPING_CART_QUANTITY_DECREASE, SHOPPING_CART_ORDER_COMPLETED } from '../actions/payments.js'
+import { ADD_TO_CART, RELOAD_CART, CALCULATE_SHOPPING_CART_TOTAL, PAYMENT_SUCCESSFULLY_SENT, ORDER_QUANTITY_INCREASE, ORDER_QUANTITY_DECREASE, ORDER_QUANTITY_MANUAL_ENTRY, SHOPPING_CART_QUANTITY_INCREASE, SHOPPING_CART_QUANTITY_DECREASE, SHOPPING_CART_ORDER_COMPLETED } from '../actions/payments.js'
 
 const initialState = {
   dayPassQuantity: 0,
@@ -9,6 +9,7 @@ const initialState = {
     'annualPass': 0,
     'dayPass': 0
   },
+  shoppingCartTotal: 0
 }
 
 export const payments = (state=initialState, action) => {
@@ -29,6 +30,10 @@ export const payments = (state=initialState, action) => {
           }),
         [action.item + 'Quantity']: 0
       })
+    case RELOAD_CART:
+      return Object.assign({}, state, {
+        shoppingCartState: action.shoppingcart
+      })
     case SHOPPING_CART_QUANTITY_INCREASE:
       return Object.assign({}, state, {
         shoppingCartQuantity: action.shoppingCartQuantity + 1,
@@ -38,7 +43,18 @@ export const payments = (state=initialState, action) => {
       return Object.assign({}, state, {
         shoppingCartQuantity: (!(action.shoppingCartQuantity) ? action.shoppingCartQuantity : (action.shoppingCartQuantity - 1)),
         shoppingCartTotal: (!(action.shoppingCartQuantity) ? state.shoppingCartTotal: ((action.shoppingCartQuantity - 1) * state[action.item + 'Price']))
-      }) 
+      })
+    case CALCULATE_SHOPPING_CART_TOTAL:
+      return Object.assign({}, state, {
+        shoppingCartTotal: action.total
+      })
+    case PAYMENT_SUCCESSFULLY_SENT:
+      return Object.assign({}, state, {
+        shoppingCartState: {
+          'annualPass': 0,
+          'dayPass': 0
+        }
+      })
     default:
       return state
   }
