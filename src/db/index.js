@@ -12,6 +12,8 @@ if (process.env.DATABASE_URL) {
 
   let db = pgp(process.env.DATABASE_URL);
   module.exports.db = db;
+  module.exports.pgp = pgp;
+
 } 
 else {
   let database = pgp({})
