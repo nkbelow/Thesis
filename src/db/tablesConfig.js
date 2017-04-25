@@ -23,15 +23,7 @@ module.exports = function (db) {
 				longitude DOUBLE PRECISION \
 				); \
 			')
-	}).then(function () {
-		console.log('start images table')
-		return db.query(' \
-			CREATE TABLE IF NOT EXISTS images ( \
-			id SERIAL PRIMARY KEY, \
-			url VARCHAR(50) \
-			); \
-		')
-	}).then(function() {
+	  }).then(function() {
 			console.log('start trails table')
 			return db.query (' \
 				CREATE TABLE IF NOT EXISTS trails ( \
@@ -44,15 +36,6 @@ module.exports = function (db) {
 				length DOUBLE PRECISION, \
 				description VARCHAR (5000), \
 				directions VARCHAR (3000), \
-				park_id INTEGER references parks(id) \
-				); \
-			')
-		}).then(function () {
-			console.log('start lodging table')
-			return db.query('\
-				CREATE TABLE IF NOT EXISTS lodging ( \
-				id SERIAL PRIMARY KEY, \
-				name VARCHAR(255), \
 				park_id INTEGER references parks(id) \
 				); \
 			')
