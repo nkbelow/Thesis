@@ -13,6 +13,7 @@ import {getLodging} from '../actions/getLodging.js';
 import {getTrails} from '../actions/getTrails.js';
 import {Link} from 'react-router-dom'
 import {Message} from 'semantic-ui-react'
+import HistoricalWeatherDropdown from './historicalWeatherDataDropDown.jsx'
 
 class ParkView extends React.Component {
   componentWillMount() {
@@ -44,11 +45,14 @@ class ParkView extends React.Component {
         </Message>
         <div className='container'>
           <div className='row'>
-            <div className='col-md-6'>
+            <div className='col-md-4'>
           <ActivitiesList activities={this.props.park[0]}/>
             </div>
-            <div className='col-md-6'>
+            <div className='col-md-4'>
         { this.props.tenDayForecast && <WeatherForecast tenDayForecast={this.props.tenDayForecast} />}
+            </div>
+            <div>
+            <HistoricalWeatherDropdown />
             </div>
           </div>
         </div>

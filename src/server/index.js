@@ -25,7 +25,7 @@ app.use('/', express.static(path.join(__dirname, '../client/public')));
 
 app.use(session({
 	store: new pgSession({
-		pg: db.pgp.pg,
+		pg: db.pgp.pg || db.pgp,
 		conString: process.env.DATABASE_URL || db.connection
 	}),
 	secret: 'Victoria\'s',
@@ -45,6 +45,8 @@ app.get('/api/trails', (req, res) => {
 		res.status(200).send(trails);
 	})
 })
+
+// app.get('api/historicalWeatherData', )
 
 app.get('/api/park/lodgings', (req, res) => {
 	googleHelpers.places({lat: req.query.lat, lng: req.query.lon})
