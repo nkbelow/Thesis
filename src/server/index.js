@@ -115,6 +115,7 @@ app.post("/charge", (req, res) => {
   })
 });
 
+
 app.get('/api/parks/getparksbyactivity', (req, res) => {
   handlers.getParkIdsByActivities(JSON.parse(req.query.activitiesHoverState)).then((results) => {
     res.status(200).send(results)
@@ -122,6 +123,15 @@ app.get('/api/parks/getparksbyactivity', (req, res) => {
 })
 
 app.post('/api/park/tenDayForecast', handlers.tenDayWeatherForecast);
+
+
+// app.post('/api/park/tenDayForecast', (req, res) => {
+// 	forecast(req.query.id).then((forecast) => {
+// 		res.status(200).send(forecast);
+// 		console.log("this is the forecast", forecast)
+// 	})
+// })
+
 
 
 app.get('/api/trails', (req, res) => {
