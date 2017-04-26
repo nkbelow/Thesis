@@ -1,7 +1,6 @@
 const promise = require('bluebird');
 const createTables = require('./tablesConfig.js');
 const databaseName = 'thesis';
-const parks = require('../../data/ourNationalParks.js');
 const options = {
   promiseLib: promise
 };

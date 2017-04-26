@@ -3,27 +3,28 @@ const session = require('express-session');
 const dotenv = require('dotenv').config();
 const bodyParser = require('body-parser');
 const path = require('path');
-const port = process.env.PORT || 3000;
 const pgSession = require('connect-pg-simple')(session);
 const cookieParser = require('cookie-parser');
 
-const db = require('../db/index.js');
-const data = require('../../data/ourNationalParks.js');
-const filters = require('./handlers/filtersRequestHelper.js')
-const individualParkData = require('../db/models/getIndividualParksInfo.js');
-const tenDayForecast = require('./handlers/weatherHandlers/tenDayForecastHandler.js')
 
-const googleHelpers = require('./handlers/gHelpers.js')
+const db = require('../db/index.js');
+const data = require('../db/activities_parks_data/ourNationalParks.js');
+const individualParkData = require('../db/models/getIndividualParksInfo.js');
 const campgroundsData = require('../db/models/getCampgroundsInfo.js');
 const trails = require('../db/models/getTrailsInfo.js');
-const sendEmail = require('./handlers/emailHandler.js');
-const getHistoricalData = require('./handlers/weatherHandlers/historicalWeatherData.js')
+const handlers = require('./handlers/handlers.js')
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 const keyPublishable = process.env.STRIPE_PUBLISHABLE_KEY;
 const keySecret = process.env.STRIPE_SECRET_KEY;
 const stripe = require("stripe")(keySecret);
+const fitbitStrategy = require('./passport/fitbitConfig.js');
+const passport = require('passport');
+const fitbitHelper = require('./handlers/fitbitHelper.js')
+
+app.use('/', express.static(path.join(__dirname, '../client/public')));
 
 app.use(session({
 	store: new pgSession({
@@ -36,18 +37,10 @@ app.use(session({
 	cookie: {maxAge: new Date(Date.now() + 600000) }
 }))
 
-const fitbitStrategy = require('./passport/fitbitConfig.js');
-const passport = require('passport');
-const fitbitHelper = require('./handlers/fitbitHelper.js')
 
 
-app.use('/', express.static(path.join(__dirname, '../client/public')));
-
-
-app.use(cookieParser());
-app.use(bodyParser());
-
-app.use(session({ secret: 'keyboard cat' }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(passport.initialize());
 app.use(passport.session({
@@ -70,9 +63,21 @@ var fitbitAuthenticate = passport.authenticate('fitbit', {
   failureRedirect: '/auth/fitbit/failure'
 });
 
+app.get('/auth/fitbit',
+  passport.authenticate('fitbit', { scope: ['activity','heartrate','location','profile'] }
+));
 
+app.get('/auth/fitbit/callback', fitbitAuthenticate);
 
-app.get('/api/sendEmail', sendEmail);
+app.get('/api/fitbit', (req, res) => {
+	console.log(req.user, 'this the user');
+	fitbitHelper(req.user.profile.id, req.user.accessToken)
+	.then((result)=> {
+		res.status(200).send('' + result);
+	})
+})
+
+app.get('/api/sendEmail', handlers.emailHandler);
 
 app.get('/api/shoppingcart', function(req, res, next) {
   console.log('get api shoppingcart received!!!')
@@ -109,21 +114,8 @@ app.post("/charge", (req, res) => {
   })
 });
 
-app.get('/auth/fitbit',
-  passport.authenticate('fitbit', { scope: ['activity','heartrate','location','profile'] }
-));
+app.post('/api/park/tenDayForecast', handlers.tenDayWeatherForecast);
 
-app.get('/auth/fitbit/callback', fitbitAuthenticate);
-
-app.get('/api/fitbit', (req, res) => {
-	fitbitHelper(req.user.profile.id, req.user.accessToken)
-	.then((result)=> {
-		res.status(200).send('' + result);
-	})
-})
-
-
-app.post('/api/park/tenDayForecast', tenDayForecast.getForecast);
 
 app.get('/api/trails', (req, res) => {
 	trails(req.query.parkId).then((trails) => {
@@ -131,10 +123,10 @@ app.get('/api/trails', (req, res) => {
 	})
 })
 
-app.get('/api/historicalWeatherData', getHistoricalData);
+app.get('/api/historicalWeatherData', handlers.historicalWeatherData);
 
 app.get('/api/park/lodgings', (req, res) => {
-	googleHelpers.places({lat: req.query.lat, lng: req.query.lon})
+	handlers.gHandlers.places({lat: req.query.lat, lng: req.query.lon})
 	.then((result) => {
 		res.status(201).send(result);
 	})
@@ -165,7 +157,7 @@ app.get('/api/parks', (req, res) => {
 	})
 
 	if (filterNames.length > 0) {
-		filters.activities(filterNames).then((response) => {
+		handlers.filters.activities(filterNames).then((response) => {
 			res.status(200).send(response);
 		})
 		.catch((error) => {
