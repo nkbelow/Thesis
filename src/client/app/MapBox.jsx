@@ -12,6 +12,16 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     border: '2px solid #C9C9C9'
+  },
+  active: {
+    width: 30,
+    height: 30,
+    borderRadius: '50%',
+    backgroundColor: '#51D5A0',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    border: '2px solid #C9C9C9'
   }
 }
 
@@ -37,6 +47,38 @@ export default class MapBox extends Component {
 		 	this.props.parks.map((park) => (
               <Marker
                 key={park.id}
+                style={this.props.activePark && (park.id === this.props.activePark.id) ? styles.active : styles.marker}
+                coordinates={[park.longitude, park.latitude]}
+                onClick={this.props.addPopup.bind(this, park)}
+                onMouseEnter = {this.props.setActivePark.bind(this, park)} 
+                onMouseLeave = {this.props.setActivePark.bind(this, null)}>
+              </Marker>
+            ))           
+          }  
+
+          {  this.props.remainingParks &&
+      this.props.remainingParks.map((park) => {
+
+        if (park.id === this.props.activePark.id) {
+          return 
+          <Marker
+                key={park.id}
+                style={styles.marker}
+                coordinates={[park.longitude, park.latitude]}
+                onClick={this.props.addPopup.bind(this, park)}>
+
+                <img style= {{
+                  maxHeight:'40px',
+                  maxWidth:'40px',
+                  height: 'auto',
+                  width: 'auto'
+                }} src="https://cdn1.iconfinder.com/data/icons/map-objects/154/map-object-fir-forest-park-512.png" />
+
+              </Marker>
+            } else {
+              return
+              <Marker
+                key={park.id}
                 style={styles.marker}
                 coordinates={[park.longitude, park.latitude]}
                 onClick={this.props.addPopup.bind(this, park)}>
@@ -49,8 +91,10 @@ export default class MapBox extends Component {
                 }} src="https://cdn1.iconfinder.com/data/icons/map-objects/154/map-object-fir-forest-park-512.png" />
 
               </Marker>
-            ))           
-          }           
+            }
+                     
+          })
+      }           
 
       { this.props.popup && 
       

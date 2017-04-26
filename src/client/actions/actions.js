@@ -55,3 +55,17 @@ export const distance = (distance) => {
     distance: distance
   }
 }
+
+export const activePark = (park) => {
+  return {
+    type: 'SET_ACTIVE_PARK',
+    park: park
+  }
+}
+
+export const activeParks = (park) => {
+  return {
+    type: 'SET_ACTIVE_PARKS',
+    filter: filter
+  }
+}

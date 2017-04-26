@@ -35,7 +35,7 @@ class FilterRow extends React.Component {
 
   render () {
     return (
-      <List.Item style={this.props.isSelected ? this.selectedStyle : this.deSelectedStyle} onClick={this.handleOnClick.bind(this)}>{this.props.name}</List.Item> 
+      <List.Item style={this.props.isSelected ? this.selectedStyle : this.deSelectedStyle} onClick={this.handleOnClick.bind(this)} onMouseEnter={this.props.setActiveParks.bind(this, this.props.filter.name)} onMouseLeave={this.props.setActiveParks.bind(this, null)}>{this.props.name} </List.Item> 
     )
   }
 }
@@ -47,11 +47,14 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
+
   return {
       onCombinationFilterClick: (filter) => dispatch(onCombinationFilterClick(filter)),
       onSingleFilterClick: (filter) => dispatch(onSingleFilterClick(filter)),
       getFilteredParks: (filters) => dispatch(getFilteredParks(filters)),
+      setActiveParks: (filter) => dispatch(setActiveParks(filter))
   };
+
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FilterRow)

@@ -1,5 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {connect} from 'react-redux';
+import {activePark} from '../actions/actions.js'
+
 
 class ParkItem extends React.Component {
   constructor(props) {
@@ -32,8 +35,8 @@ class ParkItem extends React.Component {
 
   render() {
     return(
-      <div style={this.containerStyle}>
-        <Link to={`park/${this.props.park.parkcode}/`}>
+      <div >
+        <Link to={`park/${this.props.park.parkcode}/`} onMouseEnter = {this.props.setActivePark.bind(this, this.props.park)} onMouseLeave = {this.props.setActivePark.bind(this, null)} >
           <img style={this.imageStyle} src={'https://res.cloudinary.com/djzaih6fz/image/upload/' + this.props.park.parkcode + '.jpg'} />
           <h2 style={this.textStyle}>{this.props.park.name}</h2>
         </Link>
@@ -42,4 +45,30 @@ class ParkItem extends React.Component {
   }
 }
 
-export default ParkItem;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setActivePark: (park) => { 
+      dispatch(activePark(park)) }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(ParkItem);
+
+  // goToDestination(e) {
+  //   console.log('clicked on park');
+  //   this.props.history.push(`/park/${this.props.park.parkCode}`)
+  // }
+// ParkItem.contextTypes = {
+//   router: React.PropTypes.object
+// }
+
+/*
+
+      <div>
+        <div onClick={(e) => this.goToDestination(e)}>
+          <h3>{this.props.park.name}</h3>
+        </div>
+      </div>
+
+*/
+>>>>>>> enlarge markers on hover

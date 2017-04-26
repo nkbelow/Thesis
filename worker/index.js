@@ -1,5 +1,6 @@
 var data = require('./ourNationalParks.js')
 var fetch = require('node-fetch')
+var db = require('../src/db/index.js')
 
 let parks = data.ourNationalParks
 
@@ -15,10 +16,13 @@ const pgp = require('pg-promise')(options);
 pgp.pg.defaults.ssl = true;
 
 // let db = pgp('postgres://vapabobdrxlaco:c73e2ac093866955891b405a00186a4e45deb6fa00cfa23f7d2a6a6e28020297@ec2-54-225-182-108.compute-1.amazonaws.com:5432/d603o0tkht6u79');
-let db = pgp({database: 'thesis'})
-db.query('DROP TABLE IF EXISTS forecast')
+// let db = pgp({database: 'thesis'})
+
+
+
+db.db.query('DROP TABLE IF EXISTS forecast')
 .then(function () {
-	return db.query(' \
+	return db.db.query(' \
 				CREATE TABLE IF NOT EXISTS forecast ( \
 				id SERIAL PRIMARY KEY, \
 				conditions VARCHAR(255), \
@@ -71,7 +75,7 @@ var storeForecasts = function(forecasts) {
 				let queryParameters = [parkCode, forecast[i].high.fahrenheit, forecast[i].conditions, forecast[i].date.weekday]
 		    	let q = 'INSERT INTO forecast (park_id, high, conditions, date) VALUES ((SELECT id FROM parks WHERE parkcode=$1), $2, $3, $4)'
 		  		console.log('querying with: ', parkCode, queryParameters);
-			    db.query(q, queryParameters)
+			    db.db.query(q, queryParameters)
 			}
 		}
 }
