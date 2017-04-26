@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getRemainingParks } from '../actions/getParks.js'
 import ParkItem from './ParkItem.jsx';
 import Masonry from 'react-masonry-component';
 
@@ -14,6 +15,10 @@ class ParkList extends React.Component {
     };
   }
 
+  componentDidUpdate () {
+    this.props.getRemainingParks(this.props.filteredParks, this.props.allParks)
+  }
+
   render() {
 
     let singleSelectionArray = [];
@@ -24,14 +29,14 @@ class ParkList extends React.Component {
       }
     })
 
-    let filteredParks = this.props.parks
+    let filteredParks = this.props.filteredParks
 
     if (singleSelectionArray[0] === 'Most Visited') {
-      filteredParks = this.props.parks.sort(function(a, b) {
+      filteredParks = this.props.filteredParks.sort(function(a, b) {
         return b.visitors - a.visitors
       })
     } else if(singleSelectionArray[0] === 'Least Visited') {
-      filteredParks = this.props.parks.sort(function(a, b) {
+      filteredParks = this.props.filteredParks.sort(function(a, b) {
         return a.visitors - b.visitors
       })
     }
@@ -47,8 +52,15 @@ class ParkList extends React.Component {
 const mapStateToProps = (state) => {
     return {
         filters: state.updateFiltersSelections.popularity,
-        parks: state.getParksReducer.parks,
+        filteredParks: state.getParksReducer.filteredParks,
+        allParks: state.getParksReducer.allParks,
     };
 };
 
-export default connect(mapStateToProps)(ParkList)
+const mapDispatchToProps = (dispatch) => {
+  return {
+      getRemainingParks: (filteredParks, allParks) => dispatch(getRemainingParks(filteredParks, allParks))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ParkList)

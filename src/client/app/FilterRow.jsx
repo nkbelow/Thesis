@@ -1,9 +1,9 @@
-import React from 'react';
-import { List } from 'semantic-ui-react';
-import { connect } from 'react-redux';
-import { onCombinationFilterClick, onSingleFilterClick } from '../actions/filters.js';
-import { getParks } from '../actions/getParks.js';
-import Promise from 'bluebird';
+import React from 'react'
+import { List } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { onCombinationFilterClick, onSingleFilterClick } from '../actions/filters.js'
+import { getFilteredParks } from '../actions/getParks.js'
+import Promise from 'bluebird'
 
 class FilterRow extends React.Component {
   constructor (props) {
@@ -26,7 +26,7 @@ class FilterRow extends React.Component {
       }).then(function(){
           context.props.onCombinationFilterClick(context.props.filter.name);
       }).then(function(){
-        context.props.getParks(context.props.filters);
+        context.props.getFilteredParks(context.props.filters);
       })
     } else {
         context.props.onSingleFilterClick(context.props.filter.name);
@@ -41,17 +41,17 @@ class FilterRow extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return {
-      filters: state.updateFiltersSelections.activities
-    };
+  return {
+    filters: state.updateFiltersSelections.activities
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        onCombinationFilterClick: (filter) => dispatch(onCombinationFilterClick(filter)),
-        onSingleFilterClick: (filter) => dispatch(onSingleFilterClick(filter)),
-        getParks: (filters) => dispatch(getParks(filters))
-    };
+  return {
+      onCombinationFilterClick: (filter) => dispatch(onCombinationFilterClick(filter)),
+      onSingleFilterClick: (filter) => dispatch(onSingleFilterClick(filter)),
+      getFilteredParks: (filters) => dispatch(getFilteredParks(filters)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FilterRow)

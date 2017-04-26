@@ -25,7 +25,7 @@ class NavBar extends Component {
           </Menu.Item>
           <Menu.Menu position='right'>
             <Menu.Item >
-              <SearchBar parks={this.props.parks} />
+              <SearchBar />
             </Menu.Item>
           </Menu.Menu>
         </Menu>
@@ -36,7 +36,6 @@ class NavBar extends Component {
 
 const mapStateToProps = (state) => {
     return {
-      parks: state.getParksReducer.parks,
       distance: state.getDistance.distance
     };
 };
