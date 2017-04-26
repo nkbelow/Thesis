@@ -65,17 +65,20 @@ app.get('/auth/fitbit',
 app.get('/auth/fitbit/callback', fitbitAuthenticate);
 
 app.get('/api/fitbit', (req, res) => {
-	console.log(req.user, 'this the user');
-	fitbitHelper(req.user.profile.id, req.user.accessToken)
-	.then((result)=> {
-		res.status(200).send('' + result);
-	})
+	if(req.user){
+		fitbitHelper(req.user.profile.id, req.user.accessToken)
+		.then((result)=> {
+			res.status(200).send('' + result);
+		})		
+	} else {
+		res.status(200).send();
+	}
+
 })
 
 app.get('/api/sendEmail', handlers.emailHandler);
 
 app.get('/api/shoppingcart', function(req, res, next) {
-  console.log('get api shoppingcart received!!!')
   res.status(200).send(req.session.shoppingcart)
 });
 
@@ -123,7 +126,6 @@ app.get('/api/historicalWeatherData', handlers.historicalWeatherData);
 app.get('/api/park/lodgings', (req, res) => {
 	handlers.gHandlers.places({lat: req.query.lat, lng: req.query.lon})
 	.then((result) => {
-		console.log(result[0].photos, 'this is the lodging');
 		res.status(201).send(result);
 	})
 })
@@ -137,8 +139,6 @@ app.get('/api/park/', (req, res) => {
 })
 
 app.get('/api/parks', (req, res) => {
-
-  console.log(req.query.filters)
 
 	const filtersState = req.query.filters.map((filter) => {
 		return JSON.parse(filter)
