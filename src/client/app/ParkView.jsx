@@ -12,7 +12,7 @@ import {getTenDayForecast} from '../actions/getTenDayForecast.js';
 import {getLodging} from '../actions/getLodging.js';
 import {getTrails} from '../actions/getTrails.js';
 import {Link} from 'react-router-dom'
-import {Message} from 'semantic-ui-react'
+import {Message, Container, Divider, Grid} from 'semantic-ui-react'
 import HistoricalWeatherDropdown from './historicalWeatherDataDropDown.jsx'
 import NavBar from './NavBar.jsx';
 
@@ -39,25 +39,33 @@ class ParkView extends React.Component {
         {this.props.park && <div> <NavBar parks={this.props.parks} />
         <ParkMapView parkCode = {this.props.match.params.code} id = {this.props.park[1][0].id} lat={this.props.park[1][0].latitude} lon={this.props.park[1][0].longitude} campgrounds={this.props.campgrounds} lodgings={this.props.lodgings}/>
         <h1 className='parkname'>{this.props.park[1][0].name}</h1>
+        <Container fluid>
+        <Grid columns={2} relaxed>
+        <Grid.Column>
         <Message>
            <Message.Header>
            Park Description
            </Message.Header>
         <h3>{this.props.park[1][0].description}</h3>
         </Message>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-md-4'>
-          <ActivitiesList activities={this.props.park[0]}/>
-            </div>
-            <div className='col-md-4'>
+        </Grid.Column>
+        <Grid.Column>
+        <ActivitiesList activities={this.props.park[0]}/>
+        </Grid.Column>
+        </Grid>
+        </Container>
+        <Container fluid>
         { this.props.tenDayForecast && <WeatherForecast tenDayForecast={this.props.tenDayForecast} />}
-            </div>
+        </Container>
+        <Container>
+        {`put trails here`}
+        </Container>
+        <Container>
+        Put places here
+        </Container>
             <div>
             <HistoricalWeatherDropdown />
             </div>
-          </div>
-        </div>
         </div>}
       </div>
     );

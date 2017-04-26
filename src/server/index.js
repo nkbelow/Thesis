@@ -24,8 +24,6 @@ const fitbitStrategy = require('./passport/fitbitConfig.js');
 const passport = require('passport');
 const fitbitHelper = require('./handlers/fitbitHelper.js')
 
-
-
 app.use(session({
 	store: new pgSession({
 		pg: db.pgp.pg,
@@ -125,6 +123,7 @@ app.get('/api/historicalWeatherData', handlers.historicalWeatherData);
 app.get('/api/park/lodgings', (req, res) => {
 	handlers.gHandlers.places({lat: req.query.lat, lng: req.query.lon})
 	.then((result) => {
+		console.log(result[0].photos, 'this is the lodging');
 		res.status(201).send(result);
 	})
 })
