@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Input, Menu, Segment, Label } from 'semantic-ui-react'
-import SearchBar from './SearchBar2.jsx'
+import SearchBar from './SearchBar.jsx'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {getDistance} from '../actions/getDistance.js';

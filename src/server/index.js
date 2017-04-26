@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const port = process.env.PORT || 3000;
 const pgSession = require('connect-pg-simple')(session);
+const cookieParser = require('cookie-parser');
 
 const db = require('../db/index.js');
 const data = require('../../data/ourNationalParks.js');

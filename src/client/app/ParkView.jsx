@@ -5,19 +5,17 @@ import {getPark} from '../actions/getPark.js';
 import {connect} from 'react-redux'
 import {getCampgrounds} from '../actions/getCampgrounds.js'
 import ParkMapView from './singlePageMapView.jsx';
-import TrailList from './TrailList.jsx';
-import PersonalizedTrailList from './PersonalizedTrailList.jsx';
 import WeatherForecast from './tenDayForecastList.jsx'
 import ActivitiesList from './activitiesList.jsx';
 import SinglePageNavBar from './singlePageNavBar.jsx';
 import {getTenDayForecast} from '../actions/getTenDayForecast.js';
 import {getLodging} from '../actions/getLodging.js';
 import {getTrails} from '../actions/getTrails.js';
-import {getDistance} from '../actions/getDistance.js';
 import {Link} from 'react-router-dom'
 import {Message} from 'semantic-ui-react'
 import HistoricalWeatherDropdown from './historicalWeatherDataDropDown.jsx'
 import NavBar from './NavBar.jsx';
+
 
 class ParkView extends React.Component {
   componentWillMount() {
@@ -25,44 +23,20 @@ class ParkView extends React.Component {
     .then((result) => {
       this.props.getCampgrounds(result[1][0].id)
       return result
-    })
-    // .then((result) => {
-    //   this.props.getLodging(result[1][0].latitude, result[1][0].longitude)
-    //   return result
-    // }).then((result) => {
-    //   this.props.getTenDayForecast(result[1][0].latitude, result[1][0].longitude)
-    //   return result
-    // })
-    .then((result) => {
+    }).then((result) => {
+      this.props.getLodging(result[1][0].latitude, result[1][0].longitude)
+      return result
+    }).then((result) => {
+      this.props.getTenDayForecast(result[1][0].latitude, result[1][0].longitude)
+      return result
+    }).then((result) => {
       this.props.getTrails(result[1][0].id)
     })
-    // .then((result) => {
-    //   this.props.getTenDayForecast(result[1][0].latitude, result[1][0].longitude)
-    // })
-    .then((result) => {
-      this.props.getDistance()
-    })
-
   }
-
   render() {
-    let trailsDisplay = null;
-
-    if(this.props.trails !== undefined && this.props.distance !== undefined){
-      let trailsAchieved = [];
-      for(var i = 0; i < this.props.trails.length; i++){
-        if(this.props.trails[i].length <= this.props.distance){
-          trailsAchieved.push(this.props.trails[i]);
-        }
-      }
-      trailsDisplay = <PersonalizedTrailList trails={trailsAchieved} />
-    } else if(this.props.trails !== undefined && this.props.distance === undefined){
-      trailsDisplay = <TrailList trails={this.props.trails} />
-    }
-
     return(
-    	<div>
-    		{this.props.park && <div> <SinglePageNavBar />
+      <div>
+        {this.props.park && <div> <NavBar parks={this.props.parks} />
         <ParkMapView parkCode = {this.props.match.params.code} id = {this.props.park[1][0].id} lat={this.props.park[1][0].latitude} lon={this.props.park[1][0].longitude} campgrounds={this.props.campgrounds} lodgings={this.props.lodgings}/>
         <h1 className='parkname'>{this.props.park[1][0].name}</h1>
         <Message>
@@ -71,7 +45,6 @@ class ParkView extends React.Component {
            </Message.Header>
         <h3>{this.props.park[1][0].description}</h3>
         </Message>
-        {trailsDisplay}
         <div className='container'>
           <div className='row'>
             <div className='col-md-4'>
@@ -84,8 +57,9 @@ class ParkView extends React.Component {
             <HistoricalWeatherDropdown />
             </div>
           </div>
+        </div>
         </div>}
-    	</div>
+      </div>
     );
   }
 }
@@ -96,8 +70,7 @@ const mapStateToProps = (state) => {
       campgrounds: state.getCampgrounds.campgrounds,
       tenDayForecast: state.getTenDayForecast.tenDayForecast,
       lodgings: state.getLodging.lodging,
-      trails: state.getTrails.trails,
-      distance: state.getDistance.distance
+      trails: state.getTrails.trails
     }
   }
 
@@ -107,9 +80,9 @@ const mapDispatchToProps = (dispatch) => {
     getCampgrounds: (id) => dispatch(getCampgrounds(id)),
     getTenDayForecast: (latitude, longitude) => dispatch(getTenDayForecast(latitude, longitude)),
     getLodging: (latitude, longitude) => dispatch(getLodging(latitude, longitude)),
-    getTrails: (id) => dispatch(getTrails(id)),
-    getDistance: () => dispatch(getDistance())
+    getTrails: (id) => dispatch(getTrails(id))
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ParkView);
+
