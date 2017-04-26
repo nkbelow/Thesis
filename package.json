@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./src/server/index.js",
     "start-dev": "nodemon ./src/server/index.js",
-    "test": "jest",
+    "test": "jest --forceExit",
     "pg-start": "node db/index.js",
     "lint": "eslint src/client src/server",
     "lint-fix": "eslint src/client src/server",
@@ -52,6 +52,7 @@
     "csv-parse": "^1.2.0",
     "deep-equal": "^1.0.1",
     "dotenv": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
     "express": "^4.15.2",
     "express-session": "^1.15.2",
     "jquery": "^3.2.1",

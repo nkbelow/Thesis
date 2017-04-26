@@ -94,11 +94,6 @@ app.get('/api/park/lodgings', (req, res) => {
 })
 
 app.get('/api/park/', (req, res) => {
-  console.log(req.session.id, 'SESSION ID IS THIS ONE')
-	console.log(req.session, 'this is the session');
-	console.log(req.session.ID, 'this is the session id');
-	console.log(req.session.views, 'these are the views');
-	console.log(req.cookies, 'these are the cookies');
 	individualParkData(req.query.parkcode)
 	.then((data) => {
 		let park = data;
@@ -122,7 +117,6 @@ app.get('/api/parks', (req, res) => {
 		return filter.name
 	})
 
-	console.log(filterNames, 'FILTERS FILTERS FILTERS')
 	if (filterNames.length > 0) {
 		filters.activities(filterNames).then((response) => {
 			res.status(200).send(response);
