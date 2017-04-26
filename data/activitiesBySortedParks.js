@@ -91,9 +91,9 @@ let sortedDesiredRecs = [ { RecAreaName: 'Acadia National Park', RecAreaID: 2554
     headers: {apikey: '678619474BB84AD4B7450C08F4AE1332'}
   }
     axios(config).then(result => {
-      console.log(sortedDesiredRecs[i]['RecAreaID']);
-      console.log(config['url']);
-      console.log(result['data']['RECDATA']);
+      // console.log(sortedDesiredRecs[i]['RecAreaID']);
+      // console.log(config['url']);
+      // console.log(result['data']['RECDATA']);
       activities.push({result: result['data']['RECDATA'], ID: sortedDesiredRecs[i]['RecAreaID'], name:sortedDesiredRecs[i]['RecAreaName'], i: i })
       i++;
       if (i === 59) {

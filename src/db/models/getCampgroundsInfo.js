@@ -6,7 +6,7 @@ module.exports = (id) => {
 		return t.any(query1, id)
 	})
 	.then(data => {
-		console.log('this is the data', data);
+		// console.log('this is the data', data);
 		return data;
 	})
 	.catch(err => {

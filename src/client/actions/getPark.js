@@ -9,7 +9,7 @@ export const getPark = (code) => {
         }
       })
       .then((res) => {
-        console.log(res.data, 'this is the data');
+        // console.log(res.data, 'this is the data');
         dispatch(getIndividualPark(res.data))
         return res.data;
         })

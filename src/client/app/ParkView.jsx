@@ -14,6 +14,8 @@ import {getTrails} from '../actions/getTrails.js';
 import {Link} from 'react-router-dom'
 import {Message} from 'semantic-ui-react'
 import HistoricalWeatherDropdown from './historicalWeatherDataDropDown.jsx'
+import NavBar from './NavBar.jsx';
+
 
 class ParkView extends React.Component {
   componentWillMount() {
@@ -33,8 +35,8 @@ class ParkView extends React.Component {
   }
   render() {
     return(
-    	<div>
-    		{this.props.park && <div> <SinglePageNavBar />
+      <div>
+        {this.props.park && <div> <NavBar parks={this.props.parks} />
         <ParkMapView parkCode = {this.props.match.params.code} id = {this.props.park[1][0].id} lat={this.props.park[1][0].latitude} lon={this.props.park[1][0].longitude} campgrounds={this.props.campgrounds} lodgings={this.props.lodgings}/>
         <h1 className='parkname'>{this.props.park[1][0].name}</h1>
         <Message>
@@ -57,7 +59,7 @@ class ParkView extends React.Component {
           </div>
         </div>
         </div>}
-    	</div>
+      </div>
     );
   }
 }
@@ -83,3 +85,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ParkView);
+

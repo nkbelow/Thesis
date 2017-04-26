@@ -10,6 +10,7 @@ import {visibleFilter} from './visibleFilterReducer.js';
 import {getTrails} from './getTrailsReducer.js';
 import {getHistoricalData} from './getHistoricalDataReducer.js';
 import {payments} from './payments.js'
+import {getDistance} from './getDistance.js';
 
 
 export default combineReducers( {
@@ -23,5 +24,6 @@ export default combineReducers( {
  visibleFilter: visibleFilter,
  getTrails: getTrails,
  getHistoricalData: getHistoricalData,
- payments: payments
+ payments: payments,
+ getDistance: getDistance
 });

@@ -9,7 +9,6 @@ export const getTrails = (id) => {
       }
     })
     .then((result) => {
-      console.log(result['data'], 'these are the trails');
       dispatch(trails(result['data']))
     })
     .catch((err) => {
