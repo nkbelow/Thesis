@@ -1,9 +1,11 @@
-import { PARKS_REQUEST_START, PARKS_REQUEST_FAILURE, PARKS_REQUEST_SUCCESS } from "../actions/getParks.js"
+import { PARKS_REQUEST_START, PARKS_REQUEST_FAILURE, ALL_PARKS_REQUEST_SUCCESS, FILTERED_PARKS_REQUEST_SUCCESS, CALCULATE_REMAINING_PARKS } from "../actions/getParks.js"
 
 const initialState = {
-    isFetching: false,
-    filters: [],
-    parks: []
+  isFetching: false,
+  filters: [],
+  allParks: [],
+  filteredParks: [],
+  remainingParks: []
 }
 
 export const getParksReducer = (state=initialState, action) => {
@@ -17,11 +19,20 @@ export const getParksReducer = (state=initialState, action) => {
         isFetching: false,
         error: action.error
       })
-    case PARKS_REQUEST_SUCCESS:
+    case ALL_PARKS_REQUEST_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        allParks: action.allParks
+      })
+    case FILTERED_PARKS_REQUEST_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
         filters: action.filters,
-        parks: action.parks
+        filteredParks: action.filteredParks
+      })
+    case CALCULATE_REMAINING_PARKS:
+      return Object.assign({}, state, {
+        remainingParks: action.remainingParks
       })
     default:
       return state

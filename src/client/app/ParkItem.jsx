@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 class ParkItem extends React.Component {
@@ -43,21 +43,3 @@ class ParkItem extends React.Component {
 }
 
 export default ParkItem;
-
-  // goToDestination(e) {
-  //   console.log('clicked on park');
-  //   this.props.history.push(`/park/${this.props.park.parkCode}`)
-  // }
-// ParkItem.contextTypes = {
-//   router: React.PropTypes.object
-// }
-
-/*
-
-      <div>
-        <div onClick={(e) => this.goToDestination(e)}>
-          <h3>{this.props.park.name}</h3>
-        </div>
-      </div>
-
-*/

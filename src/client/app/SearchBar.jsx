@@ -26,7 +26,7 @@ class SearchBar extends Component {
 
       this.setState({
         isLoading: false,
-        results: _.filter(this.props.parks, isMatch),
+        results: _.filter(this.props.allParks, isMatch),
       })
     }, 500)
   }
@@ -58,7 +58,7 @@ class SearchBar extends Component {
 
 const mapStateToProps = (state) => {
     return {
-      parks: state.getParksReducer.parks,
+      allParks: state.getParksReducer.allParks,
     };
 };
 
