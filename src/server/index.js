@@ -20,14 +20,11 @@ const port = process.env.PORT || 3000;
 const keyPublishable = process.env.STRIPE_PUBLISHABLE_KEY;
 const keySecret = process.env.STRIPE_SECRET_KEY;
 const stripe = require("stripe")(keySecret);
-
+const fitbitStrategy = require('./passport/fitbitConfig.js');
+const passport = require('passport');
+const fitbitHelper = require('./handlers/fitbitHelper.js')
 
 app.use('/', express.static(path.join(__dirname, '../client/public')));
-
-const keyPublishable = process.env.STRIPE_PUBLISHABLE_KEY;
-const keySecret = process.env.STRIPE_SECRET_KEY;
-const stripe = require("stripe")(keySecret);
-
 
 app.use(session({
 	store: new pgSession({
@@ -40,18 +37,10 @@ app.use(session({
 	cookie: {maxAge: new Date(Date.now() + 600000) }
 }))
 
-const fitbitStrategy = require('./passport/fitbitConfig.js');
-const passport = require('passport');
-const fitbitHelper = require('./handlers/fitbitHelper.js')
 
 
-app.use('/', express.static(path.join(__dirname, '../client/public')));
-
-
-app.use(cookieParser());
-app.use(bodyParser());
-
-app.use(session({ secret: 'keyboard cat' }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(passport.initialize());
 app.use(passport.session({
@@ -81,6 +70,7 @@ app.get('/auth/fitbit',
 app.get('/auth/fitbit/callback', fitbitAuthenticate);
 
 app.get('/api/fitbit', (req, res) => {
+	console.log(req.user, 'this the user');
 	fitbitHelper(req.user.profile.id, req.user.accessToken)
 	.then((result)=> {
 		res.status(200).send('' + result);
