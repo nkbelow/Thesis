@@ -1,5 +1,5 @@
 import React from 'react';
-import TenDayForecastListItem from './tenDayForecastListItem.jsx'
+// import TenDayForecastListItem from './tenDayForecastListItem.jsx'
 
 const TenDayForecastList = (props) => {
   return (
@@ -10,9 +10,21 @@ const TenDayForecastList = (props) => {
       </tr>
       </thead>
       <tbody>
+      <tr>
     {props.tenDayForecast.map((dayForecast, index) => {
-        return <TenDayForecastListItem key={index} dayForecast={dayForecast}/>}
-      )}
+        return (<td><img src={dayForecast.icon_url}/></td>)
+      })}
+    </tr>
+      <tr>
+    {props.tenDayForecast.map((dayForecast, index) => {
+        return (<td>{dayForecast.date.weekday}</td>)
+      })}
+    </tr>
+      <tr>
+    {props.tenDayForecast.map((dayForecast, index) => {
+        return (<td>{`${dayForecast.high.fahrenheit}°F/${dayForecast.low.fahrenheit}°F`}</td>)
+      })}
+    </tr>
     </tbody>
     </table>
     )
