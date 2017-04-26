@@ -92,7 +92,7 @@ export const getRemainingParks = (filteredParks, allParks) => {
       })
       
       if( !found) {
-        remainingParks.push(park.name)
+        remainingParks.push(park)
       } 
 
     })
