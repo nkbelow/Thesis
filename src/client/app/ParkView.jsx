@@ -58,7 +58,7 @@ class ParkView extends React.Component {
         { this.props.tenDayForecast && <WeatherForecast tenDayForecast={this.props.tenDayForecast} />}
         </Container>
         <Container>
-        {`put trails here`}
+        {`put trails here in this spot`}
         </Container>
         <Container>
         Put places here
