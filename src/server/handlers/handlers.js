@@ -1,4 +1,4 @@
-module.exports.gHandlers = require('./gHandlers.js');
+module.exports.gHandlers = require('./ghandlers.js');
 module.exports.filters = require('./filtersRequestHelper.js');
 module.exports.emailHandler = require('./emailHandler.js');
 module.exports.tenDayWeatherForecast = require('./weatherHandlers/tenDayForecastHandler.js');

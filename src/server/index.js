@@ -24,8 +24,6 @@ const fitbitStrategy = require('./passport/fitbitConfig.js');
 const passport = require('passport');
 const fitbitHelper = require('./handlers/fitbitHelper.js')
 
-app.use('/', express.static(path.join(__dirname, '../client/public')));
-
 app.use(session({
 	store: new pgSession({
 		pg: db.pgp.pg,
@@ -37,16 +35,13 @@ app.use(session({
 	cookie: {maxAge: new Date(Date.now() + 600000) }
 }))
 
-
+app.use('/', express.static(path.join(__dirname, '../client/public')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(passport.initialize());
-app.use(passport.session({
-  resave: false,
-  saveUninitialized: true
-}));
+app.use(passport.session());
 
 passport.use(fitbitStrategy);
 
@@ -128,6 +123,7 @@ app.get('/api/historicalWeatherData', handlers.historicalWeatherData);
 app.get('/api/park/lodgings', (req, res) => {
 	handlers.gHandlers.places({lat: req.query.lat, lng: req.query.lon})
 	.then((result) => {
+		console.log(result[0].photos, 'this is the lodging');
 		res.status(201).send(result);
 	})
 })
