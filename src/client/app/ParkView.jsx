@@ -101,7 +101,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getPark: (code) => dispatch(getPark(code)),
     getCampgrounds: (id) => dispatch(getCampgrounds(id)),
-    getTenDayForecast: (id) => dispatch(getTenDayForecast(id)),
+    getTenDayForecast: (latitude, longitude) => dispatch(getTenDayForecast(latitude, longitude)),
     getLodging: (latitude, longitude) => dispatch(getLodging(latitude, longitude)),
     getTrails: (id) => dispatch(getTrails(id)),
     getDistance: () => dispatch(getDistance()),
