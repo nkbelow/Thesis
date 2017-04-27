@@ -1,7 +1,4 @@
 
-.logout-link {
-  text-align: right;
-}
 
 .header-hidden {
   color: white;
@@ -23,4 +20,10 @@
 .singlePageContainer {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.trailItem {
+    max-height: 60px;       /* Just for the demo          */
+    overflow-y: auto;    /* Trigger vertical scroll    */
+    overflow-x: hidden;  /* Hide the horizontal scroll */
 }
