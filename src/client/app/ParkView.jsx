@@ -26,6 +26,7 @@ import LodgingsList from './lodgingsList.jsx'
 
 class ParkView extends React.Component {
   componentWillMount() {
+    console.log(this.props.match.params.code)
     this.props.getPark(this.props.match.params.code)
     .then((result) => {
       this.props.getCampgrounds(result[1][0].id)

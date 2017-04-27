@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import { connect } from 'react-redux'
+import {addPopup, removePopup} from '../actions/actions.js'
 
 
 
-import ReactMapboxGl, { Layer, Feature, Marker, GeoJSONLayer } from "react-mapbox-gl";
+import ReactMapboxGl, { Layer, Feature, Marker, GeoJSONLayer, Popup } from "react-mapbox-gl";
 
 const styles = {
   marker: {
@@ -33,7 +34,8 @@ const Map = (props) => {
         width: "100vw"
       }}
       center={[props.lon, props.lat]}
-      zoom={[8.5]}>
+      zoom={[8.5]}
+      onClick={props.removePopup}>
     
     { props.campgroundsVisible &&
         props.campgrounds &&
@@ -58,16 +60,34 @@ const Map = (props) => {
           <Marker
             key={lodging.id}
             style={styles.marker}
-            coordinates={[lodging.geometry.location.lng, lodging.geometry.location.lat]}>
+            coordinates={[lodging.geometry.location.lng, lodging.geometry.location.lat]}
+            onClick={props.addPopup.bind(null, lodging)}
+            >
             <img style= {{
                   maxHeight:'20px',
                   maxWidth:'20px',
                   height: 'auto',
                   width: 'auto'
                 }} src="https://cdn3.iconfinder.com/data/icons/map/500/hotel-512.png" />
-          </Marker>       
+          </Marker> 
+
+             
       ))
     }
+
+    {props.popup && props.popup.geometry &&
+      <Popup
+                coordinates={[props.popup.geometry.location.lng, props.popup.geometry.location.lat]}
+                offset={ [0, -35] }
+                >
+                <div>
+                  <h5>{props.popup.name}</h5>
+                  <img src={props.popup.icon}/>
+                  <a href={props.popup.website}>Go to site</a>
+                  <p onClick={props.removePopup}> Hide </p>
+                </div>
+              </Popup>   
+            }
 
 
         <GeoJSONLayer
@@ -81,9 +101,18 @@ const Map = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, state, {
+    popup: state.map.popup,
+    park: state.individualPark.individualPark[1][0],
     campgroundsVisible: state.toggleVisibility.campgrounds,
     lodgingsVisible: state.toggleVisibility.lodging
   })
 }
 
-export default connect(mapStateToProps)(Map);
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    addPopup: (lodging) => dispatch(addPopup(lodging)),
+    removePopup: () => dispatch(removePopup())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Map);

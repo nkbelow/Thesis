@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
-import map from './MapBox.jsx'
-import {activePark} from '../actions/actions.js'  
+import map from './MapBox.jsx' 
+import {activePark, addPopup, removePopup} from '../actions/actions.js'
+
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, state, {
@@ -16,15 +17,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     addPopup: (park) => {
     	//later refactor to abstract out the action creator for the popup
-      dispatch({
-      	type: 'ADD_POPUP', 
-      	park: park
-      })
+      dispatch(addPopup(park))
     },
     removePopup: () => {
-    	dispatch({
-    		type:'REMOVE_POPUP'
-    	})
+    	dispatch(removePopup())
     },
     setActivePark: (park) => { 
       dispatch(activePark(park)) 
