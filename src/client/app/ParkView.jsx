@@ -17,6 +17,7 @@ import {Link} from 'react-router-dom'
 import {Message, Container, Divider, Grid, Header} from 'semantic-ui-react'
 import HistoricalWeatherDropdown from './historicalWeatherDataDropDown.jsx'
 import NavBar from './NavBar.jsx';
+import NavBarSinglePage from './NavBarSinglePage.jsx';
 import UnconnectedTrailList from './UnconnectedTrailList.jsx';
 import ConnectedTrailList from './ConnectedTrailList.jsx';
 import LodgingsList from './lodgingsList.jsx'
@@ -47,7 +48,7 @@ class ParkView extends React.Component {
   render() {
     return(
       <div>
-        {this.props.park && <div> <NavBar parks={this.props.parks} />
+        {this.props.park && <div> <NavBarSinglePage parks={this.props.parks} />
         <ParkMapView parkCode = {this.props.match.params.code} id = {this.props.park[1][0].id} lat={this.props.park[1][0].latitude} lon={this.props.park[1][0].longitude} campgrounds={this.props.campgrounds} lodgings={this.props.lodgings}/>
         <div id="outer">
           <div class="inner"><button type="submit" class="campgroundsToggle" onClick={this.props.toggleCampgrounds}>Campgrounds</button></div>
