@@ -9,7 +9,8 @@ import MapView from './Map.jsx';
 import axios from 'axios';
 import SidebarFilters from './sidebarFilters.jsx';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header, List, Accordion } from 'semantic-ui-react';
-import { getAllParks, getFilteredParks } from '../actions/getParks.js';
+import { getAllParks, getFilteredParks, } from '../actions/getParks.js';
+import { onactivitiesHoverThunk } from '../actions/filters.js';
 import { connect } from 'react-redux';
 import { showFilters } from '../actions/actions.js';
 import NavBar from './NavBar.jsx';
@@ -25,6 +26,7 @@ class App extends React.Component {
   componentDidMount() {
     this.props.getAllParks(this.props.filters)
     this.props.getFilteredParks(this.props.filters)
+    this.props.onactivitiesHoverThunk(this.props.activitiesHover)
   }
 
   render () {
@@ -57,7 +59,8 @@ const mapStateToProps = (state) => {
       allParks: state.getParksReducer.allParks,
       filteredParks: state.getParksReducer.filteredParks,
       remainingParks: state.getParksReducer.remainingParks,
-      visible: state.visibleFilter.visible
+      visible: state.visibleFilter.visible,
+      activitiesHover: state.updateFiltersSelections.activitiesHover
     };
 };
 
@@ -65,7 +68,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         getAllParks: (filters) => dispatch(getAllParks(filters)),
         getFilteredParks: (filters) => dispatch(getFilteredParks(filters)),
-        toggleVisibility: (visible) => dispatch(showFilters(visible))
+        toggleVisibility: (visible) => dispatch(showFilters(visible)),
+        onactivitiesHoverThunk: (activitiesHoverState) => dispatch(onactivitiesHoverThunk(activitiesHoverState)),
     };
 };
 
