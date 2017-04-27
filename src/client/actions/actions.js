@@ -55,3 +55,29 @@ export const distance = (distance) => {
     distance: distance
   }
 }
+
+export const activePark = (park) => {
+  return {
+    type: 'SET_ACTIVE_PARK',
+    park: park
+  }
+}
+
+export const setActiveParks = (parks) => {
+  return {
+    type: 'SET_ACTIVE_PARKS',
+    parks: parks
+  }
+}
+
+export const toggleCampgrounds = () => {
+  return {
+    type: 'TOGGLE_CAMPGROUNDS'
+  }
+}
+
+export const toggleLodging = () => {
+  return {
+    type: 'TOGGLE_LODGING'
+  }
+}

@@ -11,6 +11,9 @@ import {getTrails} from './getTrailsReducer.js';
 import {getHistoricalData} from './getHistoricalDataReducer.js';
 import {payments} from './payments.js'
 import {getDistance} from './getDistance.js';
+import {setActivePark} from './setActivePark.js';
+import {setActiveParks} from './setActiveParks.js'
+import {toggleVisibility} from './toggleVisibility.js'
 
 export default combineReducers( {
  individualPark: individualPark,
@@ -24,5 +27,8 @@ export default combineReducers( {
  getTrails: getTrails,
  getHistoricalData: getHistoricalData,
  payments: payments,
- getDistance: getDistance
+ getDistance: getDistance,
+ setActivePark: setActivePark,
+ setActiveParks: setActiveParks,
+ toggleVisibility: toggleVisibility
 });

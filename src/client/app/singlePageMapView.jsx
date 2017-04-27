@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import { connect } from 'react-redux'
 
 
 
@@ -34,7 +35,7 @@ const Map = (props) => {
       center={[props.lon, props.lat]}
       zoom={[8.5]}>
     
-    { 
+    { props.campgroundsVisible &&
         props.campgrounds &&
           props.campgrounds.map((campground) =>(
             <Marker
@@ -51,7 +52,7 @@ const Map = (props) => {
         ))
       }
 
-      { 
+      { props.lodgingsVisible &&
       props.lodgings &&
         props.lodgings.map((lodging) =>(
           <Marker
@@ -78,4 +79,11 @@ const Map = (props) => {
   )
 }
 
-export default Map;
+const mapStateToProps = (state, ownProps) => {
+  return Object.assign({}, state, {
+    campgroundsVisible: state.toggleVisibility.campgrounds,
+    lodgingsVisible: state.toggleVisibility.lodging
+  })
+}
+
+export default connect(mapStateToProps)(Map);

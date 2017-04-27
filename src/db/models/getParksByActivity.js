@@ -1,7 +1,7 @@
 const db = require('../index.js').db
 
 const getParkIdsByActivities = (queryObject) => {  
-  
+
   return db.tx(t => {
     const queryArray = []
     const activities = []
@@ -11,10 +11,11 @@ const getParkIdsByActivities = (queryObject) => {
         queryArray.push(t.many("SELECT park_id FROM activities_parks WHERE activity_id=(SELECT id FROM activities WHERE activity='" + activity + "')"))
         activities.push(activity)
       }
-    
+
       // creating a sequence of transaction queries:
       // returning a promise that determines a successful transaction:
       return t.batch(queryArray).then(parkIds => {
+        console.log(parkIds, 'parkIds')
         return [parkIds, activities]; // all of the queries are to be resolved;
       })
   })

@@ -12,6 +12,7 @@ const data = require('../db/activities_parks_data/ourNationalParks.js');
 const individualParkData = require('../db/models/getIndividualParksInfo.js');
 const campgroundsData = require('../db/models/getCampgroundsInfo.js');
 const trails = require('../db/models/getTrailsInfo.js');
+
 const handlers = require('./handlers/handlers.js')
 
 const app = express();
@@ -115,13 +116,31 @@ app.post("/charge", (req, res) => {
   })
 });
 
+
 app.get('/api/parks/getparksbyactivity', (req, res) => {
   handlers.getParkIdsByActivities(JSON.parse(req.query.activitiesHoverState)).then((results) => {
     res.status(200).send(results)
   })
 })
 
+// app.post('/api/park/tenDayForecast', (req, res) => {
+// 	console.log('in tendayforecast, sending to model with params', req.query)
+// 	forecast(req.query.id).then((forecast) => {
+// 		res.status(200).send(forecast);
+// 		console.log("this is the forecast", forecast)
+// 	})
+// })
+
 app.post('/api/park/tenDayForecast', handlers.tenDayWeatherForecast);
+
+
+// app.post('/api/park/tenDayForecast', (req, res) => {
+// 	forecast(req.query.id).then((forecast) => {
+// 		res.status(200).send(forecast);
+// 		console.log("this is the forecast", forecast)
+// 	})
+// })
+
 
 
 app.get('/api/trails', (req, res) => {

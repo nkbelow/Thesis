@@ -12,6 +12,7 @@ import {getTenDayForecast} from '../actions/getTenDayForecast.js';
 import {getLodging} from '../actions/getLodging.js';
 import {getDistance} from '../actions/getDistance.js';
 import {getTrails} from '../actions/getTrails.js';
+import {toggleCampgrounds, toggleLodging} from '../actions/actions.js';
 import {Link} from 'react-router-dom'
 import {Message, Container, Divider, Grid} from 'semantic-ui-react'
 import HistoricalWeatherDropdown from './historicalWeatherDataDropDown.jsx'
@@ -39,11 +40,17 @@ class ParkView extends React.Component {
       this.props.getDistance();
     })
   }
+
+
   render() {
     return(
       <div>
         {this.props.park && <div> <NavBar parks={this.props.parks} />
         <ParkMapView parkCode = {this.props.match.params.code} id = {this.props.park[1][0].id} lat={this.props.park[1][0].latitude} lon={this.props.park[1][0].longitude} campgrounds={this.props.campgrounds} lodgings={this.props.lodgings}/>
+        <div id="outer">
+          <div class="inner"><button type="submit" class="campgroundsToggle" onClick={this.props.toggleCampgrounds}>Campgrounds</button></div>
+          <div class="inner"><button type="submit" class="lodgingToggle" onClick={this.props.toggleLodging}>Lodging</button></div>
+        </div>
         <h1 className='parkname'>{this.props.park[1][0].name}</h1>
         <Container fluid>
         <Grid columns={2} relaxed>
@@ -97,7 +104,9 @@ const mapDispatchToProps = (dispatch) => {
     getTenDayForecast: (latitude, longitude) => dispatch(getTenDayForecast(latitude, longitude)),
     getLodging: (latitude, longitude) => dispatch(getLodging(latitude, longitude)),
     getTrails: (id) => dispatch(getTrails(id)),
-    getDistance: () => dispatch(getDistance())
+    getDistance: () => dispatch(getDistance()),
+    toggleCampgrounds: () => dispatch(toggleCampgrounds()),
+    toggleLodging: () => dispatch(toggleLodging())
   }
 }
 
