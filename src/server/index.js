@@ -68,30 +68,15 @@ app.get('/auth/fitbit',
 app.get('/auth/fitbit/callback', fitbitAuthenticate);
 
 app.get('/api/fitbit', (req, res) => {
-<<<<<<< HEAD
 	if(req.user){
 		fitbitHelper(req.user.profile.id, req.user.accessToken)
-		.then((result)=> {
+		.then((result) => {
 			res.status(200).send('' + result);
 		})		
 	} else {
 		res.status(200).send();
 	}
-
-||||||| merged common ancestors
-	console.log(req.user, 'this the user');
-	fitbitHelper(req.user.profile.id, req.user.accessToken)
-	.then((result)=> {
-		res.status(200).send('' + result);
-	})
-=======
-	fitbitHelper(req.user.profile.id, req.user.accessToken)
-	.then((result)=> {
-		res.status(200).send('' + result);
-	})
->>>>>>> feat add extra google places functionality
-})
-
+});
 
 
 
