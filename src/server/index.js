@@ -25,6 +25,8 @@ const fitbitStrategy = require('./passport/fitbitConfig.js');
 const passport = require('passport');
 const fitbitHelper = require('./handlers/fitbitHelper.js')
 
+app.use('/', express.static(path.join(__dirname, '../client/public')));
+
 app.use(session({
 	store: new pgSession({
 		pg: db.pgp.pg,
@@ -36,7 +38,7 @@ app.use(session({
 	cookie: {maxAge: new Date(Date.now() + 600000) }
 }))
 
-app.use('/', express.static(path.join(__dirname, '../client/public')));
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
