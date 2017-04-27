@@ -1,7 +1,6 @@
 const axios = require('axios');
 
 let getForecast = (req, res) => {
-console.log(req['body'], 'this is the req data');
   let config = {
     url: 'http://api.wunderground.com/api/' + process.env.WEATHER_UNDERGROUND_API_KEY + '/forecast10day/q/'
      + req['body']['latitude'] + ',' + req['body']['longitude'] + '.json',
@@ -9,7 +8,6 @@ console.log(req['body'], 'this is the req data');
     responseType: 'json'
   }
   return axios(config).then((result) => {
-    console.log('this is the forecast result: ', result)
     res.send(result['data']['forecast']);
   })
   .catch((err) => {

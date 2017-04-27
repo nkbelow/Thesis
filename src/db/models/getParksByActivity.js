@@ -15,7 +15,6 @@ const getParkIdsByActivities = (queryObject) => {
       // creating a sequence of transaction queries:
       // returning a promise that determines a successful transaction:
       return t.batch(queryArray).then(parkIds => {
-        console.log(parkIds, 'parkIds')
         return [parkIds, activities]; // all of the queries are to be resolved;
       })
   })
