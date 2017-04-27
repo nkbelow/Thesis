@@ -72,9 +72,6 @@ class ParkView extends React.Component {
         <Container fluid>
         {this.props.lodgings && <LodgingsList lodgings={this.props.lodgings} /> }
         </Container>
-            <div>
-            <HistoricalWeatherDropdown />
-            </div>
         </div>}
       </div>
     );

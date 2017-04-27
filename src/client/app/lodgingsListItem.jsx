@@ -12,9 +12,9 @@ const LodgingsListItem = (props) => {
       'boxShadow': '2px 2px 2px 1px rgba(0, 0, 0, 0.8)'
     }
   return (
-    <Grid.Column>
+    <div>
     <img style={imgStyle} src={`https://res.cloudinary.com/djzaih6fz/image/upload/lodging${props.id}.jpeg`} />
-    </Grid.Column>
+    </div>
     )
 }
 
