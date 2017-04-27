@@ -5,8 +5,8 @@ const LodgingsListItem = (props) => {
   console.log(props.id, 'key')
 
   const imgStyle = {
-      width:'100px',
-      height:'50px',
+      width:'200px',
+      height:'100px',
       zIndex:'-100',
       position: 'relative',
       'boxShadow': '2px 2px 2px 1px rgba(0, 0, 0, 0.8)'
