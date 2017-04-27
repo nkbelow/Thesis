@@ -30,19 +30,52 @@ const geocode = (location, callback) => {
 // places({latitude: 44.5853962, longitude: -111.0759105}, 5000, 'lodging')
   // radius and type are optional
 const places = (location, radius, type) => {
-  const config = {
+  let config1 = {
     method: 'get',
     url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
     params: {
-      key: 'AIzaSyCCDdJR3V7_V8qEPKRQiEx_gqEu8olqELk',
+      key: process.env.G_MAPS_PLACES_KEY,
       location: '' + location.lat + ',' + location.lng,
       radius: radius || '50000',
       type: type || 'lodging'
     }
   };
-  return axios(config).then((response) => {
-    return response.data.results;
-  });
+  return axios(config1).then((response) => {
+
+    let lodgingData = response.data.results;
+    console.log(lodgingData, 'eyyyyyyyyyyy')
+    const lodgingPromises = lodgingData.map((lodge, i) => {
+    let config2 = {
+      method: 'get',
+      url: 'https://maps.googleapis.com/maps/api/place/details/json',
+      params: {
+        key: process.env.G_MAPS_PLACES_KEY,
+        placeid: lodgingData[i].place_id,
+      }
+    }
+      return axios(config2)
+    });
+    return Promise.all([lodgingData, Promise.all(lodgingPromises)]);
+    })
+    .then(([lodgingData, lodges] ) => {
+      const websites = lodges.map(lodge => {
+        return lodge['data']['result'].website
+      });
+      console.log(websites, 'websites');
+      websites.forEach((website, index) => {
+        lodgingData[index].website = website;
+      })
+      return lodgingData;
+    })
+    .then(result => {
+      console.log(result, 'this is the final result')
+      return result;
+    })   
+    .catch(err => {
+        console.log(err);
+        throw err
+    })
+
 };
 
 module.exports = {
