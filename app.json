@@ -18,7 +18,7 @@
     "CLOUDINARY_API_SECRET": {
       "required": true
     },
-    "G_PLACES_API_KEY": {
+    "G_MAPS_PLACES_KEY": {
       "required": true
     }
   },
