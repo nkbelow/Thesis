@@ -2,11 +2,11 @@ export const toggleVisibility = (state = {campgrounds: true, lodging: true} , ac
   switch (action.type) {	
     case 'TOGGLE_CAMPGROUNDS':
     return Object.assign({}, state, 
-      {campgrounds: !state.toggleVisibility.campgrounds
+      {campgrounds: !state.campgrounds
     })
     case 'TOGGLE_LODGING':
     return Object.assign({}, state, 
-      {lodging: !state.toggleVisibility.lodging
+      {lodging: !state.lodging
     })
 
   default: 
