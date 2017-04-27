@@ -19,6 +19,8 @@ import HistoricalWeatherDropdown from './historicalWeatherDataDropDown.jsx'
 import NavBar from './NavBar.jsx';
 import UnconnectedTrailList from './UnconnectedTrailList.jsx';
 import ConnectedTrailList from './ConnectedTrailList.jsx';
+import LodgingsList from './lodgingsList.jsx'
+
 
 
 class ParkView extends React.Component {
@@ -74,7 +76,7 @@ class ParkView extends React.Component {
         {this.props.trails !== undefined && this.props.trails.length !== 0  && this.props.distance === '' && <UnconnectedTrailList trails={this.props.trails} />}
         {this.props.trails !== undefined && this.props.trails.length !== 0  && this.props.distance !== '' && <ConnectedTrailList distance={this.props.distance} trails={this.props.trails} />}
         </Container>
-        <Container>
+        <Container fluid>
         {this.props.lodgings && <LodgingsList lodgings={this.props.lodgings} /> }
         </Container>
             <div>

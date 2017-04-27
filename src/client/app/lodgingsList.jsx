@@ -1,13 +1,14 @@
 import React from 'react';
 import {Grid} from 'semantic-ui-react';
-import LodgingsListItem from 
+import LodgingsListItem from './lodgingsListItem.jsx'
 
 const LodgingsList = (props) => {
+  console.log(props.lodgings)
   return (
-    <Grid>
+    <Grid celled>
       {props.lodgings.map((lodge, index) => {
         return (
-          <LodgingsListItem lodge={lodge} key={index} /> )
+          <LodgingsListItem lodge={lodge} id={index + 1} /> )
       })}
     </Grid>
     )
