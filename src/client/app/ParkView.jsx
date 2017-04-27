@@ -13,7 +13,7 @@ import {getLodging} from '../actions/getLodging.js';
 import {getDistance} from '../actions/getDistance.js';
 import {getTrails} from '../actions/getTrails.js';
 import {Link} from 'react-router-dom'
-import {Message, Container, Divider, Grid} from 'semantic-ui-react'
+import {Message, Container, Divider, Grid, Header} from 'semantic-ui-react'
 import HistoricalWeatherDropdown from './historicalWeatherDataDropDown.jsx'
 import NavBar from './NavBar.jsx';
 import UnconnectedTrailList from './UnconnectedTrailList.jsx';
@@ -47,29 +47,31 @@ class ParkView extends React.Component {
         {this.props.park && <div> <NavBar parks={this.props.parks} />
         <ParkMapView parkCode = {this.props.match.params.code} id = {this.props.park[1][0].id} lat={this.props.park[1][0].latitude} lon={this.props.park[1][0].longitude} campgrounds={this.props.campgrounds} lodgings={this.props.lodgings}/>
         <h1 className='parkname'>{this.props.park[1][0].name}</h1>
-        <Container fluid>
+        <Container className='singlePageContainer' fluid>
         <Grid columns={2} relaxed>
         <Grid.Column>
+        <Header size='large' textAlign='center'> Park Description </Header>
         <Message>
-           <Message.Header>
-           Park Description
-           </Message.Header>
         <h3>{this.props.park[1][0].description}</h3>
         </Message>
         </Grid.Column>
         <Grid.Column>
+        <Header size='large' textAlign='center'> Activities </Header>
         <ActivitiesList activities={this.props.park[0]}/>
         </Grid.Column>
         </Grid>
         </Container>
-        <Container fluid>
+        <Container className='singlePageContainer' fluid>
+        <Header size='large' textAlign='center'> Ten Day Forecast </Header>
         { this.props.tenDayForecast && <WeatherForecast tenDayForecast={this.props.tenDayForecast} />}
         </Container>
-        <Container>
+        <Container className='singlePageContainer' fluid>
+        <Header size='large' textAlign='center'> Trails </Header>
         {this.props.trails !== undefined && this.props.trails.length !== 0  && this.props.distance === '' && <UnconnectedTrailList trails={this.props.trails} />}
         {this.props.trails !== undefined && this.props.trails.length !== 0  && this.props.distance !== '' && <ConnectedTrailList distance={this.props.distance} trails={this.props.trails} />}
         </Container>
-        <Container fluid>
+        <Container className='singlePageContainer' fluid>
+        <Header size='large' textAlign='center'> Lodging </Header>
         {this.props.lodgings && <LodgingsList lodgings={this.props.lodgings} /> }
         </Container>
         </div>}

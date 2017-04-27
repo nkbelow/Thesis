@@ -1,12 +1,11 @@
 import React from 'react';
-import {List, Popup} from 'semantic-ui-react';
+import {List, Popup, Image,} from 'semantic-ui-react';
 import Masonry from 'react-masonry-component';
 
 const ActivitiesList = (props) => {
   const myStyle = {
       width:'100px',
       height:'100px',
-      zIndex:'-100',
       position: 'relative',
       'boxShadow': '2px 2px 2px 1px rgba(0, 0, 0, 0.8)'
     }
@@ -33,7 +32,7 @@ const ActivitiesList = (props) => {
         {props.activities.map((activity, i) => {
           console.log('https://res.cloudinary.com/djzaih6fz/image/upload/snorkeling.png')
           return (<Popup key={i} trigger={
-                    <img style={myStyle} src={`https://res.cloudinary.com/djzaih6fz/image/upload/${activities[activity.activity]}.png`} />
+                    <Image style={myStyle} src={`https://res.cloudinary.com/djzaih6fz/image/upload/${activities[activity.activity]}.png`} />
                   }>
                  <Popup.Content>
                  {activity.activity}
