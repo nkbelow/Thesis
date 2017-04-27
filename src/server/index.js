@@ -76,6 +76,9 @@ app.get('/api/fitbit', (req, res) => {
 
 })
 
+
+
+
 app.get('/api/sendEmail', handlers.emailHandler);
 
 app.get('/api/shoppingcart', function(req, res, next) {
@@ -111,6 +114,12 @@ app.post("/charge", (req, res) => {
     })
   })
 });
+
+app.get('/api/parks/getparksbyactivity', (req, res) => {
+  handlers.getParkIdsByActivities(JSON.parse(req.query.activitiesHoverState)).then((results) => {
+    res.status(200).send(results)
+  })
+})
 
 app.post('/api/park/tenDayForecast', handlers.tenDayWeatherForecast);
 

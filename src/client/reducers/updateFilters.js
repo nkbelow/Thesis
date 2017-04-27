@@ -1,10 +1,7 @@
-import { UPDATE_COMBINATION_SELECTIONS, UPDATE_SINGLE_SELECTION } from '../actions/filters.js'
+import { UPDATE_COMBINATION_SELECTIONS, UPDATE_SINGLE_SELECTION, ON_ACTIVITIES_HOVER } from '../actions/filters.js'
 
 let initialState = {
-  activities: [{
-    name: 'Any',
-    isSelected: false
-  },
+  activities: [
   {
     name: 'Auto Touring',
     isSelected: false
@@ -62,23 +59,7 @@ let initialState = {
     isSelected: false
   },
   {
-    name: 'Interpretive Programs',
-    isSelected: false
-  },
-  {
-    name: 'Picnicking',
-    isSelected: false
-  },
-  {
     name: 'Snorkeling',
-    isSelected: false
-  },
-  {
-    name: 'Water Sports',
-    isSelected: false
-  },
-  {
-    name: 'Visitor Center',
     isSelected: false
   },
   {
@@ -92,7 +73,25 @@ let initialState = {
   {
     name: 'Least Visited',
     isSelected: false
-  }]}
+  }],
+  activitiesHover: {
+    'Auto Touring': [],
+    'Biking': [],
+    'Climbing': [],
+    'Fishing': [],
+    'Horseback Riding': [],
+    'Hiking': [],
+    'Wildlife Viewing': [],
+    'Photography': [],
+    'Camping': [],
+    'Boating': [],
+    'Swimming': [],
+    'Diving': [],
+    'Hunting': [],
+    'Paddling': [],
+    'Snorkeling': [],
+    'Horse Camping': []
+  }}
 
 
 // reducer for the filters
@@ -123,6 +122,10 @@ export const updateFiltersSelections = (state=initialState, action) => {
           isSelected: !filter.isSelected
         };
       })})
+    case ON_ACTIVITIES_HOVER: 
+      return Object.assign({}, state, {
+        'activitiesHover': action.activitiesHover
+      })
     default:
       return state
   }
