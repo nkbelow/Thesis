@@ -2,19 +2,19 @@ import {tenDayForecast} from './actions.js'
 import axios from 'axios';
 
 
-export const getTenDayForecast = (id) => {
+export const getTenDayForecast = (latitude, longitude) => {
   return (dispatch) => {
-    console.log('getting forecast with id: ', id)
     let config = {
     url: '/api/park/tenDayForecast',
     method: 'post',
     data: {
-      id: id
+      latitude: latitude,
+      longitude: longitude
     }
   }
   axios(config)
-    .then((forecast) => {
-      dispatch(tenDayForecast(forecast))
+    .then((data) => {
+      dispatch(tenDayForecast(data['data']['simpleforecast']['forecastday']))
       })
     .catch(err => {
       console.log(err);

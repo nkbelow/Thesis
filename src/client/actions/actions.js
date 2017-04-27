@@ -63,7 +63,7 @@ export const activePark = (park) => {
   }
 }
 
-export const activeParks = (parks) => {
+export const setActiveParks = (parks) => {
   return {
     type: 'SET_ACTIVE_PARKS',
     parks: parks

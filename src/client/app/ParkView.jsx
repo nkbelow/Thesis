@@ -30,7 +30,7 @@ class ParkView extends React.Component {
       this.props.getLodging(result[1][0].latitude, result[1][0].longitude)
       return result
     }).then((result) => {
-      this.props.getTenDayForecast(this.props.park[1][0].id)
+      this.props.getTenDayForecast(result[1][0].latitude, result[1][0].longitude)
       return result
     }).then((result) => {
       this.props.getTrails(result[1][0].id)

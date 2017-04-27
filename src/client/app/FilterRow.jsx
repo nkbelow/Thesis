@@ -35,15 +35,18 @@ class FilterRow extends React.Component {
   }
 
   render () {
+    console.log('name: ', this.props.filter.name)
+    console.log(this.props.activitiesHover)
     return (
-      <List.Item style={this.props.isSelected ? this.selectedStyle : this.deSelectedStyle} onClick={this.handleOnClick.bind(this)} onMouseEnter={this.props.setActiveParks.bind(this, this.props.activitiesHover[this.props.filter.name])} onMouseLeave={this.props.setActiveParks.bind(this, null)}>{this.props.name} </List.Item> 
+      <List.Item style={this.props.isSelected ? this.selectedStyle : this.deSelectedStyle} onClick={this.handleOnClick.bind(this)} onMouseEnter={this.props.setActiveParks.bind(this, this.props.activitiesHover[(this.props.filter.name).toUpperCase()])} onMouseLeave={this.props.setActiveParks.bind(this, null)}>{this.props.name} </List.Item> 
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    filters: state.updateFiltersSelections.activities
+    filters: state.updateFiltersSelections.activities,
+    activitiesHover: state.updateFiltersSelections.activitiesHover
   };
 };
 

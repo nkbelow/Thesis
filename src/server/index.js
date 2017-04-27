@@ -121,6 +121,7 @@ app.get('/api/parks/getparksbyactivity', (req, res) => {
   handlers.getParkIdsByActivities(JSON.parse(req.query.activitiesHoverState)).then((results) => {
     res.status(200).send(results)
   })
+})
 
 // app.post('/api/park/tenDayForecast', (req, res) => {
 // 	console.log('in tendayforecast, sending to model with params', req.query)
