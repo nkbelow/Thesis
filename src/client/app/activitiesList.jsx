@@ -1,5 +1,5 @@
 import React from 'react';
-import {List, Popup, Image,} from 'semantic-ui-react';
+import {List, Popup, Image} from 'semantic-ui-react';
 import Masonry from 'react-masonry-component';
 
 const ActivitiesList = (props) => {
