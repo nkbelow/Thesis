@@ -31,7 +31,7 @@ const ActivitiesList = (props) => {
     <List>
         {props.activities.map((activity, i) => {
           console.log('https://res.cloudinary.com/djzaih6fz/image/upload/snorkeling.png')
-          return <Popup trigger={<List.Item key={i}>
+          return <Popup key={i} trigger={<List.Item>
                    <List.Content><img style={myStyle} src={`https://res.cloudinary.com/djzaih6fz/image/upload/${activities[activity.activity]}.png`} /> </List.Content>
                  </List.Item>}>
                  <Popup.Content>

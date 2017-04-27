@@ -75,7 +75,7 @@ class ParkView extends React.Component {
         {this.props.trails !== undefined && this.props.trails.length !== 0  && this.props.distance !== '' && <ConnectedTrailList distance={this.props.distance} trails={this.props.trails} />}
         </Container>
         <Container>
-        Put places here
+        {this.props.lodgings && <LodgingsList lodgings={this.props.lodgings} /> }
         </Container>
             <div>
             <HistoricalWeatherDropdown />
