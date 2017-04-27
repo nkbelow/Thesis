@@ -13,6 +13,7 @@ import {payments} from './payments.js'
 import {getDistance} from './getDistance.js';
 import {setActivePark} from './setActivePark.js';
 import {setActiveParks} from './setActiveParks.js'
+import {toggleVisibility} from './toggleVisibility.js'
 
 export default combineReducers( {
  individualPark: individualPark,
@@ -28,5 +29,6 @@ export default combineReducers( {
  payments: payments,
  getDistance: getDistance,
  setActivePark: setActivePark,
- setActiveParks: setActiveParks
+ setActiveParks: setActiveParks,
+ toggleVisibility: toggleVisibility
 });

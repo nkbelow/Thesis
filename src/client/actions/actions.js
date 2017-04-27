@@ -69,3 +69,15 @@ export const setActiveParks = (parks) => {
     parks: parks
   }
 }
+
+export const toggleCampgrounds = () => {
+  return {
+    type: 'TOGGLE_CAMPGROUNDS'
+  }
+}
+
+export const toggleLodging = () => {
+  return {
+    type: 'TOGGLE_LODGING'
+  }
+}

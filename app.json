@@ -20,6 +20,9 @@
     },
     "G_PLACES_API_KEY": {
       "required": true
+    },
+    "G_MAPS_PLACES_KEY": {
+      "required": true
     }
   },
   "formation": {
