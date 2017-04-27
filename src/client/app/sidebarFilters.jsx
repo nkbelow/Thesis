@@ -9,7 +9,7 @@ class SidebarFilters extends React.Component {
 
   render() {
     return (
-      <Sidebar as={Menu} animation='push' width='thin' visible={this.props.visible} icon='labeled' vertical inverted>
+      <Sidebar as={Menu} animation='push' visible={this.props.visible} icon='labeled' horizontal inverted>
         <Menu.Item name='home'>
           <List>
           <List.Header>Activities</List.Header>
