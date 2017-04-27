@@ -74,9 +74,10 @@ class ParkView extends React.Component {
         { this.props.tenDayForecast && <WeatherForecast tenDayForecast={this.props.tenDayForecast} />}
         </Container>
         <Container className='singlePageContainer' fluid>
-        <Header size='large' textAlign='center'> Trails </Header>
-        {this.props.trails !== undefined && this.props.trails.length !== 0  && this.props.distance === '' && <UnconnectedTrailList trails={this.props.trails} />}
-        {this.props.trails !== undefined && this.props.trails.length !== 0  && this.props.distance !== '' && <ConnectedTrailList distance={this.props.distance} trails={this.props.trails} />}
+        {this.props.trails !== undefined && this.props.trails.length !== 0  && this.props.distance === '' && 
+        <div> <Header size='large' textAlign='center'> Trails </Header> <UnconnectedTrailList trails={this.props.trails} /> </div>}
+        {this.props.trails !== undefined && this.props.trails.length !== 0  && this.props.distance !== '' && 
+        <div> <Header size='large' textAlign='center'> Trails </Header><ConnectedTrailList distance={this.props.distance} trails={this.props.trails} /> </div>}
         </Container>
         <Container className='singlePageContainer' fluid>
         <Header size='large' textAlign='center'> Lodging </Header>
