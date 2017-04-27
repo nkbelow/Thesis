@@ -1,32 +1,15 @@
 import React from 'react';
-// import TenDayForecastListItem from './tenDayForecastListItem.jsx'
+import {Grid} from 'semantic-ui-react';
+import TenDayForecastItem from './tenDayForecastItem.jsx';
 
 const TenDayForecastList = (props) => {
+  console.log(props.tenDayForecast);
   return (
-    <table>
-    <thead>
-      <tr>
-      <th className='weatherHeader' colSpan='4'>Ten Day Forecast</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-    {props.tenDayForecast.map((dayForecast, index) => {
-        return (<td key={index}><img src={dayForecast.icon_url}/></td>)
-      })}
-    </tr>
-      <tr>
-    {props.tenDayForecast.map((dayForecast, index) => {
-        return (<td key={index}>{dayForecast.date.weekday}</td>)
-      })}
-    </tr>
-      <tr>
-    {props.tenDayForecast.map((dayForecast, index) => {
-        return (<td key={index}>{`${dayForecast.high.fahrenheit}°F/${dayForecast.low.fahrenheit}°F`}</td>)
-      })}
-    </tr>
-    </tbody>
-    </table>
+    <Grid columns={10} relaxed>
+    {props.tenDayForecast.map((dayForecast, index) => 
+        <TenDayForecastItem key={index} dayForecast={dayForecast} />
+      )}
+    </Grid>
     )
 };
 
