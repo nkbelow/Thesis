@@ -94,8 +94,6 @@ app.post('/api/shoppingcart', function(req, res, next) {
 
 
 app.post("/charge", (req, res) => {
-  
-  console.log(req.body, 'req.body req.body req.body req.body req.body' )
   sendEmail(req, res)
   stripe.customers.create({
     email: req.body.stripeEmail,
@@ -110,7 +108,6 @@ app.post("/charge", (req, res) => {
         customer: customer.id
       })
     .then((charge) => {
-      console.log(charge, 'CHARGE CHARGE CHARGE')
       res.status(200).send();
     })
   })

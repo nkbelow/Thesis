@@ -43,7 +43,6 @@ const places = (location, radius, type) => {
   return axios(config1).then((response) => {
 
     let lodgingData = response.data.results;
-    console.log(lodgingData, 'eyyyyyyyyyyy')
     const lodgingPromises = lodgingData.map((lodge, i) => {
     let config2 = {
       method: 'get',
@@ -61,14 +60,12 @@ const places = (location, radius, type) => {
       const websites = lodges.map(lodge => {
         return lodge['data']['result'].website
       });
-      console.log(websites, 'websites');
       websites.forEach((website, index) => {
         lodgingData[index].website = website;
       })
       return lodgingData;
     })
     .then(result => {
-      console.log(result, 'this is the final result')
       return result;
     })   
     .catch(err => {
