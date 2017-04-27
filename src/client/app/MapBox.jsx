@@ -59,7 +59,8 @@ export default class MapBox extends Component {
 		 	this.props.remainingParks.map((park) => (
               <Marker
                 key={park.id}
-                style={this.props.activePark && (park.id === this.props.activePark.id) ? styles.active : styles.marker}
+                style={(this.props.activePark && (park.id === this.props.activePark.id)) ||
+                (this.props.activeParks && (this.props.activeParks.indexOf(park.id) >= 0 )) ? styles.active : styles.marker}
                 coordinates={[park.longitude, park.latitude]}
                 onClick={this.props.addPopup.bind(this, park)}
                 onMouseEnter = {this.props.setActivePark.bind(this, park)} 
@@ -82,7 +83,8 @@ export default class MapBox extends Component {
                 onMouseEnter = {this.props.setActivePark.bind(this, park)} 
                 onMouseLeave = {this.props.setActivePark.bind(this, null)}>
 
-                <img style= {this.props.activePark && (park.id === this.props.activePark.id) ? styles.activeIcon : styles.icon}
+                <img style= {(this.props.activePark && (park.id === this.props.activePark.id)) ||
+                (this.props.activeParks && (this.props.activeParks.indexOf(park.id) >= 0 )) ? styles.activeIcon : styles.icon}
                src="https://cdn1.iconfinder.com/data/icons/map-objects/154/map-object-fir-forest-park-512.png" />
 
               </Marker>

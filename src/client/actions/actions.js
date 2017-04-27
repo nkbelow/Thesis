@@ -63,9 +63,9 @@ export const activePark = (park) => {
   }
 }
 
-export const activeParks = (park) => {
+export const activeParks = (parks) => {
   return {
     type: 'SET_ACTIVE_PARKS',
-    filter: filter
+    parks: parks
   }
 }

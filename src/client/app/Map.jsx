@@ -6,6 +6,7 @@ const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, state, {
     popup: state.map.popup,
     activePark: state.setActivePark.park,
+    activeParks: state.setActiveParks.parks,
     filteredParks: state.getParksReducer.filteredParks,
     remainingParks: state.getParksReducer.remainingParks
   })

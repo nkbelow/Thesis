@@ -3,6 +3,7 @@ import { List } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { onCombinationFilterClick, onSingleFilterClick } from '../actions/filters.js'
 import { getFilteredParks } from '../actions/getParks.js'
+import { setActiveParks } from '../actions/actions.js'
 import Promise from 'bluebird'
 
 class FilterRow extends React.Component {
@@ -35,7 +36,7 @@ class FilterRow extends React.Component {
 
   render () {
     return (
-      <List.Item style={this.props.isSelected ? this.selectedStyle : this.deSelectedStyle} onClick={this.handleOnClick.bind(this)} onMouseEnter={this.props.setActiveParks.bind(this, this.props.filter.name)} onMouseLeave={this.props.setActiveParks.bind(this, null)}>{this.props.name} </List.Item> 
+      <List.Item style={this.props.isSelected ? this.selectedStyle : this.deSelectedStyle} onClick={this.handleOnClick.bind(this)} onMouseEnter={this.props.setActiveParks.bind(this, this.props.activitiesHover[this.props.filter.name])} onMouseLeave={this.props.setActiveParks.bind(this, null)}>{this.props.name} </List.Item> 
     )
   }
 }
@@ -52,7 +53,7 @@ const mapDispatchToProps = (dispatch) => {
       onCombinationFilterClick: (filter) => dispatch(onCombinationFilterClick(filter)),
       onSingleFilterClick: (filter) => dispatch(onSingleFilterClick(filter)),
       getFilteredParks: (filters) => dispatch(getFilteredParks(filters)),
-      setActiveParks: (filter) => dispatch(setActiveParks(filter))
+      setActiveParks: (parks) => dispatch(setActiveParks(parks))
   };
 
 };
