@@ -5,8 +5,9 @@ import {activePark} from '../actions/actions.js'
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, state, {
     popup: state.map.popup,
-    parks: state.getParksReducer.parks,
-    activePark: state.setActivePark.park
+    activePark: state.setActivePark.park,
+    filteredParks: state.getParksReducer.filteredParks,
+    remainingParks: state.getParksReducer.remainingParks
   })
 }
 

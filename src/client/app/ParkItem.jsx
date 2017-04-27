@@ -71,4 +71,4 @@ export default connect(null, mapDispatchToProps)(ParkItem);
       </div>
 
 */
->>>>>>> enlarge markers on hover
+
