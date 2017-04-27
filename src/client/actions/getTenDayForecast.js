@@ -14,6 +14,7 @@ export const getTenDayForecast = (latitude, longitude) => {
   }
   axios(config)
     .then((data) => {
+      console.log(data['data']['simpleforecast']['forecastday']);
       dispatch(tenDayForecast(data['data']['simpleforecast']['forecastday']))
       })
     .catch(err => {
