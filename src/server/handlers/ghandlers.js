@@ -2,9 +2,6 @@ const axios = require('axios');
 
 
 const geocode = (location, callback) => {
-
-  // uncomment the next line to receive an example request
-  // let location = 'Beaverdam Creek Swamp'
   const config = {
     method: 'get',
     url: 'http://maps.googleapis.com/maps/api/geocode/json',
@@ -16,7 +13,6 @@ const geocode = (location, callback) => {
     }
   };
   return axios(config).then((response) => {
-    // what is returned is a lat/lng object
     if (response.data.results[0]) {
       callback(response.data.results[0].geometry.location);}
     
@@ -26,9 +22,6 @@ const geocode = (location, callback) => {
   });
 };
 
-// example input
-// places({latitude: 44.5853962, longitude: -111.0759105}, 5000, 'lodging')
-  // radius and type are optional
 const places = (location, radius, type) => {
   let config1 = {
     method: 'get',

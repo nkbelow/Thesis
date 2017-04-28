@@ -14,7 +14,7 @@ import {getDistance} from '../actions/getDistance.js';
 import {getTrails} from '../actions/getTrails.js';
 import {toggleCampgrounds, toggleLodging} from '../actions/actions.js';
 import {Link} from 'react-router-dom'
-import {Message, Container, Divider, Grid, Header} from 'semantic-ui-react'
+import {Message, Container, Divider, Grid, Header, Button} from 'semantic-ui-react'
 import HistoricalWeatherDropdown from './historicalWeatherDataDropDown.jsx'
 import NavBar from './NavBar.jsx';
 import NavBarSinglePage from './NavBarSinglePage.jsx';
@@ -51,8 +51,8 @@ class ParkView extends React.Component {
         {this.props.park && <div> <NavBarSinglePage parks={this.props.parks} />
         <ParkMapView parkCode = {this.props.match.params.code} id = {this.props.park[1][0].id} lat={this.props.park[1][0].latitude} lon={this.props.park[1][0].longitude} campgrounds={this.props.campgrounds} lodgings={this.props.lodgings}/>
         <div id="outer">
-          <div class="inner"><button type="submit" class="campgroundsToggle" onClick={this.props.toggleCampgrounds}>Campgrounds</button></div>
-          <div class="inner"><button type="submit" class="lodgingToggle" onClick={this.props.toggleLodging}>Lodging</button></div>
+          <Button color='green' icon='tree' content='Campgrounds' onClick={this.props.toggleCampgrounds}/>
+          <Button color='green'  icon='hotel' content='Lodging' onClick={this.props.toggleLodging}/>
         </div>
         <h1 className='parkname'>{this.props.park[1][0].name}</h1>
         <Container className='singlePageContainer' fluid>
@@ -74,9 +74,10 @@ class ParkView extends React.Component {
         { this.props.tenDayForecast && <WeatherForecast tenDayForecast={this.props.tenDayForecast} />}
         </Container>
         <Container className='singlePageContainer' fluid>
-        <Header size='large' textAlign='center'> Trails </Header>
-        {this.props.trails !== undefined && this.props.trails.length !== 0  && this.props.distance === '' && <UnconnectedTrailList trails={this.props.trails} />}
-        {this.props.trails !== undefined && this.props.trails.length !== 0  && this.props.distance !== '' && <ConnectedTrailList distance={this.props.distance} trails={this.props.trails} />}
+        {this.props.trails !== undefined && this.props.trails.length !== 0  && this.props.distance === '' && 
+        <div> <Header size='large' textAlign='center'> Trails </Header> <UnconnectedTrailList trails={this.props.trails} /> </div>}
+        {this.props.trails !== undefined && this.props.trails.length !== 0  && this.props.distance !== '' && 
+        <div> <Header size='large' textAlign='center'> Trails </Header><ConnectedTrailList distance={this.props.distance} trails={this.props.trails} /> </div>}
         </Container>
         <Container className='singlePageContainer' fluid>
         <Header size='large' textAlign='center'> Lodging </Header>
