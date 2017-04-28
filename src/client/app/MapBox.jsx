@@ -46,12 +46,12 @@ export default class MapBox extends Component {
 		<div>
 		<ReactMapboxGl
 		  style="mapbox://styles/mapbox/streets-v8"
-          center={[-98.35, 39.5]}
-          zoom={[2]}
+          center={[-90.35, 37.5]}
+          zoom={[2.7]}
           accessToken={'pk.eyJ1IjoidHdhbGs0ODIxIiwiYSI6ImNqMWk3ajQ3YjAxazMyd28wbmxpeG5pOW0ifQ.pD4Uic9vRI0_fh0_XV0tCg'}
           containerStyle={{
-		        height: "80vh",
-		        width: "80vw"
+		        height: "50vh",
+		        width: "100vw"
 		      }}
           onClick={this.props.removePopup.bind(this)}>
 		 
@@ -100,7 +100,7 @@ export default class MapBox extends Component {
                 offset={ [0, -35] }
                 >
                 <div>
-                  <h2>{this.props.popup.name}</h2>
+                  <h5>{this.props.popup.name}</h5>
                   <Link to={`park/${this.props.popup.parkcode}/`}>
                     <p>Go to page</p>
                   </Link>

@@ -81,3 +81,16 @@ export const toggleLodging = () => {
     type: 'TOGGLE_LODGING'
   }
 }
+
+export const addPopup = (park) => {
+  return {
+        type: 'ADD_POPUP', 
+        park: park
+      }
+}
+
+export const removePopup = () => {
+  return {
+        type: 'REMOVE_POPUP'
+      }
+}
