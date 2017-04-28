@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Input, Menu, Segment, Label, Header, Icon } from 'semantic-ui-react'
+import { Input, Menu, Segment, Label, Modal, Icon, Header, Button} from 'semantic-ui-react'
 import SearchBar from './SearchBar.jsx'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {getDistance} from '../actions/getDistance.js';
+import ShoppingCart from './ShoppingCart.jsx'
 
 class NavBar extends Component {
 
@@ -31,6 +32,12 @@ class NavBar extends Component {
             </Label>
           </Menu.Item>
           <Menu.Menu position='right'>
+          <Modal size='small' className='modal' trigger={<Menu.Item><Icon name='cart' size='big'/></Menu.Item>}>
+          <Header as='h1' textAlign='center'>Shopping Cart</Header>
+            <Modal.Content>
+           <ShoppingCart />
+            </Modal.Content>
+            </Modal>
             <Menu.Item >
               <SearchBar />
             </Menu.Item>

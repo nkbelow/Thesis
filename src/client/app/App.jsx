@@ -36,7 +36,6 @@ class App extends React.Component {
     	<div>
         <NavBar parks={this.props.parks} />
         <Button onClick={() => {this.props.toggleVisibility(this.props.visible)}}>Toggle Visibility</Button>
-        <ShoppingCart />
         <Sidebar.Pushable as={Segment}>
           <Sidebar as={Menu} animation='push' width='thin' visible={!this.props.visible} icon='labeled' vertical inverted>
             <SidebarFilters visible={!this.props.visible} />
@@ -48,7 +47,6 @@ class App extends React.Component {
           </Segment> 
           </Sidebar.Pusher>
         </Sidebar.Pushable>
-        <ShoppingCart />
         <AddToCart />
       </div>
     );
