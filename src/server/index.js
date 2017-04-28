@@ -95,7 +95,7 @@ app.post('/api/shoppingcart', function(req, res, next) {
 
 
 app.post("/charge", (req, res) => {
-  sendEmail(req, res)
+  handlers.emailHandler(req, res)
   stripe.customers.create({
     email: req.body.stripeEmail,
     source: req.body.stripeToken,
