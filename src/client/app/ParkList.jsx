@@ -10,8 +10,13 @@ class ParkList extends React.Component {
     this.style = {
         backgroundColor:'',
         width:'100%',
-        margin:'0', 
-        padding:'0'
+        justifyContent: 'center',
+        alignItems: 'center',
+        'margin':'auto',
+        'margin-top': '10px',
+        'margin-left': '0.2%',
+        padding:'0',
+
     };
   }
 
