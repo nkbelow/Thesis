@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Input, Menu, Segment, Label } from 'semantic-ui-react'
+import { Input, Menu, Segment, Label, Header, Icon } from 'semantic-ui-react'
 import SearchBar from './SearchBar.jsx'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
@@ -16,7 +16,14 @@ class NavBar extends Component {
     return (
       <div>
         <Menu>
-          <Menu.Item name='logo'>Park Bound</Menu.Item>
+          <Menu.Item name='logo'>
+            <Header as='h3'>
+              <Icon name='compass' />
+              <Header.Content>
+                Park Bound
+              </Header.Content>
+            </Header>
+          </Menu.Item>
           <Menu.Item  as={Link} to='/' name='home'>Home</Menu.Item>
           <Menu.Item disabled={this.props.distance > 0} href="/auth/fitbit" > 
             <Label color={(this.props.distance !== '') ?  'green' : 'red'} > 

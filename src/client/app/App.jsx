@@ -14,6 +14,7 @@ import { onactivitiesHoverThunk } from '../actions/filters.js';
 import { connect } from 'react-redux';
 import { showFilters } from '../actions/actions.js';
 import NavBar from './NavBar.jsx';
+import {getDistance} from '../actions/getDistance.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class App extends React.Component {
     this.props.getAllParks(this.props.filters)
     this.props.getFilteredParks(this.props.filters)
     this.props.onactivitiesHoverThunk(this.props.activitiesHover)
+    this.props.getDistance()
   }
 
   render () {
@@ -60,7 +62,8 @@ const mapStateToProps = (state) => {
       filteredParks: state.getParksReducer.filteredParks,
       remainingParks: state.getParksReducer.remainingParks,
       visible: state.visibleFilter.visible,
-      activitiesHover: state.updateFiltersSelections.activitiesHover
+      activitiesHover: state.updateFiltersSelections.activitiesHover,
+      distance: state.getDistance.distance
     };
 };
 
@@ -70,6 +73,7 @@ const mapDispatchToProps = (dispatch) => {
         getFilteredParks: (filters) => dispatch(getFilteredParks(filters)),
         toggleVisibility: (visible) => dispatch(showFilters(visible)),
         onactivitiesHoverThunk: (activitiesHoverState) => dispatch(onactivitiesHoverThunk(activitiesHoverState)),
+        getDistance: () => dispatch(getDistance())
     };
 };
 

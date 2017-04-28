@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react'
+import { Table, Header } from 'semantic-ui-react'
 import RecommendedItem from './RecommendedItem.jsx'
 import UnrecommendedItem from './UnrecommendedItem.jsx'
 
@@ -15,12 +15,18 @@ function ConnectedTrailList(props) {
     }
   return (
   	<div>
+	  <Header textAlign='center' as='h3'>
+	    According to Fitbit, your past weeks average distance was {props.distance} miles.
+	    <Header.Subheader>
+	      Trails in green have lengths that you are ready to conquer!
+	    </Header.Subheader>
+	  </Header>
 	    <Table celled stackable>
 	      <Table.Header>
 	        <Table.Row>
 	          <Table.HeaderCell textAlign='center' >Name</Table.HeaderCell>
-	          <Table.HeaderCell textAlign='center' >Length</Table.HeaderCell>
-	          <Table.HeaderCell textAlign='left'>Description</Table.HeaderCell>
+	          <Table.HeaderCell textAlign='center' >Length (miles)</Table.HeaderCell>
+	          <Table.HeaderCell textAlign='center'>Description</Table.HeaderCell>
 	        </Table.Row>
 	      </Table.Header>
 	      <Table.Body>
