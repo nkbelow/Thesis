@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {getDistance} from '../actions/getDistance.js';
 import ShoppingCart from './ShoppingCart.jsx'
+import AddToCart from './AddToCart.jsx'
 
 class NavBar extends Component {
 
@@ -35,6 +36,7 @@ class NavBar extends Component {
           <Modal size='small' className='modal' trigger={<Menu.Item><Icon name='cart' size='big'/></Menu.Item>}>
           <Header as='h1' textAlign='center'>Shopping Cart</Header>
             <Modal.Content>
+            <AddToCart />
            <ShoppingCart />
             </Modal.Content>
             </Modal>
