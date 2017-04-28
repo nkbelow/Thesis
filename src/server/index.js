@@ -69,6 +69,8 @@ app.get('/auth/fitbit',
 app.get('/auth/fitbit/callback', fitbitAuthenticate);
 
 app.get('/api/fitbit', (req, res) => {
+  console.log(req, 'req, req, req')
+  console.log(req.user, 'req.user, req.user, req.user, req.user')
 	if(req.user){
 		fitbitHelper(req.user.profile.id, req.user.accessToken)
 		.then((result) => {
