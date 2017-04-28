@@ -45,7 +45,6 @@ class App extends React.Component {
           </Segment> 
           </Sidebar.Pusher>
         </Sidebar.Pushable>
-        <AddToCart />
       </div>
     );
   }
