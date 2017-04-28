@@ -26,7 +26,7 @@ class NavBar extends Component {
             </Label>
           </Menu.Item>
           <Menu.Menu position='right'>
-          <Modal size='small' className='modal' trigger={<Menu.Item><Icon name='cart' size='big'/></Menu.Item>}>
+          <Modal size='small' className='modal' trigger={<Menu.Item>Buy National Park Passes<Icon name='cart' size='big'/></Menu.Item>}>
           <Header as='h1' textAlign='center'>Shopping Cart</Header>
             <Modal.Content>
             <AddToCart />
