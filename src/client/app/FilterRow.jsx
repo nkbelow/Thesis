@@ -36,7 +36,7 @@ class FilterRow extends React.Component {
 
   render () {
     return (
-      <List.Item style={this.props.isSelected ? this.selectedStyle : this.deSelectedStyle} onClick={this.handleOnClick.bind(this)} onMouseEnter={this.props.setActiveParks.bind(this, this.props.activitiesHover[(this.props.filter.name).toUpperCase()])} onMouseLeave={this.props.setActiveParks.bind(this, null)}>{this.props.name} </List.Item> 
+      <div className='filterElement' divided={false} style={this.props.isSelected ? this.selectedStyle : this.deSelectedStyle} onClick={this.handleOnClick.bind(this)} onMouseEnter={this.props.setActiveParks.bind(this, this.props.activitiesHover[(this.props.filter.name).toUpperCase()])} onMouseLeave={this.props.setActiveParks.bind(this, null)}>{this.props.name} </div> 
     )
   }
 }
