@@ -8,7 +8,7 @@ import SearchBar from './SearchBar.jsx';
 import MapView from './Map.jsx';
 import axios from 'axios';
 import SidebarFilters from './sidebarFilters.jsx';
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header, List, Accordion } from 'semantic-ui-react';
+import { Sidebar, Segment, Button, Menu, Image, Icon, Header, List, Accordion, Divider } from 'semantic-ui-react';
 import { getAllParks, getFilteredParks, } from '../actions/getParks.js';
 import { onactivitiesHoverThunk } from '../actions/filters.js';
 import { connect } from 'react-redux';
@@ -43,6 +43,7 @@ class App extends React.Component {
           <Sidebar.Pusher>
           <Segment basic>
             <MapView />
+            <Divider fitted />
             <ParkList />
           </Segment> 
           </Sidebar.Pusher>
