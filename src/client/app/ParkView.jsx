@@ -7,7 +7,6 @@ import {getCampgrounds} from '../actions/getCampgrounds.js'
 import ParkMapView from './singlePageMapView.jsx';
 import WeatherForecast from './tenDayForecastList.jsx'
 import ActivitiesList from './activitiesList.jsx';
-import SinglePageNavBar from './singlePageNavBar.jsx';
 import {getTenDayForecast} from '../actions/getTenDayForecast.js';
 import {getLodging} from '../actions/getLodging.js';
 import {getDistance} from '../actions/getDistance.js';
