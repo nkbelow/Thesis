@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Input, Menu, Segment, Label, Modal, Icon, Header, Button} from 'semantic-ui-react'
+import { Input, Menu, Segment, Label, Modal, Icon, Container, Header, Button} from 'semantic-ui-react'
 import SearchBar from './SearchBar.jsx'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
