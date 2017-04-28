@@ -12,6 +12,7 @@ const data = require('../db/activities_parks_data/ourNationalParks.js');
 const individualParkData = require('../db/models/getIndividualParksInfo.js');
 const campgroundsData = require('../db/models/getCampgroundsInfo.js');
 const trails = require('../db/models/getTrailsInfo.js');
+const forecast = require('../db/models/getForecast.js')
 
 const handlers = require('./handlers/handlers.js')
 
@@ -120,15 +121,15 @@ app.get('/api/parks/getparksbyactivity', (req, res) => {
   })
 })
 
-// app.post('/api/park/tenDayForecast', (req, res) => {
-// 	console.log('in tendayforecast, sending to model with params', req.query)
-// 	forecast(req.query.id).then((forecast) => {
-// 		res.status(200).send(forecast);
-// 		console.log("this is the forecast", forecast)
-// 	})
-// })
+app.post('/api/park/tenDayForecast', (req, res) => {
+	console.log('in tendayforecast, sending to model with params', req.body)
+	forecast(req.body.id).then((forecast) => {
+		res.status(200).send(forecast);
+		console.log("this is the forecast", forecast)
+	})
+})
 
-app.post('/api/park/tenDayForecast', handlers.tenDayWeatherForecast);
+// app.post('/api/park/tenDayForecast', handlers.tenDayWeatherForecast);
 
 
 // app.post('/api/park/tenDayForecast', (req, res) => {
