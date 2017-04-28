@@ -23,6 +23,10 @@
 
 }
 
+.modal {
+  height: 50%
+}
+
 .imagewrap {
   display:inline-block;
   position:relative;

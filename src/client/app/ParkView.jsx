@@ -7,7 +7,6 @@ import {getCampgrounds} from '../actions/getCampgrounds.js'
 import ParkMapView from './singlePageMapView.jsx';
 import WeatherForecast from './tenDayForecastList.jsx'
 import ActivitiesList from './activitiesList.jsx';
-import SinglePageNavBar from './singlePageNavBar.jsx';
 import {getTenDayForecast} from '../actions/getTenDayForecast.js';
 import {getLodging} from '../actions/getLodging.js';
 import {getDistance} from '../actions/getDistance.js';
@@ -81,8 +80,8 @@ class ParkView extends React.Component {
         <div> <Header size='large' textAlign='center'> Trails </Header><ConnectedTrailList distance={this.props.distance} trails={this.props.trails} /> </div>}
         </Container>
         <Container className='singlePageContainer' fluid>
-        <Header size='large' textAlign='center'> Lodging </Header>
-        {this.props.lodgings && <LodgingsList lodgings={this.props.lodgings} /> }
+        {this.props.lodgings && 
+          <div> <Header size='large' textAlign='center'> Lodging </Header> <LodgingsList lodgings={this.props.lodgings} /> </div>}
         </Container>
         </div>}
       </div>
