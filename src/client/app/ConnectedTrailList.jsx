@@ -18,7 +18,7 @@ function ConnectedTrailList(props) {
 	  <Header textAlign='center' as='h3'>
 	    According to Fitbit, your past weeks average distance per day was {Math.round(props.distance)} miles.
 	    <Header.Subheader>
-	      Trails in green have mile lengths that you are ready to conquer!
+	      Trails in green have mile lengths that you are ready to conquer now!
 	    </Header.Subheader>
 	  </Header>
 	    <Table celled stackable>
