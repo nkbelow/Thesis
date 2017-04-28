@@ -5,7 +5,7 @@ import {orderQuantityIncrease, orderQuantityDecrease, addToCart} from '../action
 const ShopItemsList = (props) => {
   return (
     <div>
-      <div>{props.item} - $ {props[props.item + 'Price']} </div>
+      <div>{props.item.toUpperCase()} - $ {props[props.item + 'Price']} </div>
       <button onClick={() => {props.orderQuantityDecrease(props[props.item + 'Quantity'], props.item)}} >-</button>
       <input id="qty" value={props[props.item + 'Quantity']} />
       <button onClick={() => {props.orderQuantityIncrease(props[props.item + 'Quantity'], props.item)}}>+</button>

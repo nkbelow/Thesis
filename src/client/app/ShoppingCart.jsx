@@ -43,8 +43,8 @@ class ShoppingCart extends React.Component {
   render () {
     return (
       <div>
-        <div>{this.props.shoppingCartState.dayPass} {this.props.shoppingCartState.dayPass > 1 ? 'day passes' : 'day pass'}</div>
-        <div>{this.props.shoppingCartState.annualPass} {this.props.shoppingCartState.annualPass > 1 ? 'annual passes' : 'annual pass'}</div>
+        <div>{this.props.shoppingCartState.dayPass} {this.props.shoppingCartState.dayPass > 1 ? 'Day Passes' : 'Day Pass'}</div>
+        <div>{this.props.shoppingCartState.annualPass} {this.props.shoppingCartState.annualPass > 1 ? 'Annual Passes' : 'Annual Pass'}</div>
         <text>Total: ${this.props.shoppingCartTotal}</text>
         <PaymentWidget />
       </div>      
