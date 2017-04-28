@@ -37,8 +37,8 @@ class App extends React.Component {
         <NavBar parks={this.props.parks} />
         <Button onClick={() => {this.props.toggleVisibility(this.props.visible)}}>Toggle Visibility</Button>
         <Sidebar.Pushable as={Segment}>
-          <Sidebar as={Menu} animation='push' width='thin' visible={!this.props.visible} icon='labeled' direction={'top'} inverted>
-            <SidebarFilters visible={!this.props.visible} />
+          <Sidebar as={Menu} animation='push' visible={!this.props.visible} icon='labeled' direction={'top'} inverted>
+            <SidebarFilters />  
           </Sidebar>
           <Sidebar.Pusher>
           <Segment basic>
