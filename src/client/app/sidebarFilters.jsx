@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sidebar, Segment, Button, Menu, Icon, List, Accordion } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import FilterRow from './FilterRow.jsx';
 import { connect } from 'react-redux';
 import {showFilters} from '../actions/actions.js'
@@ -7,37 +7,55 @@ import {showFilters} from '../actions/actions.js'
 
 class SidebarFilters extends React.Component {
 
+
   render() {
+
+
     return (
-      <Sidebar as={Menu} animation='push' width='thin' visible={this.props.visible} icon='labeled' vertical inverted>
-        <Menu.Item name='home'>
-          <List>
-          <List.Header>Activities</List.Header>
-            {this.props.updateFiltersSelections.activities.slice(0, 5).map((filter) => <FilterRow getParks={this.props.getParks} filter={filter} isSelected={filter.isSelected} name={filter.name} key={filter.name} category={'Activities'}/>)}
-          </List>
-          <Accordion>
-            <Accordion.Title>
-              <Icon name='dropdown' />
-              See All Activities
-            </Accordion.Title>
-            <Accordion.Content>
-              <List>
-                {this.props.updateFiltersSelections.activities.slice(5, 21).map((filter) => <FilterRow getParks={this.props.getParks} filter={filter} isSelected={filter.isSelected} name={filter.name} key={filter.name} />)}
-              </List>
-            </Accordion.Content>
-          </Accordion>
-        </Menu.Item>
-        <Menu.Item name='gamepad'>
-          <List>
-          <List.Header>Popularity</List.Header>
-           {this.props.updateFiltersSelections.popularity.slice(0, 2).map((filter) => <FilterRow getParks={this.props.getParks} filter={filter} isSelected={filter.isSelected} name={filter.name} key={filter.name} category={'Popularity'}/>)}
-          </List>
-        </Menu.Item>
-        <Menu.Item name='camera'>
-          <Icon name='camera' />
-            Channels
-        </Menu.Item>
-      </Sidebar>
+      
+      <Grid className='filtersGrid' columns={6} stretched={false} >
+         <Grid.Row color={'Black'} className='filtersGridRow' >   
+           <Grid.Column stretched={false} width={2} > <div className='filterHeader column-one' >Popularity</div></Grid.Column>
+           <Grid.Column stretched={false} width={2} > <div className='filterHeader column-two' >Activities</div></Grid.Column>
+           <Grid.Column stretched={false} width={2} className='filtersGridColumn'> </Grid.Column>
+           <Grid.Column stretched={false} width={2} className='filtersGridColumn'></Grid.Column>
+           <Grid.Column stretched={false} width={2} className='filtersGridColumn'> </Grid.Column>
+           <Grid.Column stretched={false} width={2} className='filtersGridColumn'> </Grid.Column>
+          </Grid.Row>
+         <Grid.Row color={'Black'} className='filtersGridRow' >   
+            {this.props.popularity.slice(0, 1).map((filter) =><Grid.Column width={2} className='filtersGridColumn column-one'>  <FilterRow getParks={this.props.getParks} filter={filter} isSelected={filter.isSelected} name={filter.name} key={filter.name} category={'Popularity'}/> </Grid.Column>)}
+            {this.props.filters.slice(0, 5).map((filter) =><Grid.Column width={2} >  <FilterRow getParks={this.props.getParks} filter={filter} isSelected={filter.isSelected} name={filter.name} key={filter.name} category={'Activities'}/> </Grid.Column> )}
+           <Grid.Column stretched={false} width={2} className='filtersGridColumn'> </Grid.Column>
+           <Grid.Column stretched={false} width={2} className='filtersGridColumn'> </Grid.Column>
+          </Grid.Row>
+         <Grid.Row  color={'Black'} className='filtersGridRow' >    
+            {this.props.popularity.slice(1, 2).map((filter) =><Grid.Column width={2} stretched={false} className='filtersGridColumn column-one'>  <FilterRow getParks={this.props.getParks} filter={filter} isSelected={filter.isSelected} name={filter.name} key={filter.name} category={'Popularity'}/> </Grid.Column>)}
+            {this.props.filters.slice(5, 10).map((filter) =><Grid.Column width={2} stretched={false} className='filtersGridColumn'>  <FilterRow getParks={this.props.getParks} filter={filter} isSelected={filter.isSelected} name={filter.name} key={filter.name}/> </Grid.Column> )}
+           <Grid.Column width={2} stretched={false} className='filtersGridColumn'> </Grid.Column>
+           <Grid.Column width={2} stretched={false} className='filtersGridColumn'> </Grid.Column>
+          </Grid.Row>
+         <Grid.Row color={'Black'} className='filtersGridRow' >    
+           <Grid.Column stretched={false} width={2} className='filtersGridColumn column-one'> </Grid.Column>
+            {this.props.filters.slice(10, 15).map((filter) =><Grid.Column width={2} stretched={false} className='filtersGridColumn'>  <FilterRow getParks={this.props.getParks} filter={filter} isSelected={filter.isSelected} name={filter.name} key={filter.name}/> </Grid.Column> )}
+           <Grid.Column stretched={false} width={2} className='filtersGridColumn'> </Grid.Column>
+           <Grid.Column stretched={false} width={2} className='filtersGridColumn'> </Grid.Column>
+          </Grid.Row>
+         <Grid.Row color={'Black'} className='filtersGridRow' >    
+           <Grid.Column width={2} stretched={false} className='filtersGridColumn column-one'> </Grid.Column>
+            {this.props.filters.slice(15, 20).map((filter) =><Grid.Column width={2} stretched={false} className='filtersGridColumn'>  <FilterRow getParks={this.props.getParks} filter={filter} isSelected={filter.isSelected} name={filter.name} key={filter.name}/> </Grid.Column> )}
+           <Grid.Column width={2} stretched={false} className='filtersGridColumn'> </Grid.Column>
+           <Grid.Column width={2} stretched={false} className='filtersGridColumn'> </Grid.Column>
+          </Grid.Row>
+         <Grid.Row color={'Black'} className='filtersGridRow' >    
+           <Grid.Column width={2} stretched={false} className='filtersGridColumn column-one'> </Grid.Column>
+            {this.props.filters.slice(20, 22).map((filter) =><Grid.Column width={2} stretched={false} className='filtersGridColumn'>  <FilterRow getParks={this.props.getParks} filter={filter} isSelected={filter.isSelected} name={filter.name} key={filter.name}/> </Grid.Column> )}
+           <Grid.Column width={2} stretched={false} className='filtersGridColumn'> </Grid.Column>
+           <Grid.Column width={2} stretched={false} className='filtersGridColumn'> </Grid.Column>
+           <Grid.Column width={2} stretched={false} className='filtersGridColumn'> </Grid.Column>
+          </Grid.Row>
+      </Grid>
+
+      
     )
   }
       
@@ -46,8 +64,16 @@ class SidebarFilters extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-      updateFiltersSelections: state.updateFiltersSelections,
+      filters: state.updateFiltersSelections.activities,
+      popularity: state.updateFiltersSelections.popularity,
   };
 };
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        toggleVisibility: (visible) => dispatch(showFilters(visible))
+    };
+};
+
 
 export default connect(mapStateToProps)(SidebarFilters)

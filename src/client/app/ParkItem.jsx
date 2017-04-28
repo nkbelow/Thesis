@@ -8,34 +8,39 @@ class ParkItem extends React.Component {
   constructor(props) {
     super(props);
     this.imageStyle = {
-      width:'400px',
-      height:'200px',
-      zIndex:'-100',
+      width:'310px',
+      height:'160px',
       position: 'relative',
-      'boxShadow': '2px 2px 2px 1px rgba(0, 0, 0, 0.8)'
+      'boxShadow': '2px 2px 2px 1px rgba(0, 0, 0, 0.8)',
+      'margin-left': '5px',
+      'margin-top': '5px'
     }
     this.textStyle = {
       position: 'absolute',
       zIndex: '100',
-      width:'300px',
-      height:'150px',
-      top:'7px',
+      width:'200px',
+      height:'100px',
+      top:'1px',
       left: '22px',
       'fontFamily':'Arial',
       'fontWeight':'bold',
       color: 'white',
+      'padding-top': '0px',
+      'margin-top': '15px',
+      'margin-left': '5px',
       'textShadow': '-1px 0 #000000,0 1px #000000,1px 0 #000000,0 -1px #000000'
     }
     this.containerStyle = {
-      position:'relative',
-      'paddingLeft':'10px',
-      'paddingTop':'10px'
+      position:'static',
+      'paddingLeft':'5px',
+      'paddingTop':'5px',
+      'margin-left': '5px'
     }
   }
 
   render() {
     return(
-      <div >
+      <div className='parkitem' >
         <Link to={`park/${this.props.park.parkcode}/`} onMouseEnter = {this.props.setActivePark.bind(this, this.props.park)} onMouseLeave = {this.props.setActivePark.bind(this, null)} >
           <img style={this.imageStyle} src={'https://res.cloudinary.com/djzaih6fz/image/upload/' + this.props.park.parkcode + '.jpg'} />
           <h2 style={this.textStyle}>{this.props.park.name}</h2>
