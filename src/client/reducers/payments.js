@@ -6,8 +6,8 @@ const initialState = {
   annualPassQuantity: 0,
   annualPassPrice: 80,
   shoppingCartState: {
-    'Annual Pass': 0,
-    'Day Pass': 0
+    'annualPass': 0,
+    'dayPass': 0
   },
   shoppingCartTotal: 0
 }
