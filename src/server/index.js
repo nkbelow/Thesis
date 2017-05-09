@@ -36,7 +36,7 @@ app.use(session({
 	secret: 'Victoria\'s',
 	resave: false,
 	saveUninitialized: true,
-	cookie: {maxAge: new Date(Date.now() + 600000) }
+	cookie: {maxAge: 600000 }
 }))
 
 
