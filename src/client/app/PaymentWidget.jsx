@@ -14,7 +14,7 @@ class PaymentWidget extends React.Component {
       zipCode: true,
       name: 'Demo Site',
       description: 'Annual All-Park Pass',
-      amount: this.props.shoppingCartTotal,
+      amount: this.props.shoppingCartTotal*100,
       token: function(token) {
         // You can access the token ID with `token.id`.
         // Get the token ID to your server-side code for use.
