@@ -3,7 +3,6 @@ import { Table } from 'semantic-ui-react'
 import UnrecommendedItem from './UnrecommendedItem.jsx'
 
 function UnconnectedTraiList(props) {
-  const trails = props.trails;
   return (
   	<div>
 	    <Table celled>
@@ -15,7 +14,7 @@ function UnconnectedTraiList(props) {
 	        </Table.Row>
 	      </Table.Header>
 	      <Table.Body>
-		      {trails.map((trail) =>
+		      {props.trails.map((trail) =>
 		        <UnrecommendedItem key={trail.name.toString()}
 		                  trail={trail} />
 		      )}

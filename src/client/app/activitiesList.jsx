@@ -30,7 +30,6 @@ const ActivitiesList = (props) => {
   return (
     <Masonry>
         {props.activities.map((activity, i) => {
-          console.log('https://res.cloudinary.com/djzaih6fz/image/upload/snorkeling.png')
           return (<Popup key={i} trigger={
                     <Image style={myStyle} src={`https://res.cloudinary.com/djzaih6fz/image/upload/${activities[activity.activity]}.png`} />
                   }>

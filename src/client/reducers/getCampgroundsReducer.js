@@ -5,7 +5,7 @@ export const getCampgrounds = (state = {} , action) => {
       {campgrounds: action.campgrounds
     })
 
-  default: 
+  	default: 
     return state
   }
 };

@@ -21,7 +21,6 @@ const styles = {
 }
 
 const Map = (props) => {
-  // let boundary = {"type":"Feature", "geometry": {"type": "Polygon", "coordinates": parks.parks[props.id-1].boundaries}};
   let url = 'https://raw.githubusercontent.com/nationalparkservice/data/gh-pages/base_data/boundaries/parks/' + props.parkCode + '.geojson';
 
   return (

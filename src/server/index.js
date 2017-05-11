@@ -69,8 +69,6 @@ app.get('/auth/fitbit',
 app.get('/auth/fitbit/callback', fitbitAuthenticate);
 
 app.get('/api/fitbit', (req, res) => {
-  console.log(req, 'req, req, req')
-  console.log(req.user, 'req.user, req.user, req.user, req.user')
 	if(req.user){
 		fitbitHelper(req.user.profile.id, req.user.accessToken)
 		.then((result) => {
@@ -91,7 +89,6 @@ app.get('/api/shoppingcart', function(req, res, next) {
 
 app.post('/api/shoppingcart', function(req, res, next) {
   req.session.shoppingcart = req.body.params
-  console.log(req.session)
   res.status(200).send('works!')
 });
 
@@ -124,23 +121,10 @@ app.get('/api/parks/getparksbyactivity', (req, res) => {
 })
 
 app.post('/api/park/tenDayForecast', (req, res) => {
-	console.log('in tendayforecast, sending to model with params', req.body)
 	forecast(req.body.id).then((forecast) => {
 		res.status(200).send(forecast);
-		console.log("this is the forecast", forecast)
 	})
 })
-
-// app.post('/api/park/tenDayForecast', handlers.tenDayWeatherForecast);
-
-
-// app.post('/api/park/tenDayForecast', (req, res) => {
-// 	forecast(req.query.id).then((forecast) => {
-// 		res.status(200).send(forecast);
-// 		console.log("this is the forecast", forecast)
-// 	})
-// })
-
 
 
 app.get('/api/trails', (req, res) => {

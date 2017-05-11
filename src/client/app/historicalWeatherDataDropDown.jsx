@@ -7,7 +7,6 @@ import {getHistoricalData} from '../actions/getHistoricalData.js'
 const HistoricalWeatherDataDropDown = (props) => {
 
   const handleClick = (event, {value}) => {
-    console.log('this changed');
     props.getHistoricalData(props.park[1][0].latitude, props.park[1][0].longitude, value);
   }
 

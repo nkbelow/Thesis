@@ -4,7 +4,6 @@ import LodgingsListItem from './lodgingsListItem.jsx'
 import Masonry from 'react-masonry-component';
 
 const LodgingsList = (props) => {
-  console.log(props.lodgings)
   return (
     <Masonry >
       {props.lodgings.map((lodge, index) => {

@@ -55,7 +55,6 @@ function setIntervalX(callback, delay, repetitions) {
 
 var getForecast = function(i) {
 	if (i>parks.length-1) {
-		console.log('i <0, forecast.length = ', forecasts.length, 'parks.length: ', parks.length)
 		storeForecasts(forecasts)
 	} else {
 		let parkcode = parks[i].parkcode; 
