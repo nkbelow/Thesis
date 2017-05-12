@@ -7,17 +7,6 @@ import Masonry from 'react-masonry-component';
 class ParkList extends React.Component {
   constructor(props) {
     super(props)
-    this.style = {
-        backgroundColor:'',
-        width:'100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        'margin':'auto',
-        'margin-top': '10px',
-        'margin-left': '0.2%',
-        padding:'0',
-
-    };
   }
 
   componentDidUpdate () {
@@ -47,7 +36,7 @@ class ParkList extends React.Component {
     }
 
     return (
-          <Masonry style={this.style}>
+          <Masonry className='parkList'>
           {filteredParks.map((park) => (<ParkItem key={park.parkcode} park={park} />))}
           </Masonry>
     );

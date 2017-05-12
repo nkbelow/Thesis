@@ -3,12 +3,6 @@ import {List, Popup, Image} from 'semantic-ui-react';
 import Masonry from 'react-masonry-component';
 
 const ActivitiesList = (props) => {
-  const myStyle = {
-      width:'100px',
-      height:'100px',
-      position: 'relative',
-      'boxShadow': '2px 2px 2px 1px rgba(0, 0, 0, 0.8)'
-    }
   const activities = {
   'AUTO TOURING': 'AUTO TOURING', 
   'BIKING': 'BIKING',
@@ -31,7 +25,7 @@ const ActivitiesList = (props) => {
     <Masonry>
         {props.activities.map((activity, i) => {
           return (<Popup key={i} trigger={
-                    <Image style={myStyle} src={`https://res.cloudinary.com/djzaih6fz/image/upload/${activities[activity.activity]}.png`} />
+                    <Image src={`https://res.cloudinary.com/djzaih6fz/image/upload/${activities[activity.activity]}.png`} />
                   }>
                  <Popup.Content>
                  {activity.activity}
