@@ -16,7 +16,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     addPopup: (park) => {
-    	//later refactor to abstract out the action creator for the popup
       dispatch(addPopup(park))
     },
     removePopup: () => {

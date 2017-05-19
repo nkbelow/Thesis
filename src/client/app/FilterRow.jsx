@@ -9,34 +9,29 @@ import Promise from 'bluebird'
 class FilterRow extends React.Component {
   constructor (props) {
     super(props)
-    this.selectedStyle = {
-      'fontFamily':'Helvetica Neue',
-      'color': 'green',
-    };
-    this.deSelectedStyle = {
-      'fontFamily':'Helvetica Neue',
-      'color': 'grey'
-    }
+    this.handleOnClick = this.handleOnClick.bind(this)
   }
 
-  handleOnClick () {
-    const context = this;
+  handleOnClick (e) {
+    e.target.classList.toggle('selected')
     if (this.props.name !== 'Most Visited' && this.props.name !== 'Least Visited') {
       new Promise(function(resolve, reject) {
         resolve()
-      }).then(function(){
-          context.props.onCombinationFilterClick(context.props.filter.name);
-      }).then(function(){
-        context.props.getFilteredParks(context.props.filters);
-      })
+      }.bind(this))
+      .then(function(){
+          this.props.onCombinationFilterClick(this.props.filter.name);
+      }.bind(this))
+      .then(function(){
+        this.props.getFilteredParks(this.props.filters);
+      }.bind(this))
     } else {
-        context.props.onSingleFilterClick(context.props.filter.name);
+        this.props.onSingleFilterClick(this.props.filter.name);
     }
   }
 
   render () {
     return (
-      <div className='filterElement' divided={false} style={this.props.isSelected ? this.selectedStyle : this.deSelectedStyle} onClick={this.handleOnClick.bind(this)} onMouseEnter={this.props.setActiveParks.bind(this, this.props.activitiesHover[(this.props.filter.name).toUpperCase()])} onMouseLeave={this.props.setActiveParks.bind(this, null)}>{this.props.name} </div> 
+      <div className='filterElement' divided={false} onClick={this.handleOnClick.bind(this)} onMouseEnter={this.props.setActiveParks.bind(this, this.props.activitiesHover[(this.props.filter.name).toUpperCase()])} onMouseLeave={this.props.setActiveParks.bind(this, null)}>{this.props.name} </div> 
     )
   }
 }

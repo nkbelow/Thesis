@@ -7,7 +7,6 @@ let getHistoricalData = (req, res) => {
     method: 'get',
   }
   return axios(config).then((result) => {
-    console.log(result)
     res.status(200).send(result['data']);
   })
   .catch((err) => {
