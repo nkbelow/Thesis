@@ -1,0 +1,61 @@
+DROP DATABASE IF EXISTS thesis;
+CREATE DATABASE thesis;
+
+CREATE TABLE IF NOT EXISTS parks (
+	id INTEGER PRIMARY KEY,
+	parkcode 	VARCHAR(255),
+	name VARCHAR(50),
+	description VARCHAR(500),
+	popularity VARCHAR(255), 
+	size INTEGER,
+	latitude DOUBLE PRECISION, 
+	longitude DOUBLE PRECISION,
+	visitors INTEGER
+	
+);
+
+CREATE TABLE IF NOT EXISTS activities (
+	id INTEGER PRIMARY KEY,
+	activity VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS campgrounds (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255),
+	latitude DOUBLE PRECISION, 
+  longitude DOUBLE PRECISION, 
+	park_id INTEGER FOREIGN KEY
+);
+
+CREATE TABLE IF NOT EXISTS images (
+	id SERIAL PRIMARY KEY,
+	url VARCHAR(50)
+);
+
+CREATE TABLE IF NOT EXISTS trails (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(50),
+	city VARCHAR (25),
+	state VARCHAR (25),
+	latitude DOUBLE PRECISION,
+	longitude DOUBLE PRECISION,
+	length DOUBLE PRECISION,
+	description VARCHAR (5000),
+	directions VARCHAR (5000),
+	activities VARCHAR (100) [],
+	park_id INTEGER FOREIGN KEY,
+	campground_id INTEGER FOREIGN KEY
+);
+
+CREATE TABLE IF NOT EXISTS lodging (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(25),
+	park_id INTEGER FOREIGN KEY 
+);
+
+CREATE TABLE IF NOT EXISTS activities_parks (
+	park_id INTEGER NOT NULL,
+  activity_id INTEGER NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS weather ();

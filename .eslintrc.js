@@ -16,7 +16,16 @@ module.exports = {
   ],
   // Add custom rules here
   // http://eslint.org/docs/rules/
+  "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+  },
+  "parser": "esprima",
   "rules": {
+    "semi": "error",
     "comma-dangle": ["error", "never"]
   }
 };
